@@ -1,0 +1,22 @@
+const formFilters = [
+  { id: "ff01", name: "REF",type:" ", data:[]  },
+  { id: "ff02", name: "LOCATION",type:" ", data:[]  },
+  { id: "ff03", name: "STATUS",type:" ", data:[]  },
+  { id: "ff04", name: "FORM TYPE",type:" ", data:[]  },
+  { id: "ff05", name: "FORM NAME",type:" ", data:[]  },
+  { id: "ff06", name: "FORM TITLE",type:" ", data:[]  },
+  { id: "ff07", name: "ISSUED TO ORGANISATION",type:" ", data:[]  },
+  { id: "ff08", name: "OWNED BY ORGANISATION",type:" ", data:[]  },
+  { id: "ff09", name: "OWNED BY USER",type:" ", data:[]  },
+  { id: "ff10", name: "CREATED DATE",type:" ", data:[]  },
+  { id: "ff11", name: "STATUS CHANGE DATE",type:" ", data:[]  },
+  { id: "ff12", name: "EXPIRY DATE",type:" ", data:[]  },
+  { id: "ff13", name: "SHOW OVERDUE FORMS ONLY",type:" ", data:[]  },
+  { id: "ff14", name: "OPEN ACTIONS ONLY",type:" ", data:[]  },
+  { id: "ff15", name: "SEARCH QUESTIONS",type:" ", data:[]  },
+  { id: "ff16", name: "IMAGES",type:" ", data:[]  },
+  { id: "ff17", name: "DOCUMENTS",type:" ", data:[]  },
+  { id: "ff18", name: "COMMENTS",type:" ", data:[]  },
+  { id: "ff19", name: "ASSOCIATIONS",type:" ", data:[]  },
+];
+export default formFilters
