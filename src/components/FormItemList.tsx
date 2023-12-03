@@ -87,20 +87,29 @@ const FormItemList = () => {
           </tr>
         </thead>
         <tbody>
-          <tr id="form-grid-row-01">
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-        </tbody>
-      </Table>
-      {data.map((item) => (
+        {data.map((item) => (
         <>
-          <Link to={`/forms/edit/${item.formRef}`}>{item.formRef}</Link>
-          <div>{item.dataTemp[0].title}</div>
+          
+          <tr>
+            <td></td>
+            <td id="ref"><Link to={`/forms/edit/${item.formRef}`}>{item.formRef}</Link></td>
+            <td id="status"></td>
+            <td id="location"></td>
+            <td id="name">{item.dataTemp[0].title}</td>
+            <td id="createdDate"></td>
+            <td id="type"></td>
+            <td id="createdBy"></td>
+            <td id="organizationName"></td>
+            <td id="statusChangedDate"></td>
+            <td id="expiryDate"></td>
+            <td id="action"></td>
+          </tr>
+          <div></div>
         </>
       ))}
+        </tbody>
+      </Table>
+
     </Container>
   );
 };

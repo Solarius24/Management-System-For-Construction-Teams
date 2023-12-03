@@ -13,7 +13,6 @@ import { permitToUnload } from "./forms";
 import tasksActionList from "../../configData/tasksConfig/tasksActionList";
 
 const BasicForm = (props: any) => {
-  console.log(props.formData.title);
   return (
     <Container fluid className="overflow-auto" style={{height:"80vh"}}>
       <Card style={{ overflowY: "auto" }}>
@@ -21,7 +20,7 @@ const BasicForm = (props: any) => {
           <Row>
             <Col>
               <CardText>
-                {" "}
+      
                 Form Ref:{props.formRef} {props.formData.title}
               </CardText>
             </Col>

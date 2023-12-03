@@ -17,17 +17,16 @@ interface ModalAddConfig {
 const ModalAddForm = (props: ModalAddConfig) => {
   const [selectFormType, setSelectFormType] = useState("");
   const [selectForm, setSelectForm] = useState("");
-let formRef = Math.random()
+  let formRef = Math.random();
   const navigate = useNavigate();
 
   //selsect form type from the list and set the id of the selected form type
   function handleSelectFormType(e: any) {
-    console.log(e.target.value);
     setSelectFormType(e.target.value);
   }
 
   function handleSelectForm(e: any) {
-    console.log(e.target.value);
+    console.log(e.target);
     setSelectForm(e.target.value);
   }
 
@@ -41,6 +40,7 @@ let formRef = Math.random()
           aria-label="Default select example"
           onChange={handleSelectForm}
         >
+          <option value="===select---"></option>
           {filtered[0].formTemplate.map((item) => (
             <option value={item.id} key={item.id}>
               {item.title}
@@ -54,12 +54,12 @@ let formRef = Math.random()
   //add new form
   function createFormHandler() {
     props.onHide();
+    console.log(selectFormType, selectForm);
     const filtered = formsList.filter((item) => item.id === selectFormType);
     const form = filtered[0].formTemplate.filter(
       (item) => item.id === selectForm
-    )
+    );
     localStorage.setItem(`${formRef}`, JSON.stringify({ form }));
-    console.log(localStorage.getItem(`${formRef}`))
     navigate(`/forms/edit/${formRef}`);
   }
 

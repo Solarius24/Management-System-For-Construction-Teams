@@ -13,30 +13,65 @@ const NavBar = () => {
           <Nav className="me-auto">
             <NavItem>
               <NavLink>
-                <Link to="/">FIELD VIEW</Link>
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "rgba(255,255,255,0.5",
+                  }}
+                  to="/"
+                >
+                  FIELD VIEW
+                </Link>
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink>
-                <Link to="/forms">FORMS</Link>
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "rgba(255,255,255,0.5",
+                  }}
+                  to="/forms"
+                >
+                  FORMS
+                </Link>
               </NavLink>
             </NavItem>
 
             <NavItem>
               <NavLink>
-                <Link to="/tasks">TASKS</Link>
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "rgba(255,255,255,0.5",
+                  }}
+                  to="/tasks"
+                >
+                  TASKS
+                </Link>
               </NavLink>
             </NavItem>
 
             <NavItem>
               <NavLink>
-                <Link to="/processes">PROCESSES</Link>
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "rgba(255,255,255,0.5",
+                  }}
+                  to="/processes"
+                >
+                  PROCESSES
+                </Link>
               </NavLink>
             </NavItem>
 
             <Nav.Item>
               <NavLink>
-                <Link to="/assets">ASSETS</Link>
+                <Link         style={{
+                    textDecoration: "none",
+                    color: "rgba(255,255,255,0.5",
+                  }} to="/assets">ASSETS</Link>
               </NavLink>
             </Nav.Item>
           </Nav>
