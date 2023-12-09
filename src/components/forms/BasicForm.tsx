@@ -15,7 +15,7 @@ import tasksActionList from "../../configData/tasksConfig/tasksActionList";
 const BasicForm = (props: any) => {
   return (
     <Container fluid className="overflow-auto" style={{height:"80vh"}}>
-      <Card style={{ overflowY: "auto" }}>
+      <Card>
         <CardHeader>
           <Row>
             <Col>

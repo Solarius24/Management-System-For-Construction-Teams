@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
-import ModalWithGrid from "../components/modals/ModalWithGrid";
 import ModalSettings from "../components/modals/ModalSettings";
 import ModalInput from "../components/modals/ModalInput";
-import listOfWidgets from "../configData/listOfWidgets";
+import listOfWidgets from "../configData/widgetsConfig/listOfWidgets";
+import ModalAddWidget from "../components/modals/ModalAddWidget";
 
 
 
@@ -36,7 +36,7 @@ const Dashboard = () => {
         </Button>
       </div>
       <Container>Widgets</Container>
-      <ModalWithGrid
+      <ModalAddWidget
         show={modalGridShow}
         onHide={() => setModalGridShow(false)}
         title={"ADD WIDGET"}
