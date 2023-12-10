@@ -1,7 +1,8 @@
-import { useState, useId } from "react";
+import { useState} from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import formsList from "../../configData/formsConfig/formsList";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../redux/reduxHooks";
+import { addForm } from "../../redux/slices/formSlice";
 
 interface ModalAddConfig {
   show: boolean;
@@ -17,7 +18,8 @@ interface ModalAddConfig {
 const ModalAddForm = (props: ModalAddConfig) => {
   const [selectFormType, setSelectFormType] = useState("");
   const [selectForm, setSelectForm] = useState("");
-  let formRef = Math.random();
+  const dispatch = useAppDispatch()
+  const id = Date.now()
   const navigate = useNavigate();
 
   //selsect form type from the list and set the id of the selected form type
@@ -26,13 +28,12 @@ const ModalAddForm = (props: ModalAddConfig) => {
   }
 
   function handleSelectForm(e: any) {
-    console.log(e.target);
     setSelectForm(e.target.value);
   }
 
   //display list of form templates based on the selected form type (selectFormType)
   function handleSelect() {
-    let filtered = props.list.filter((item) => item.id === selectFormType);
+    let filtered = props.list.filter((item) => item.type === selectFormType);
     return (
       <div>
         <Form.Label>Form Template</Form.Label>
@@ -42,7 +43,7 @@ const ModalAddForm = (props: ModalAddConfig) => {
         >
           <option value="===select---"></option>
           {filtered[0].formTemplate.map((item) => (
-            <option value={item.id} key={item.id}>
+            <option value={item.title} key={item.id}>
               {item.title}
             </option>
           ))}
@@ -54,13 +55,21 @@ const ModalAddForm = (props: ModalAddConfig) => {
   //add new form
   function createFormHandler() {
     props.onHide();
-    console.log(selectFormType, selectForm);
-    const filtered = formsList.filter((item) => item.id === selectFormType);
-    const form = filtered[0].formTemplate.filter(
-      (item) => item.id === selectForm
-    );
-    localStorage.setItem(`${formRef}`, JSON.stringify({ form }));
-    navigate(`/forms/edit/${formRef}`);
+    let data = {
+      id: `${id}`,
+      formTitle: `${selectForm}`,
+      documentRef: `${id}`,
+      createdDate:`${new Date().toLocaleString()}`,
+      status: "OPEN",
+      formType:`${selectFormType}`,
+      details: " ",
+      location: "   ",
+      expiryDate: " ",
+      signatureDate: "",
+      signature: "",
+    }
+    dispatch(addForm(data))
+    navigate(`/forms/edit/${id}`);
   }
 
   return (
@@ -79,7 +88,7 @@ const ModalAddForm = (props: ModalAddConfig) => {
         >
           <option value="===select---"></option>
           {props.list.map((item) => (
-            <option value={item.id} key={item.id}>
+            <option value={item.type} key={item.id}>
               {item.type}
             </option>
           ))}

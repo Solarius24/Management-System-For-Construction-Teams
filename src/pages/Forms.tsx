@@ -5,7 +5,7 @@ import FormItemList from "../components/FormItemList";
 
 const Forms = () => {
   return (
-    <div>
+    <div className="mt-5">
       <Tabs
         defaultActiveKey={"formsTab"}
         id="controlled-tab-example"

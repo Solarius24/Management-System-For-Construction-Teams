@@ -1,5 +1,6 @@
 const formsColumnConfigList = [
   { id: "fccl01", name: "REF" },
+  { id: "fccl20", name: "TITLE" },
   { id: "fccl02", name: "LOCATION" },
   { id: "fccl03", name: "STATUS" },
   { id: "fccl04", name: "FORM TYPE" },

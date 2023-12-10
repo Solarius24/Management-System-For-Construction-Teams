@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import FormEdit from "./pages/FormEdit";
 
 function App() {
+  
   return (
     <BrowserRouter>
       <div>
@@ -17,7 +18,7 @@ function App() {
       </div>
       <div>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/dashboard?" element={<Dashboard />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/processes" element={<Processes />} />
           <Route path="/assets" element={<Assets />} />

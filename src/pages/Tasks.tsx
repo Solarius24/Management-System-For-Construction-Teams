@@ -32,7 +32,7 @@ const Tasks = () => {
   };
 
   return (
-    <div>
+    <div className="mt-5">
       <Row>
         {showFilter && (
           <Col className="col-3">

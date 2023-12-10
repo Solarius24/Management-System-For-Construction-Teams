@@ -30,7 +30,7 @@ const Assets = () => {
   };
 
   return (
-    <Container fluid>
+    <Container fluid className="mt-5">
       <Row>
         {showFilter && (
           <Col className="col-3">

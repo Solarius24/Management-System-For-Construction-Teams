@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Button, CardGroup, Container, Nav, Navbar, Row } from "react-bootstrap";
 import ModalSettings from "../components/modals/ModalSettings";
 import ModalInput from "../components/modals/ModalInput";
 import listOfWidgets from "../configData/widgetsConfig/listOfWidgets";
 import ModalAddWidget from "../components/modals/ModalAddWidget";
-
-
+import TinyBarChart from "../components/widgets/TinyBarChart";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [modalGridShow, setModalGridShow] = useState(false);
@@ -14,15 +14,22 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Navbar bg="white">
+      <Navbar bg="white" className="mt-5">
         {/* <Button variant="primary" onClick={() => setModalInputShow(true)}>
           ADD NEW TAB
         </Button> */}
         <Container>
           <Nav variant="tabs" className="me-auto">
-            <Nav.Link  href="/dashboard?tabid=01">Default Tab01</Nav.Link>
-            <Nav.Link  href="/dashboard?tabid=02">Default Tab02</Nav.Link>
-            <Nav.Link  href="/dashboard?tabid=03">Default Tab03</Nav.Link>
+            <Nav.Link>
+              <Link to={"/dashboard?tabid=01"}>Default Tab</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to={"/dashboard?tabid=02"}> New Tab 01</Link>
+            </Nav.Link>
+
+            <Nav.Link>
+              <Link to={"/dashboard?tabid=03"}>New Tab 02 </Link>
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -35,7 +42,20 @@ const Dashboard = () => {
           TAB SETTINGS
         </Button>
       </div>
-      <Container>Widgets</Container>
+      <Container>
+        <CardGroup>
+          <Row>
+          <TinyBarChart />
+        <TinyBarChart />
+          </Row>
+          <Row>
+          <TinyBarChart />
+          <TinyBarChart />
+          </Row>
+   
+  
+        </CardGroup>
+      </Container>
       <ModalAddWidget
         show={modalGridShow}
         onHide={() => setModalGridShow(false)}
@@ -51,7 +71,6 @@ const Dashboard = () => {
         show={modalInputShow}
         onHide={() => setModalInputShow(false)}
         title={"ADD TAB"}
-
       />
     </div>
   );

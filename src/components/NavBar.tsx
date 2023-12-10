@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar bg="dark" data-bs-theme="dark" fixed="top">
         <Container className="d-flex">
           <Nav className="me-auto">
             <NavItem>
@@ -18,7 +18,7 @@ const NavBar = () => {
                     textDecoration: "none",
                     color: "rgba(255,255,255,0.5",
                   }}
-                  to="/"
+                  to="/dashboard?tabid=01"
                 >
                   FIELD VIEW
                 </Link>

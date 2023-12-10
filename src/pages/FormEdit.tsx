@@ -1,18 +1,17 @@
-import React from 'react'
-import BasicForm from '../components/forms/BasicForm'
-import { useParams } from 'react-router-dom';
+import BasicForm from "../components/forms/BasicForm";
+import { useAppSelector } from "../redux/reduxHooks";
+import { useParams } from "react-router-dom";
 
-const FormEdit = (props:any) => {
-    let { formRef } = useParams();
-   
-    //@ts-ignore
-    let formData = JSON.parse(localStorage.getItem(formRef))
-    console.log(formData)
+const FormEdit = () => {
+  const data = useAppSelector((state) => state.form.data);
+  let { formRef } = useParams();
+  let formData = data.filter((item) => item.documentRef === formRef);
+
   return (
-    <div>
-      <BasicForm formRef = {formRef} formData = {formData.form[0]} />
-    </div>
-  )
-}
+    <>
+      <BasicForm formRef={formRef} formData={formData} />
+    </>
+  );
+};
 
-export default FormEdit
+export default FormEdit;

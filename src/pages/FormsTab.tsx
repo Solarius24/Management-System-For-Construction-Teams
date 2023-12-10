@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
 import Fillters from "../components/Fillters";
 import ColumnConfig from "../components/ColumnConfig";
 import ModalAddForm from "../components/modals/ModalAddForm";
 import formFilters from "../configData/formsConfig/formsFilter";
-import columnConfigList from "../configData/columnConfigList";
 import formsList from "../configData/formsConfig/formsList";
 import formsColumnConfigList from "../configData/formsConfig/formsColumnConfigList";
 
@@ -79,9 +78,7 @@ const FormsTab = () => {
               </Nav.Link>
             </Nav.Item>
             <NavDropdown title="ACTIONS" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#/action-1">
-                CHAGE STATUS
-              </NavDropdown.Item>
+              <NavDropdown.Item>CHAGE STATUS</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#/action-2">
                 DISTRIBUTE FROM
