@@ -16,7 +16,7 @@ const NavBar = () => {
                 <Link
                   style={{
                     textDecoration: "none",
-                    color: "rgba(255,255,255,0.5",
+                    color: "#fff",
                   }}
                   to="/dashboard?tabid=01"
                 >
@@ -29,7 +29,7 @@ const NavBar = () => {
                 <Link
                   style={{
                     textDecoration: "none",
-                    color: "rgba(255,255,255,0.5",
+                    color: "#fff",
                   }}
                   to="/forms"
                 >
@@ -43,7 +43,7 @@ const NavBar = () => {
                 <Link
                   style={{
                     textDecoration: "none",
-                    color: "rgba(255,255,255,0.5",
+                    color: "#fff",
                   }}
                   to="/tasks"
                 >
@@ -57,7 +57,7 @@ const NavBar = () => {
                 <Link
                   style={{
                     textDecoration: "none",
-                    color: "rgba(255,255,255,0.5",
+                    color: "#fff",
                   }}
                   to="/processes"
                 >
@@ -70,7 +70,7 @@ const NavBar = () => {
               <NavLink>
                 <Link         style={{
                     textDecoration: "none",
-                    color: "rgba(255,255,255,0.5",
+                    color: "#fff",
                   }} to="/assets">ASSETS</Link>
               </NavLink>
             </Nav.Item>

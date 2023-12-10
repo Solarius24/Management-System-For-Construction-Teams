@@ -1,11 +1,20 @@
 import { useState } from "react";
-import { Button, CardGroup, Container, Nav, Navbar, Row } from "react-bootstrap";
+import {
+  Button,
+  CardGroup,
+  Container,
+  Nav,
+  Navbar,
+  Row,
+} from "react-bootstrap";
 import ModalSettings from "../components/modals/ModalSettings";
 import ModalInput from "../components/modals/ModalInput";
 import listOfWidgets from "../configData/widgetsConfig/listOfWidgets";
 import ModalAddWidget from "../components/modals/ModalAddWidget";
 import TinyBarChart from "../components/widgets/TinyBarChart";
 import { Link } from "react-router-dom";
+import HorizontalBarchart from "../components/widgets/HorizontalBarChart";
+import PieChartWithCustomLabels from "../components/widgets/PieChartWithCustomLabels";
 
 const Dashboard = () => {
   const [modalGridShow, setModalGridShow] = useState(false);
@@ -34,26 +43,24 @@ const Dashboard = () => {
         </Container>
       </Navbar>
 
-      <div className="d-flex justify-content-between m-2">
+      <Container className="d-flex justify-content-between m-2">
         <Button variant="primary" onClick={() => setModalGridShow(true)}>
           ADD WIDGET
         </Button>
         <Button className="ml-5" onClick={() => setModalSettingsShow(true)}>
           TAB SETTINGS
         </Button>
-      </div>
+      </Container>
       <Container>
         <CardGroup>
           <Row>
-          <TinyBarChart />
-        <TinyBarChart />
+            <TinyBarChart />
+            <HorizontalBarchart />
           </Row>
           <Row>
-          <TinyBarChart />
-          <TinyBarChart />
+            <PieChartWithCustomLabels />
+            <TinyBarChart />
           </Row>
-   
-  
         </CardGroup>
       </Container>
       <ModalAddWidget
