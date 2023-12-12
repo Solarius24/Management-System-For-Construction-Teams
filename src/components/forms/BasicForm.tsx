@@ -10,7 +10,6 @@ import {
   Row,
 } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import tasksActionList from "../../configData/tasksConfig/tasksActionList";
 import { useAppDispatch } from "../../redux/reduxHooks";
 import { updateForm } from "../../redux/slices/formSlice";
 import { useState } from "react";
