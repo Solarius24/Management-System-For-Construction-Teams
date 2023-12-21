@@ -3,9 +3,10 @@ import axios from "axios";
 
 interface TaskState {
   data: {
-    id: string;
+    id:string;
+    taskRef: string;
     cause: string;
-    cousedBy: string;
+    causedBy: string;
     description: string;
     issuedByUser: string;
     issuedToOrganisation: string;
@@ -21,9 +22,10 @@ interface TaskState {
 const initialState: TaskState = {
   data: [
     {
-      id: `temp01`,
+      id:"temp01",
+      taskRef: "temp01",
       cause: "",
-      cousedBy: "",
+      causedBy: "",
       description: "",
       issuedByUser: "",
       issuedToOrganisation: "",
@@ -37,7 +39,7 @@ const initialState: TaskState = {
   ],
 };
 
-export const fetchForms = createAsyncThunk("fetchForm", async () => {
+export const fetchTasks = createAsyncThunk("fetchForm", async () => {
   const response = await fetch("http://localhost:9000/tasks");
   const data = await response.json();
   return data;
@@ -63,7 +65,7 @@ export const taskSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchForms.fulfilled, (state, action) => {
+    builder.addCase(fetchTasks.fulfilled, (state, action) => {
       state.data = action.payload;
     });
   },

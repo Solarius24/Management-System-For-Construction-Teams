@@ -30,7 +30,7 @@ const Assets = () => {
   };
 
   return (
-    <Container fluid className="mt-5">
+    <Container fluid style={{marginTop:"60px"}}>
       <Row>
         {showFilter && (
           <Col className="col-3">
@@ -81,9 +81,7 @@ const Assets = () => {
           </Nav>
         </Col>
       </Row>
-      <Card>
       <AssetsList />
-      </Card>
     </Container>
   );
 };

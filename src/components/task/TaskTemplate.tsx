@@ -1,80 +1,79 @@
 import { useState } from "react";
-import { Button, Form, FormControl, FormLabel, InputGroup, Modal } from "react-bootstrap";
+import { Button, Card, Container, Form, FormControl, FormLabel} from "react-bootstrap";
 import createTask from "../../configData/tasksConfig/createTask";
 import { useForm } from "react-hook-form";
 import { useAppDispatch } from "../../redux/reduxHooks";
-import { updateTask,addTask } from "../../redux/slices/taskSlice";
+import { updateTask} from "../../redux/slices/taskSlice";
+import taskList from "../../configData/tasksConfig/tasksList";
+import { useNavigate } from "react-router-dom";
 
-interface ModalAddConfig {
-  show: boolean;
-  title: string;
-  list: {
-    id: string;
-    name: string;
-  }[];
-  onHide: () => void;
-  display?: React.ReactNode;
+interface TaskTemplateData {
+  taskData:{
+    id:string;
+    taskRef: string;
+    cause: string;
+    causedBy: string;
+    description: string;
+    issuedByUser: string;
+    issuedToOrganisation: string;
+    location: string;
+    package: string;
+    status: string;
+    statusChangeComments: string;
+    targetDate: string;
+    taskType: string;
+  }[]
+
+
 }
-const ModalAddTask = (props: ModalAddConfig) => {
+const TaskTemplate = (props: TaskTemplateData) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [taskType, setTaskType] = useState("");
-  const [description, setDescription] = useState("");
-  const [location, setLocation] = useState("");
-  const [status, setStatus] = useState("");
-  const [causedBy, setCausedBy] = useState("");
-  const [statusChangeComments, setStatusChangeComments] = useState("");
-  const [contractPackage, setConstractPackage] = useState("");
-  const [cause, setCause] = useState("");
-  const [targetDate, setTargetDate] = useState("");
-  const [issuedToOrganisation, setIssuedToOrganisation] = useState("");
-  const [issuedByUser, setIssuedByUser] = useState("");
   const dispatch = useAppDispatch();
-  const id = String(Date.now())
+  const navigate = useNavigate()
+
 
   function onSubmitTask(data:any) {
-    data.id = id
-    data.taskRef = id
-    dispatch(addTask(data));
-    props.onHide()
+    data.id = props.taskData[0].id
+    dispatch(updateTask(data));
+    navigate("/tasks")
+
   }
 
   return (
-    <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-         ADD NEW TASK
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
+    <Container style={{marginTop:"60px"}} {...props} aria-labelledby="contained-modal-title-vcenter">
+        <Card.Title id="contained-modal-title-vcenter">
+         EDIT TASK
+        </Card.Title>
+      <Card.Body>
       <Form onSubmit={handleSubmit(onSubmitTask)}>
-          <FormLabel>Task Ref Number: {id} </FormLabel>
+          <FormLabel>Task Ref Number: {props.taskData[0].taskRef}  </FormLabel>
         <Form.Group>
         <Form.Label>Task Type</Form.Label>
         {errors.taskType?.type === 'required' && <p className="text-danger" role="alert">Task type is required</p>}
           <Form.Select
             aria-label="Default select example"
+            defaultValue={props.taskData[0].taskType}
             // value={taskType}
             {...register("taskType", { required: true })}
             // onChange={(e) => setTaskType(e.target.value)}
-           
           >
              <option></option>
-            {props.list.map((item) => (
+            {taskList.map((item) => (
               <option value={item.name} key={item.id}>
                 {item.name}
               </option>
             ))}
           </Form.Select>
         </Form.Group>
-    
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Description</Form.Label>
             {errors.description?.type === 'required' && <p className="text-danger" role="alert">Description is required</p>}
             <Form.Control
+            defaultValue={props.taskData[0].description}
               {...register("description", { required: true })}
               as="textarea"
               type="text"
@@ -83,14 +82,13 @@ const ModalAddTask = (props: ModalAddConfig) => {
               // onChange={(e) => setDescription(e.target.value)}
             />
           </Form.Group>
-       
-
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Location</Form.Label>
             {errors.location?.type === 'required' && <p className="text-danger" role="alert">Location is required</p>}
             <Form.Select
-              {...register("location", { required: true })}
               aria-label="Default select example"
+              defaultValue={props.taskData[0].location}
+              {...register("location", { required: true })}
               // value={location}
               // onChange={(e) => setLocation(e.target.value)}
             >
@@ -100,28 +98,26 @@ const ModalAddTask = (props: ModalAddConfig) => {
               ))}
             </Form.Select>
           </Form.Group>
-
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Status</Form.Label>
             {errors.status?.type === 'required' && <p className="text-danger" role="alert">Status is required</p>}
             <Form.Select
+            defaultValue={props.taskData[0].status}
               aria-label="Default select example"
               {...register("status", { required: true })}
-              disabled
               // value={status}
               // onChange={(e) => setStatus(e.target.value)}
             >
-              <option>Opened</option>
-              {/* {createTask.status.map((item: any) => (
+                      {createTask.status.map((item: any) => (
                 <option value={item}>{item}</option>
-              ))} */}
+              ))}
             </Form.Select>
           </Form.Group>
-
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Status Change Comments</Form.Label>
             {errors.statusChangeComments?.type === 'required' && <p className="text-danger" role="alert">Status Change Comments is required</p>}
             <Form.Control
+            defaultValue={props.taskData[0].statusChangeComments}
               as="textarea"
               type="text"
               {...register("statusChangeComments", { required: true })}
@@ -129,11 +125,11 @@ const ModalAddTask = (props: ModalAddConfig) => {
               // onChange={(e) => setStatusChangeComments(e.target.value)}
             />
           </Form.Group>
-
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Package</Form.Label>
             {errors.package?.type === 'required' && <p className="text-danger" role="alert">Package is required</p>}
             <Form.Select
+            defaultValue={props.taskData[0].package}
               aria-label="Default select example"
               {...register("package", { required: true })}
               // value={contractPackage}
@@ -145,22 +141,22 @@ const ModalAddTask = (props: ModalAddConfig) => {
               ))}
             </Form.Select>
           </Form.Group>
-
           <Form.Group className="mb-3">
             <Form.Label>Target Date</Form.Label>
             {errors.targetDate?.type === 'required' && <p className="text-danger" role="alert">Target date is required</p>}
             <FormControl
+            defaultValue={props.taskData[0].targetDate}
               type="date"
               {...register("targetDate", { required:true })}
               // value={targetDate}
               // onChange={(e) => setTargetDate(e.target.value)}
             ></FormControl>
           </Form.Group>
-
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Issued To Organisation</Form.Label>
             {errors.issuedToOrganisation?.type === 'required' && <p className="text-danger" role="alert">Issued To Organisation is required</p>}
             <Form.Select
+            defaultValue={props.taskData[0].issuedToOrganisation}
               aria-label="Default select example"
               {...register("issuedToOrganisation", { required: true })}
               // value={issuedToOrganisation}
@@ -172,11 +168,11 @@ const ModalAddTask = (props: ModalAddConfig) => {
               ))}
             </Form.Select>
           </Form.Group>
-
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Issued By User</Form.Label>
             {errors.issuedByUser?.type === 'required' && <p className="text-danger" role="alert">Issued By User is required</p>}
             <Form.Select
+            defaultValue={props.taskData[0].issuedByUser}
               aria-label="Default select example"
               {...register("issuedByUser", { required: true })}
               // value={issuedByUser}
@@ -188,11 +184,11 @@ const ModalAddTask = (props: ModalAddConfig) => {
               ))}
             </Form.Select>
           </Form.Group>
-
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Cause</Form.Label>
             {errors.cause?.type === 'required' && <p className="text-danger" role="alert">Cause is required</p>}
             <Form.Select
+            defaultValue={props.taskData[0].cause}
               aria-label="Default select example"
               {...register("cause", { required: true })}
               // value={cause}
@@ -204,11 +200,11 @@ const ModalAddTask = (props: ModalAddConfig) => {
               ))}
             </Form.Select>
           </Form.Group>
-
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Caused By</Form.Label>
             {errors.causedBy?.type === 'required' && <p className="text-danger" role="alert">Caused by is required</p>}
             <Form.Select
+            defaultValue={props.taskData[0].causedBy}
               aria-label="Default select example"
               {...register("causedBy", { required: true })}
               // value={causedBy}
@@ -220,22 +216,13 @@ const ModalAddTask = (props: ModalAddConfig) => {
               ))}
             </Form.Select>
           </Form.Group>
-
-          <InputGroup className="mb-3">
-            <InputGroup.Checkbox aria-label="Checkbox for following text input"      {...register("saveAsLibraryTask", { required: false })}/>
-            <InputGroup.Text>Save As Library Task</InputGroup.Text>
-          </InputGroup>
-
-          <Button onClick={props.onHide} variant="secondary">
-            Close
-          </Button>
           <Button variant="primary" type="submit">
             Save changes
           </Button>
         </Form>
-      </Modal.Body>
-    </Modal>
+      </Card.Body>
+    </Container>
   );
 };
 
-export default ModalAddTask;
+export default TaskTemplate;

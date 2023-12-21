@@ -8,6 +8,7 @@ import Forms from "./pages/Forms";
 import "./App.css";
 import Dashboard from "./pages/Dashboard";
 import FormEdit from "./pages/FormEdit";
+import TaskEdit from "./pages/TaskEdit";
 
 function App() {
   
@@ -27,6 +28,7 @@ function App() {
             <Route path="edit/:formRef:" element={<FormEdit />} /> */}
           </Route>
           <Route path="/forms/edit/:formRef" element={<FormEdit />}></Route>
+          <Route path="/tasks/edit/:taskRef" element={<TaskEdit />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

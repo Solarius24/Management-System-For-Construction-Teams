@@ -3,7 +3,7 @@ import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
 import Fillters from "../components/Fillters";
 import ColumnConfig from "../components/ColumnConfig";
 import tasksFilter from "../configData/tasksConfig/tasksFilter";
-import TasksList from "../components/TasksList";
+import TasksList from "../components/task/TasksList";
 import tasksActionList from "../configData/tasksConfig/tasksActionList";
 import columnConfigList from "../configData/columnConfigList";
 import tasksList from "../configData/tasksConfig/tasksList";

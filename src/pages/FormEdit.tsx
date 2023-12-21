@@ -1,4 +1,4 @@
-import BasicForm from "../components/forms/BasicForm";
+import BasicForm from "../components/forms/FormTemplate";
 import { useAppSelector } from "../redux/reduxHooks";
 import { useParams } from "react-router-dom";
 

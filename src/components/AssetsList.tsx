@@ -3,9 +3,9 @@ import assetsColumnConfigList from "../configData/assetsConfig/assetsColumnConfi
 
 const AssetsList = () => {
   return (
-    <Container>
+    <Container fluid style={{height:"80vh"}}>
       <Table striped bordered hover>
-        <thead>
+      <thead>
           <tr>
             <th>
               <input
@@ -15,13 +15,20 @@ const AssetsList = () => {
                 className="ng-untouched ng-pristine ng-valid"
               />
             </th>
-            {assetsColumnConfigList.map((item) => {
-              return (
-                <th id={item.id}>
-                  <a href=" ">{item.name}</a>
-                </th>
-              );
-            })}
+            <th>
+            
+            <a href=" ">LOCATION</a>
+            </th>
+            <th>
+            <a href=" ">DESCRIPTION</a>
+            </th>
+            <th>
+            <a href=" ">CREATED</a>
+            </th>
+            <th>
+            <a href=" ">TARGET</a>
+            </th>
+
           </tr>
         </thead>
 

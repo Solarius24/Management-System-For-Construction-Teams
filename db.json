@@ -38,7 +38,36 @@
       "expiryDate": " ",
       "signatureDate": "2023-12-27",
       "signature": "CHRIS"
+    },
+    {
+      "id": "1702995987602",
+      "formTitle": "Earthworks Surveillance Record Template",
+      "documentRef": "1702995987602",
+      "createdDate": "19/12/2023, 15:26:28",
+      "status": "OPEN",
+      "formType": "Earthworks",
+      "details": "ew ",
+      "location": "   wq",
+      "expiryDate": " ",
+      "signatureDate": "2023-12-13",
+      "signature": "weqeq"
     }
   ],
-  "tasks":[]
+  "tasks": [
+    {
+      "taskType": "Main Contractor Observation",
+      "description": "nowe zadanie doDANE DO STAREGO kolejne",
+      "location": "Itermedial Level",
+      "status": "Opened",
+      "statusChangeComments": "fdsfsa",
+      "package": "SubContractor",
+      "targetDate": "2023-12-07",
+      "issuedToOrganisation": "Subcontractor",
+      "issuedByUser": "pawel",
+      "cause": "Design Change",
+      "causedBy": "Main Contractor",
+      "id": "1703079754623",
+      "taskRef": "1703079754623"
+    }
+  ]
 }

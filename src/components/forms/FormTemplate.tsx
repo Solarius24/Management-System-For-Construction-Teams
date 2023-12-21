@@ -13,6 +13,7 @@ import { useForm } from "react-hook-form";
 import { useAppDispatch } from "../../redux/reduxHooks";
 import { updateForm } from "../../redux/slices/formSlice";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const BasicForm = (props: any) => {
   const [location, setLocation] = useState(props.formData[0].location);
@@ -28,14 +29,16 @@ const BasicForm = (props: any) => {
     formState: { errors },
   } = useForm();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
   const docRef = props.formData[0].documentRef;
   function onSubmit(data: any) {
     data.id = docRef;
     dispatch(updateForm(data));
+    navigate("/forms")
   }
 
   return (
-    <Container fluid className="overflow-auto" style={{ height: "80vh" }}>
+    <Container className="overflow-auto" style={{ height: "80vh" }}>
       <Card>
         <CardHeader>
           <Row>

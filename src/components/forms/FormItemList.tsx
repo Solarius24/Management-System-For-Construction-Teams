@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
-import { fetchForms } from "../redux/slices/formSlice";
-import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
+import { fetchForms } from "../../redux/slices/formSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
 import { Link } from "react-router-dom";
 
 const FormItemList = () => {
@@ -12,7 +12,7 @@ const FormItemList = () => {
   }, [dispatch]);
 
   return (
-    <Container>
+    <Container fluid>
       <Table striped bordered hover>
         <thead>
           <tr>

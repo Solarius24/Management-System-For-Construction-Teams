@@ -2,7 +2,7 @@ import { Container, Table } from "react-bootstrap";
 
 const Processes = () => {
   return (
-    <Container fluid className="overflow-auto mt-5" style={{height:"80vh"}}>
+    <Container fluid className="overflow-auto" style={{height:"80vh",marginTop:"60px"}}>
       <Table striped bordered hover>
         <thead>
           <tr>

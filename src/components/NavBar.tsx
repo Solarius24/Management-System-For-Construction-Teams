@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark" fixed="top">
-        <Container className="d-flex">
-          <Nav className="me-auto">
+    
+      <Navbar bg="dark" data-bs-theme="dark" fixed="top" expand="lg" >
+          <Nav className="me-auto mx-3">
             <NavItem>
               <NavLink>
                 <Link
@@ -75,8 +75,8 @@ const NavBar = () => {
               </NavLink>
             </Nav.Item>
           </Nav>
-          <Nav>
-            <NavDropdown title="USER NAME" id="nav-dropdown">
+          <Nav className="mx-5">
+            <NavDropdown title="USER NAME" id="nav-dropdown" className="mx-5">
               <NavDropdown.Item eventKey="4.1">Switch Project</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item eventKey="4.2">
@@ -101,7 +101,6 @@ const NavBar = () => {
               <NavDropdown.Divider />
             </NavDropdown>
           </Nav>
-        </Container>
       </Navbar>
     </>
   );
