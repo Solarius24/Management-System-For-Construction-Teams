@@ -5,7 +5,7 @@ import assetsFilter from "../configData/assetsConfig/assetsFilter";
 import ColumnConfig from "../components/ColumnConfig";
 import assetsColumnConfigList from "../configData/assetsConfig/assetsColumnConfigList";
 import assetsActionList from "../configData/assetsConfig/assetsActionList";
-import AssetsList from "../components/AssetsList";
+import AssetsList from "../components/assets/AssetsList";
 
 const Assets = () => {
   const [modalAddShow, setModalAddShow] = useState(false);
@@ -30,30 +30,8 @@ const Assets = () => {
   };
 
   return (
-    <Container fluid style={{marginTop:"60px"}}>
+    <Container fluid style={{ marginTop: "60px" }}>
       <Row>
-        {showFilter && (
-          <Col className="col-3">
-            <Fillters
-              handleClose={handleCloseShowFilter}
-              show={showFilter}
-              onHide={() => setShowFilter(false)}
-              filterData={assetsFilter}
-            />
-          </Col>
-        )}
-
-        {showColumnConfig && (
-          <Col className="col-3">
-            <ColumnConfig
-              handleClose={handleCloseShowColumnConfig}
-              show={showColumnConfig}
-              onHide={() => setShowColumnConfig(false)}
-              columnConfigList={assetsColumnConfigList}
-            />
-          </Col>
-        )}
-
         <Col>
           <Nav justify variant="tabs" defaultActiveKey="/home">
             <Nav.Item>
@@ -81,7 +59,32 @@ const Assets = () => {
           </Nav>
         </Col>
       </Row>
-      <AssetsList />
+      <Row>
+        {showFilter && (
+          <Col className="col-3">
+            <Fillters
+              handleClose={handleCloseShowFilter}
+              show={showFilter}
+              onHide={() => setShowFilter(false)}
+              filterData={assetsFilter}
+            />
+          </Col>
+        )}
+
+        {showColumnConfig && (
+          <Col className="col-3">
+            <ColumnConfig
+              handleClose={handleCloseShowColumnConfig}
+              show={showColumnConfig}
+              onHide={() => setShowColumnConfig(false)}
+              columnConfigList={assetsColumnConfigList}
+            />
+          </Col>
+        )}
+        <Col>
+          <AssetsList />
+        </Col>
+      </Row>
     </Container>
   );
 };

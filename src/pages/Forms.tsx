@@ -18,7 +18,6 @@ const Forms = () => {
           <FormScheduleTab />
         </Tab>
       </Tabs>
-      <FormItemList/>
     </div>
   );
 };

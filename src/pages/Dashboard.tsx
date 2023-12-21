@@ -24,9 +24,9 @@ const Dashboard = () => {
   return (
     <div>
       <Navbar bg="white" className="mt-5">
-        {/* <Button variant="primary" onClick={() => setModalInputShow(true)}>
+        <Button disabled variant="primary" onClick={() => setModalInputShow(true)}>
           ADD NEW TAB
-        </Button> */}
+        </Button>
         <Container>
           <Nav variant="tabs" className="me-auto">
             <Nav.Link>

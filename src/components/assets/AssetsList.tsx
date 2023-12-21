@@ -1,11 +1,11 @@
 import { Container, Table } from "react-bootstrap";
-import assetsColumnConfigList from "../configData/assetsConfig/assetsColumnConfigList";
+import assetsColumnConfigList from "../../configData/assetsConfig/assetsColumnConfigList";
 
 const AssetsList = () => {
   return (
-    <Container fluid style={{height:"80vh"}}>
+    <Container fluid style={{ height: "80vh" }}>
       <Table striped bordered hover>
-      <thead>
+        <thead>
           <tr>
             <th>
               <input
@@ -16,19 +16,17 @@ const AssetsList = () => {
               />
             </th>
             <th>
-            
-            <a href=" ">LOCATION</a>
+              <a href=" ">LOCATION</a>
             </th>
             <th>
-            <a href=" ">DESCRIPTION</a>
+              <a href=" ">DESCRIPTION</a>
             </th>
             <th>
-            <a href=" ">CREATED</a>
+              <a href=" ">CREATED</a>
             </th>
             <th>
-            <a href=" ">TARGET</a>
+              <a href=" ">TARGET</a>
             </th>
-
           </tr>
         </thead>
 

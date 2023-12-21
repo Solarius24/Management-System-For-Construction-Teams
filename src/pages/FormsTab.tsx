@@ -6,6 +6,7 @@ import ModalAddForm from "../components/modals/ModalAddForm";
 import formFilters from "../configData/formsConfig/formsFilter";
 import formsList from "../configData/formsConfig/formsList";
 import formsColumnConfigList from "../configData/formsConfig/formsColumnConfigList";
+import FormItemList from "../components/forms/FormItemList";
 
 const FormsTab = () => {
   const [modalAddShow, setModalAddShow] = useState(false);
@@ -32,34 +33,6 @@ const FormsTab = () => {
   return (
     <div>
       <Row>
-        {showFilter && (
-          <Col className="col-3">
-            <Fillters
-              handleClose={handleCloseShowFilter}
-              show={showFilter}
-              onHide={() => setShowFilter(false)}
-              filterData={formFilters}
-            />
-          </Col>
-        )}
-
-        {showColumnConfig && (
-          <Col className="col-3">
-            <ColumnConfig
-              handleClose={handleCloseShowColumnConfig}
-              show={showColumnConfig}
-              onHide={() => setShowColumnConfig(false)}
-              columnConfigList={formsColumnConfigList}
-            />
-          </Col>
-        )}
-        <ModalAddForm
-          show={modalAddShow}
-          onHide={() => setModalAddShow(false)}
-          title={"ADD NEW FORM"}
-          list={formsList}
-        />
-
         <Col>
           <Nav justify variant="tabs" defaultActiveKey="/home">
             <Nav.Item>
@@ -101,6 +74,38 @@ const FormsTab = () => {
             </NavDropdown>
           </Nav>
         </Col>
+      </Row>
+      <Row>
+        {showFilter && (
+          <Col className="col-3">
+            <Fillters
+              handleClose={handleCloseShowFilter}
+              show={showFilter}
+              onHide={() => setShowFilter(false)}
+              filterData={formFilters}
+            />
+          </Col>
+        )}
+
+        {showColumnConfig && (
+          <Col className="col-3">
+            <ColumnConfig
+              handleClose={handleCloseShowColumnConfig}
+              show={showColumnConfig}
+              onHide={() => setShowColumnConfig(false)}
+              columnConfigList={formsColumnConfigList}
+            />
+          </Col>
+        )}
+        <Col>
+          <FormItemList />
+        </Col>
+        <ModalAddForm
+          show={modalAddShow}
+          onHide={() => setModalAddShow(false)}
+          title={"ADD NEW FORM"}
+          list={formsList}
+        />
       </Row>
     </div>
   );

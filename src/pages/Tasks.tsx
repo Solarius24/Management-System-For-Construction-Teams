@@ -34,30 +34,9 @@ const Tasks = () => {
   return (
     <div className="mt-5">
       <Row>
-        {showFilter && (
-          <Col className="col-3">
-            <Fillters
-              handleClose={handleCloseShowFilter}
-              show={showFilter}
-              onHide={() => setShowFilter(false)}
-              filterData={tasksFilter}
-            />
-          </Col>
-        )}
-
-        {showColumnConfig && (
-          <Col className="col-3">
-            <ColumnConfig
-              handleClose={handleCloseShowColumnConfig}
-              show={showColumnConfig}
-              onHide={() => setShowColumnConfig(false)}
-              columnConfigList={columnConfigList}
-            />
-          </Col>
-        )}
         {modalAddShow && (
           <ModalAddTask
-          title="ADD NEW TASK"
+            title="ADD NEW TASK"
             show={modalAddShow}
             onHide={() => setModalAddShow(false)}
             list={tasksList}
@@ -96,7 +75,33 @@ const Tasks = () => {
           </Nav>
         </Col>
       </Row>
-      <TasksList />
+      <Row>
+        {showFilter && (
+          <Col className="col-3">
+            <Fillters
+              handleClose={handleCloseShowFilter}
+              show={showFilter}
+              onHide={() => setShowFilter(false)}
+              filterData={tasksFilter}
+            />
+          </Col>
+        )}
+
+        {showColumnConfig && (
+          <Col className="col-3">
+            <ColumnConfig
+              handleClose={handleCloseShowColumnConfig}
+              show={showColumnConfig}
+              onHide={() => setShowColumnConfig(false)}
+              columnConfigList={columnConfigList}
+            />
+          </Col>
+        )}
+
+        <Col>
+          <TasksList />
+        </Col>
+      </Row>
     </div>
   );
 };
