@@ -30,10 +30,10 @@ const data = [
 
 const TinyBarChart = () => {
   return (
-    <Card style={{maxWidth:"50%"}}>
+    <Card style={{ maxWidth: "40%" }}>
       <CardTitle>Forms By Form Status</CardTitle>
       <CardBody>
-        <BarChart width={500} height={200} data={data}>
+        <BarChart width={400} height={400} data={data}>
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />

@@ -24,7 +24,11 @@ const Dashboard = () => {
   return (
     <div>
       <Navbar bg="white" className="mt-5">
-        <Button disabled variant="primary" onClick={() => setModalInputShow(true)}>
+        <Button
+          disabled
+          variant="primary"
+          onClick={() => setModalInputShow(true)}
+        >
           ADD NEW TAB
         </Button>
         <Container>
@@ -51,17 +55,24 @@ const Dashboard = () => {
           TAB SETTINGS
         </Button>
       </Container>
-      <Container>
-        <CardGroup>
-          <Row>
-            <TinyBarChart />
-            <HorizontalBarchart />
-          </Row>
-          <Row>
-            <PieChartWithCustomLabels />
-            <TinyBarChart />
-          </Row>
-        </CardGroup>
+
+      <Container fluid>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "20px 20px",
+          }}
+        >
+          <TinyBarChart />
+          <HorizontalBarchart />
+          <PieChartWithCustomLabels />
+          <TinyBarChart />
+          <TinyBarChart />
+          <HorizontalBarchart />
+          <PieChartWithCustomLabels />
+          <TinyBarChart />
+        </div>
       </Container>
       <ModalAddWidget
         show={modalGridShow}

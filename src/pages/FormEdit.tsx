@@ -1,4 +1,4 @@
-import BasicForm from "../components/forms/FormTemplate";
+import FormTemplate from "../components/forms/FormTemplate";
 import { useAppSelector } from "../redux/reduxHooks";
 import { useParams } from "react-router-dom";
 
@@ -9,7 +9,7 @@ const FormEdit = () => {
 
   return (
     <>
-      <BasicForm formRef={formRef} formData={formData} />
+      <FormTemplate formRef={formRef} formData={formData} />
     </>
   );
 };

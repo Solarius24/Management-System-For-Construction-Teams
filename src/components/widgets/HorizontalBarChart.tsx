@@ -58,12 +58,12 @@ const data = [
 
 const HorizontalBarchart = () => {
   return (
-    <Card style={{ maxWidth: "50%" }}>
+    <Card>
       <CardTitle>Locations With Most Open Forms</CardTitle>
       <CardBody>
         <ComposedChart
           layout="vertical"
-          width={500}
+          width={400}
           height={400}
           data={data}
           margin={{

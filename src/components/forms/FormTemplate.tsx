@@ -15,7 +15,7 @@ import { updateForm } from "../../redux/slices/formSlice";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const BasicForm = (props: any) => {
+const FormTemplate = (props: any) => {
   const [location, setLocation] = useState(props.formData[0].location);
   const [signatureDate, setSignatureDate] = useState(
     props.formData[0].signatureDate
@@ -29,16 +29,19 @@ const BasicForm = (props: any) => {
     formState: { errors },
   } = useForm();
   const dispatch = useAppDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const docRef = props.formData[0].documentRef;
   function onSubmit(data: any) {
     data.id = docRef;
     dispatch(updateForm(data));
-    navigate("/forms")
+    navigate("/forms");
   }
 
   return (
-    <Container className="overflow-auto" style={{ height: "80vh" }}>
+    <Container
+      className="overflow-auto"
+      style={{ height: "80vh", marginTop: "60px" }}
+    >
       <Card>
         <CardHeader>
           <Row>
@@ -91,7 +94,6 @@ const BasicForm = (props: any) => {
                 {...register("status", { required: true })}
                 onChange={(e) => setStatus(e.target.value)}
                 aria-label="Default select example"
-              
               >
                 <option>{status}</option>
                 <option value="OPENED">OPENED</option>
@@ -155,4 +157,4 @@ const BasicForm = (props: any) => {
   );
 };
 
-export default BasicForm;
+export default FormTemplate;
