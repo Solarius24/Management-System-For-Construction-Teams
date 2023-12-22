@@ -62,6 +62,7 @@ const Dashboard = () => {
             display: "flex",
             flexWrap: "wrap",
             gap: "20px 20px",
+            justifyContent: "center",
           }}
         >
           <TinyBarChart />
