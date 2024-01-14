@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
-const formRoutes = require("./routes/route");
+const route = require("./routes/route");
 
 // express app
 const app = express();
@@ -16,7 +16,7 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.use("/api", formRoutes);
+app.use("/api", route);
 
 // connect to db
 mongoose

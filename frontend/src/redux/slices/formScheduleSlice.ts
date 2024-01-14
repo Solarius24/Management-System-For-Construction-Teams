@@ -10,10 +10,10 @@ interface FormScheduleState {
     template: string | null;
     description: string;
     location: string | null;
-    issuedByOrganization: string | null;
+    issuedByOrganisation: string | null;
     startDate: string;
     repeat: string | null;
-    createdBy: string | null;
+    issuedBy: string | null;
   }[];
 }
 
@@ -27,10 +27,10 @@ const initialState: FormScheduleState = {
       template: " ",
       description: `${Date.now()}`,
       location: "OPEN",
-      issuedByOrganization: "",
+      issuedByOrganisation: "",
       startDate: " ",
       repeat: "",
-      createdBy: "",
+      issuedBy: "",
     },
   ],
 };

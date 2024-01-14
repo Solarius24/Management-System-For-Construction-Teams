@@ -4,8 +4,8 @@ import { fetchForms } from "../../redux/slices/formSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
 import { Link } from "react-router-dom";
 
-const FormItemList = () => {
-  const data = useAppSelector((state) => state.form.data);
+const FormScheduleList = () => {
+  const data = useAppSelector((state) => state.formSchedule.data);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchForms());
@@ -39,7 +39,7 @@ const FormItemList = () => {
               <a href=" ">Location</a>
             </th>
             <th>
-              <a href=" ">Issued To Organization</a>
+              <a href=" ">Issued By Organisation</a>
             </th>
             <th>
               <a href=" ">Start Date</a>
@@ -57,21 +57,20 @@ const FormItemList = () => {
             <>
               <tr>
                 <td></td>
-                <td id="ref">
+                {/* <td id="ref">
                   <Link to={`/forms/edit/${item.documentRef}`}>
                     {item.documentRef}
                   </Link>
-                </td>
-                <td id="title">{item.type}</td>
-                <td id="status">{item.status}</td>
+                </td> */}
+                <td id="id">{item.id}</td>
+                <td id="type">{item.type}</td>
+                <td id="template">{item.template}</td>
+                <td id="description">{item.location}</td>
                 <td id="location">{item.location}</td>
-                <td id="createdDate">{item.createdDate}</td>
-                <td id="type">{item.formType}</td>
-                <td id="createdBy"></td>
-                <td id="organizationName"></td>
-                <td id="statusChangedDate"></td>
-                <td id="expiryDate"></td>
-                <td id="action"></td>
+                <td id="issuedByOrganisation">{item.issuedByOrganisation}</td>
+                <td id="startDate">{item.startDate}</td>
+                <td id="repeat">{item.repeat}</td>
+                <td id="issuedBy">{item.issuedBy}</td>
               </tr>
               <div></div>
             </>
@@ -82,4 +81,4 @@ const FormItemList = () => {
   );
 };
 
-export default FormItemList;
+export default FormScheduleList;
