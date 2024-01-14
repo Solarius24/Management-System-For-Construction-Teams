@@ -16,21 +16,24 @@ const {
 
 const router = express.Router();
 
-// GET all workouts
+// GET all tasks/forms
 router.get("/forms", getForms);
 router.get("/tasks", getTasks);
 
-// GET a single workout
+// GET a single task/form
 router.get("/forms/:id", getForm);
+router.get("/tasks/:id", getTask);
 
-// POST a new workout
+// POST a new task/form
 router.post("/forms", createForm);
 router.post("/tasks", createTask);
 
-// DELETE a workout
+// DELETE task/form
 router.delete("/forms/:id", deleteForm);
+router.delete("/task/:id", deleteTask);
 
-// UPDATE a workout
-router.patch("/:id", updateForm);
+// UPDATE task/form
+router.patch("/forms/:id", updateForm);
+router.patch("/tasks/:id", updateTask);
 
 module.exports = router;

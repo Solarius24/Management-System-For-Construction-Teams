@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/reduxHooks";
@@ -18,8 +18,8 @@ interface ModalAddConfig {
 const ModalAddForm = (props: ModalAddConfig) => {
   const [selectFormType, setSelectFormType] = useState("");
   const [selectForm, setSelectForm] = useState("");
-  const dispatch = useAppDispatch()
-  const id = Date.now()
+  const dispatch = useAppDispatch();
+  const id = Date.now();
   const navigate = useNavigate();
 
   //selsect form type from the list and set the id of the selected form type
@@ -59,17 +59,17 @@ const ModalAddForm = (props: ModalAddConfig) => {
       id: `${id}`,
       formTitle: `${selectForm}`,
       documentRef: `${id}`,
-      createdDate:`${new Date().toLocaleString()}`,
+      createdDate: `${new Date().toLocaleString()}`,
       status: "OPEN",
-      formType:`${selectFormType}`,
+      formType: `${selectFormType}`,
       details: " ",
       location: "   ",
       expiryDate: " ",
       signatureDate: "",
       signature: "",
-    }
-    dispatch(addForm(data))
-    navigate(`/forms/edit/${id}`);
+    };
+    dispatch(addForm(data));
+    navigate(`/forms/form_edit/${id}`);
   }
 
   return (

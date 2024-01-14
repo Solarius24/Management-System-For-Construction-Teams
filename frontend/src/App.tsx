@@ -9,9 +9,9 @@ import "./App.css";
 import Dashboard from "./pages/Dashboard";
 import FormEdit from "./pages/FormEdit";
 import TaskEdit from "./pages/TaskEdit";
+import FormScheduleEdit from "./pages/FormScheduleEdit";
 
 function App() {
-  
   return (
     <BrowserRouter>
       <div>
@@ -27,7 +27,14 @@ function App() {
             {/* <Route index element={<FormEdit />} />
             <Route path="edit/:formRef:" element={<FormEdit />} /> */}
           </Route>
-          <Route path="/forms/edit/:formRef" element={<FormEdit />}></Route>
+          <Route
+            path="/forms/form_edit/:formRef"
+            element={<FormEdit />}
+          ></Route>
+          <Route
+            path="/forms/form_schedule_edit/:formRef"
+            element={<FormScheduleEdit />}
+          ></Route>
           <Route path="/tasks/edit/:taskRef" element={<TaskEdit />}></Route>
         </Routes>
       </div>
