@@ -5,21 +5,28 @@ import {
   Container,
   Form,
   Row,
+  CardHeader,
+  CardText,
 } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useAppDispatch } from "../../redux/reduxHooks";
-import { updateForm } from "../../redux/slices/formSlice";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { updateFormSchedule } from "../../redux/slices/formScheduleSlice";
 
 const FormScheduleTemplate = (props: any) => {
+  console.log("template", props.formScheduleData);
   const [location, setLocation] = useState(props.formScheduleData[0].location);
-  const [signatureDate, setSignatureDate] = useState(
-    props.formScheduleData[0].signatureDate
+  const [startDate, setStartDate] = useState(
+    props.formScheduleData[0].startDate
   );
-  const [signature, setSignature] = useState(props.formData[0].signature);
-  const [details, setDetails] = useState(props.formData[0].details);
-  const [status, setStatus] = useState(props.formData[0].status);
+  const [description, setDescription] = useState(
+    props.formScheduleData[0].description
+  );
+  const [repeat, setRepeat] = useState(props.formScheduleData[0].repeat);
+  const [issuedByOrganisation, setIssuedByOrganisation] = useState(
+    props.formScheduleData[0].issuedByOrganisation
+  );
   const {
     register,
     handleSubmit,
@@ -27,10 +34,9 @@ const FormScheduleTemplate = (props: any) => {
   } = useForm();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const docRef = props.formData[0].documentRef;
   function onSubmit(data: any) {
-    data.id = docRef;
-    dispatch(updateForm(data));
+    // data.id = docRef;
+    dispatch(updateFormSchedule(data));
     navigate("/forms");
   }
 
@@ -40,37 +46,59 @@ const FormScheduleTemplate = (props: any) => {
       style={{ height: "80vh", marginTop: "60px" }}
     >
       <Card>
+        <CardHeader>
+          <Row>
+            <Col>
+              <CardText>
+                Form Schedule Ref:
+                {props.formScheduleData[0].id}
+              </CardText>
+            </Col>
+          </Row>
+        </CardHeader>
+      </Card>
+
+      <Card>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group className="m-3" as={Row}>
-            <Form.Label column>Form Type</Form.Label>
             <Col>
-              <Form.Label>{props.formData[0].formType}</Form.Label>
+              <Form.Label>Form Schedule Type</Form.Label>
             </Col>
-          </Form.Group>
-          <Form.Group className="m-3" as={Row}>
-            <Form.Label column>Form Title</Form.Label>
+
             <Col>
-              <Form.Label>{props.formData[0].formTitle}</Form.Label>
-            </Col>
-          </Form.Group>
-          <Form.Group className="m-3" as={Row}>
-            <Form.Label column>Status</Form.Label>
-            <Col>
-              <Form.Select
-                {...register("status", { required: true })}
-                onChange={(e) => setStatus(e.target.value)}
-                aria-label="Default select example"
-              >
-                <option>{status}</option>
-                <option value="OPENED">OPENED</option>
-                <option value="IN PROGRESS">IN PROGRESS</option>
-                <option value="COMPLETED AND SIGNED OFF">
-                  COMPLETED AND SIGNED OFF
+              <Form.Select disabled value={props.formScheduleData[0].type}>
+                <option value="===select---">
+                  {props.formScheduleData[0].type}
                 </option>
               </Form.Select>
             </Col>
           </Form.Group>
 
+          <Form.Group className="m-3" as={Row}>
+            <Col>
+              <Form.Label>Form Template</Form.Label>
+            </Col>
+
+            <Col>
+              <Form.Select disabled value={props.formScheduleData[0].template}>
+                <option value="===select---">
+                  {props.formScheduleData[0].template}
+                </option>
+              </Form.Select>
+            </Col>
+          </Form.Group>
+
+          <Form.Group className="m-3" as={Row}>
+            <Form.Label column>Description</Form.Label>
+            <Col>
+              <Form.Control
+                {...register("description", { required: true })}
+                as="textarea"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </Col>
+          </Form.Group>
           <Form.Group className="m-3" as={Row}>
             <Form.Label column>Location</Form.Label>
             <Col>
@@ -83,39 +111,48 @@ const FormScheduleTemplate = (props: any) => {
             </Col>
           </Form.Group>
           <Form.Group className="m-3" as={Row}>
-            <Form.Label column>Details</Form.Label>
+            <Form.Label column>Issued To Organization</Form.Label>
             <Col>
-              <Form.Control
-                {...register("details", { required: true })}
-                as="textarea"
-                value={details}
-                onChange={(e) => setDetails(e.target.value)}
-              />
+              <Form.Select
+                {...register("issuedToOrganization", { required: true })}
+                onChange={(e) => setIssuedByOrganisation(e.target.value)}
+                aria-label="Default select example"
+                value={issuedByOrganisation}
+              >
+                <option value="MainContractor">Main Contractor</option>
+                <option value="SubContractor">Sub Contractor</option>
+              </Form.Select>
             </Col>
           </Form.Group>
           <Form.Group className="m-3" as={Row}>
-            <Form.Label column>Signature Date</Form.Label>
+            <Form.Label column>Start Date</Form.Label>
             <Col>
               <Form.Control
-                {...register("signatureDate", { required: true })}
+                {...register("startDate", { required: true })}
                 as="input"
                 type="date"
-                value={signatureDate}
-                onChange={(e) => setSignatureDate(e.target.value)}
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
               />
             </Col>
           </Form.Group>
+
           <Form.Group className="m-3" as={Row}>
-            <Form.Label column>Signature (Full Name)</Form.Label>
+            <Form.Label column>Repeat</Form.Label>
             <Col>
-              <Form.Control
-                {...register("signature", { required: true })}
-                as="input"
-                value={signature}
-                onChange={(e) => setSignature(e.target.value)}
-              />
+              <Form.Select
+                {...register("repeat", { required: true })}
+                onChange={(e) => setRepeat(e.target.value)}
+                aria-label="Default select example"
+                value={repeat}
+              >
+                <option value="NEVER">NEVER</option>
+                <option value="WEEKLY">WEEKLY</option>
+                <option value="MONTHLY">MONTHLY</option>
+              </Form.Select>
             </Col>
           </Form.Group>
+
           <Button type="submit">SAVE</Button>
         </Form>
       </Card>

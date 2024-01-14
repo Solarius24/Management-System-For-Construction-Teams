@@ -28,7 +28,6 @@ const FormScheduleTab = () => {
           title={"ADD NEW FORM SCHEDULE"}
           list={formsScheduleList}
         />
-
         <Col>
           <Nav justify variant="tabs">
             <Nav.Item>
@@ -47,18 +46,16 @@ const FormScheduleTab = () => {
       </Row>
 
       <Row>
-        <Col>
-          {showFilter && (
-            <Col className="col-3">
-              <Fillters
-                handleClose={handleCloseShowFilter}
-                show={showFilter}
-                onHide={() => setShowFilter(false)}
-                filterData={taskScheduleFilter}
-              />
-            </Col>
-          )}
-        </Col>
+        {showFilter && (
+          <Col className="col-3">
+            <Fillters
+              handleClose={handleCloseShowFilter}
+              show={showFilter}
+              onHide={() => setShowFilter(false)}
+              filterData={taskScheduleFilter}
+            />
+          </Col>
+        )}
         <Col>
           <FormScheduleList />
         </Col>

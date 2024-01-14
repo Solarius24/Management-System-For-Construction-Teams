@@ -23,7 +23,7 @@ const ModalAddFormSchedule = (props: ModalAddConfig) => {
   const [startDate, setStartDate] = useState("");
   const [description, setDescription] = useState("");
   const [repeat, setRepeat] = useState("");
-  const [issuedToOrganization, setIssuedToOrganization] = useState("");
+  const [issuedByOrganization, setIssuedByOrganization] = useState("");
   const dispatch = useAppDispatch();
   const id = Date.now();
   const {
@@ -68,17 +68,15 @@ const ModalAddFormSchedule = (props: ModalAddConfig) => {
   function createFormScheduleHandler() {
     props.onHide();
     let data = {
-      id: `${id}`,
-      formTitle: `${selectFormTemplate}`,
-      documentRef: `${id}`,
-      createdDate: `${new Date().toLocaleString()}`,
-      status: "OPEN",
-      formType: `${selectFormScheduleType}`,
-      details: " ",
-      location: "   ",
-      expiryDate: " ",
-      signatureDate: "",
-      signature: "",
+      id: id,
+      type: selectFormScheduleType,
+      template: selectFormTemplate,
+      description: description,
+      location: location,
+      issuedByOrganisation: issuedByOrganization,
+      startDate: startDate,
+      repeat: repeat,
+      issuedBy: "user",
     };
     dispatch(addFormSchedule(data));
   }
@@ -134,10 +132,10 @@ const ModalAddFormSchedule = (props: ModalAddConfig) => {
 
               <Form.Select
                 {...register("issuedToOrganization", { required: true })}
-                onChange={(e) => setIssuedToOrganization(e.target.value)}
+                onChange={(e) => setIssuedByOrganization(e.target.value)}
                 aria-label="Default select example"
               >
-                <option>{issuedToOrganization}</option>
+                <option>{issuedByOrganization}</option>
                 <option value="MainContractor">Main Contractor</option>
                 <option value="SubContractor">Sub Contractor</option>
               </Form.Select>

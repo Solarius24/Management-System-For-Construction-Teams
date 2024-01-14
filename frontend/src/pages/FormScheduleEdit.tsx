@@ -1,15 +1,15 @@
-import FormTemplate from "../components/forms/FormTemplate";
+import FormScheduleTemplate from "../components/forms/FormScheduleTemplate";
 import { useAppSelector } from "../redux/reduxHooks";
 import { useParams } from "react-router-dom";
 
 const FormScheduleEdit = () => {
-  const data = useAppSelector((state) => state.form.data);
+  const data = useAppSelector((state) => state.formSchedule.data);
   let { formRef } = useParams();
-  let formData = data.filter((item) => item.documentRef === formRef);
-
+  let formScheduleData = data.filter((item) => item.id === formRef);
+  console.log("formScheduleData", formScheduleData);
   return (
     <>
-      <FormTemplate formRef={formRef} formData={formData} />
+      <FormScheduleTemplate formScheduleData={formScheduleData} />
     </>
   );
 };

@@ -75,9 +75,10 @@ const FormsTab = () => {
           </Nav>
         </Col>
       </Row>
+
       <Row>
         {showFilter && (
-          <Col className="col-3">
+          <Col>
             <Fillters
               handleClose={handleCloseShowFilter}
               show={showFilter}
@@ -86,9 +87,8 @@ const FormsTab = () => {
             />
           </Col>
         )}
-
         {showColumnConfig && (
-          <Col className="col-3">
+          <Col>
             <ColumnConfig
               handleClose={handleCloseShowColumnConfig}
               show={showColumnConfig}
@@ -100,13 +100,13 @@ const FormsTab = () => {
         <Col>
           <FormItemList />
         </Col>
-        <ModalAddForm
-          show={modalAddShow}
-          onHide={() => setModalAddShow(false)}
-          title={"ADD NEW FORM"}
-          list={formsList}
-        />
       </Row>
+      <ModalAddForm
+        show={modalAddShow}
+        onHide={() => setModalAddShow(false)}
+        title={"ADD NEW FORM"}
+        list={formsList}
+      />
     </div>
   );
 };

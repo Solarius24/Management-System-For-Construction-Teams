@@ -77,7 +77,7 @@ const Tasks = () => {
       </Row>
       <Row>
         {showFilter && (
-          <Col className="col-3">
+          <Col>
             <Fillters
               handleClose={handleCloseShowFilter}
               show={showFilter}
@@ -88,7 +88,7 @@ const Tasks = () => {
         )}
 
         {showColumnConfig && (
-          <Col className="col-3">
+          <Col>
             <ColumnConfig
               handleClose={handleCloseShowColumnConfig}
               show={showColumnConfig}
@@ -97,7 +97,6 @@ const Tasks = () => {
             />
           </Col>
         )}
-
         <Col>
           <TasksList />
         </Col>

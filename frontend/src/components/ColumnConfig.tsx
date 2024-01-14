@@ -15,19 +15,18 @@ interface ColumnConfigList {
   columnConfigList: { id: string; name: string }[];
 }
 
-const ColumnConfig = (props:ColumnConfigList) => {
+const ColumnConfig = (props: ColumnConfigList) => {
   return (
-    <Card
-      className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark ove"
-      style={{ width: "280px" }}
-    >
+    <Card className="d-flex flex-column flex-shrink-0 text-white bg-dark ove">
       <CardTitle className="d-flex justify-content-between m-2">
         <div className="fs-6">COLUMN CONFIGURATION</div>
         <Button onClick={props.onHide}>CLOSE</Button>
       </CardTitle>
-      <CardBody  style={{height:"70vh"}}>
-        <Form className="nav nav-pills flex-column mb-auto overflow-scroll"
-        style={{height:"100%"}}>
+      <CardBody style={{ height: "70vh" }} className="p-2">
+        <Form
+          className="nav nav-pills flex-column mb-auto overflow-scroll"
+          style={{ height: "100%" }}
+        >
           <FormGroup>
             {props.columnConfigList.map((item) => (
               <Form.Check

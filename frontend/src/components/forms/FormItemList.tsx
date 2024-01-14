@@ -8,7 +8,6 @@ const FormItemList = () => {
   const data = useAppSelector((state) => state.form.data);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    console.log("useeffect");
     dispatch(fetchForms());
   }, [dispatch]);
 

@@ -14,7 +14,7 @@ interface fillters {
   handleClose: () => void;
   show: boolean;
   onHide: () => void;
-  filterData: { id: string; name: string; type: string; data:string[] }[];
+  filterData: { id: string; name: string; type: string; data: string[] }[];
 }
 
 const Fillters = (props: fillters) => {
@@ -35,7 +35,7 @@ const Fillters = (props: fillters) => {
                 <Accordion.Item eventKey={item.id}>
                   <AccordionHeader>{item.name}</AccordionHeader>
                   <Accordion.Body>
-                    <AllFilters type = {item.type} data={item.data} />
+                    <AllFilters type={item.type} data={item.data} />
                   </Accordion.Body>
                 </Accordion.Item>
               );

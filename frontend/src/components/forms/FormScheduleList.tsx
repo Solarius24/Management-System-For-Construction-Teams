@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
-import { fetchForms } from "../../redux/slices/formSlice";
+import { fetchFormsSchedule } from "../../redux/slices/formScheduleSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ const FormScheduleList = () => {
   const data = useAppSelector((state) => state.formSchedule.data);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchForms());
+    dispatch(fetchFormsSchedule());
   }, [dispatch]);
 
   return (
@@ -56,16 +56,16 @@ const FormScheduleList = () => {
           {data.map((item) => (
             <>
               <tr>
-                <td></td>
-                {/* <td id="ref">
-                  <Link to={`/forms/edit/${item.documentRef}`}>
-                    {item.documentRef}
-                  </Link>
-                </td> */}
-                <td id="id">{item.id}</td>
+                <td>
+                  {" "}
+                  <input type="checkbox" />
+                </td>
+                <td id="ref">
+                  <Link to={`/forms_schedule/edit/${item.id}`}>{item.id}</Link>
+                </td>
                 <td id="type">{item.type}</td>
                 <td id="template">{item.template}</td>
-                <td id="description">{item.location}</td>
+                <td id="description">{item.description}</td>
                 <td id="location">{item.location}</td>
                 <td id="issuedByOrganisation">{item.issuedByOrganisation}</td>
                 <td id="startDate">{item.startDate}</td>

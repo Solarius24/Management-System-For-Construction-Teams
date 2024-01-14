@@ -7,7 +7,7 @@ const FormScheduleSchema = new Schema(
     id: { type: String, require: true },
     type: { type: String },
     template: { type: String },
-    descripton: { type: String },
+    description: { type: String },
     location: { type: String },
     issuedByOrganisation: { type: String },
     startDate: { type: String },

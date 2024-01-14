@@ -40,10 +40,8 @@ const initialState: FormState = {
 };
 
 export const fetchForms = createAsyncThunk("fetchForm", async () => {
-  console.log("forms");
   const response = await fetch("/api/forms");
   const data = await response.json();
-  console.log("forms", data);
   return data;
 });
 
