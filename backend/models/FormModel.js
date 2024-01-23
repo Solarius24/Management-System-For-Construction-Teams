@@ -11,8 +11,9 @@ const FormSchema = new Schema(
     status: { type: String },
     formType: { type: String },
     details: { type: String },
-    locations: { type: String },
-    expiryDate: { String },
+    location: { type: String },
+    expiryDate: { type: String },
+    signatureDate: { type: String },
     signature: { type: String },
   },
   { timestamps: true }

@@ -35,8 +35,9 @@ const createForm = async (req, res) => {
     status,
     formType,
     details,
-    locations,
+    location,
     expiryDate,
+    signatureDate,
     signature,
   } = req.body;
   // add to the database
@@ -49,8 +50,9 @@ const createForm = async (req, res) => {
       status,
       formType,
       details,
-      locations,
+      location,
       expiryDate,
+      signatureDate,
       signature,
     });
     res.status(200).json(form);
@@ -80,12 +82,13 @@ const deleteForm = async (req, res) => {
 const updateForm = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({ error: "No such form" });
-  }
+  // if (!mongoose.Types.ObjectId.isValid(id)) {
+  //   return res.status(400).json({ error: "No such form" });
+  // }
 
   const form = await Form.findOneAndUpdate(
-    { _id: id },
+    // { _id: id },
+    { id: id },
     {
       ...req.body,
     }

@@ -54,6 +54,7 @@ export const formSlice = createSlice({
       state.data.push(action.payload);
     },
     updateForm: (state, action) => {
+      console.log("form updated", action.payload.id);
       axios.patch(`/api/forms/${action.payload.id}`, action.payload);
       const index = state.data.findIndex(
         (item) => item.id === action.payload.id
