@@ -11,12 +11,12 @@ const TaskSchema = new Schema(
     description: { type: String },
     issuedByUser: { type: String },
     issuedToOrganisation: { type: String },
-    locations: { type: String },
-    package: { String },
-    status: { type: String },
+    location: { type: String },
     statusChangeComments: { type: String },
     targetDate: { type: String },
     taskType: { type: String },
+    taskStatus: { type: String },
+    contractPackage: { type: String },
   },
   { timestamps: true }
 );

@@ -1,9 +1,16 @@
 import { useState } from "react";
-import { Button, Form, FormControl, FormLabel, InputGroup, Modal } from "react-bootstrap";
+import {
+  Button,
+  Form,
+  FormControl,
+  FormLabel,
+  InputGroup,
+  Modal,
+} from "react-bootstrap";
 import createTask from "../../configData/tasksConfig/createTask";
 import { useForm } from "react-hook-form";
 import { useAppDispatch } from "../../redux/reduxHooks";
-import { updateTask,addTask } from "../../redux/slices/taskSlice";
+import { updateTask, addTask } from "../../redux/slices/taskSlice";
 
 interface ModalAddConfig {
   show: boolean;
@@ -21,73 +28,84 @@ const ModalAddTask = (props: ModalAddConfig) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [taskType, setTaskType] = useState("");
-  const [description, setDescription] = useState("");
-  const [location, setLocation] = useState("");
-  const [status, setStatus] = useState("");
-  const [causedBy, setCausedBy] = useState("");
-  const [statusChangeComments, setStatusChangeComments] = useState("");
-  const [contractPackage, setConstractPackage] = useState("");
-  const [cause, setCause] = useState("");
-  const [targetDate, setTargetDate] = useState("");
-  const [issuedToOrganisation, setIssuedToOrganisation] = useState("");
-  const [issuedByUser, setIssuedByUser] = useState("");
+  // const [taskType, setTaskType] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [location, setLocation] = useState("");
+  // const [status, setStatus] = useState("");
+  // const [causedBy, setCausedBy] = useState("");
+  // const [statusChangeComments, setStatusChangeComments] = useState("");
+  // const [contractPackage, setConstractPackage] = useState("");
+  // const [cause, setCause] = useState("");
+  // const [targetDate, setTargetDate] = useState("");
+  // const [issuedToOrganisation, setIssuedToOrganisation] = useState("");
+  // const [issuedByUser, setIssuedByUser] = useState("");
   const dispatch = useAppDispatch();
-  const id = String(Date.now())
+  const id = String(Date.now());
 
-  function onSubmitTask(data:any) {
-    data.id = id
-    data.taskRef = id
+  function onSubmitTask(data: any) {
+    console.log(data);
+    data.id = id;
+    data.taskRef = id;
     dispatch(addTask(data));
-    props.onHide()
+    props.onHide();
   }
 
   return (
     <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-         ADD NEW TASK
+          ADD NEW TASK
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      <Form onSubmit={handleSubmit(onSubmitTask)}>
+        <Form onSubmit={handleSubmit(onSubmitTask)}>
           <FormLabel>Task Ref Number: {id} </FormLabel>
-        <Form.Group>
-        <Form.Label>Task Type</Form.Label>
-        {errors.taskType?.type === 'required' && <p className="text-danger" role="alert">Task type is required</p>}
-          <Form.Select
-            aria-label="Default select example"
-            // value={taskType}
-            {...register("taskType", { required: true })}
-            // onChange={(e) => setTaskType(e.target.value)}
-           
-          >
-             <option></option>
-            {props.list.map((item) => (
-              <option value={item.name} key={item.id}>
-                {item.name}
-              </option>
-            ))}
-          </Form.Select>
-        </Form.Group>
-    
+          <Form.Group>
+            <Form.Label>Task Type</Form.Label>
+            {errors.taskType?.type === "required" && (
+              <p className="text-danger" role="alert">
+                Task type is required
+              </p>
+            )}
+            <Form.Select
+              aria-label="Default select example"
+              // value={taskType}
+              {...register("taskType", { required: true })}
+              // onChange={(e) => setTaskType(e.target.value)}
+            >
+              <option></option>
+              {props.list.map((item) => (
+                <option value={item.name} key={item.id}>
+                  {item.name}
+                </option>
+              ))}
+            </Form.Select>
+          </Form.Group>
+
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Description</Form.Label>
-            {errors.description?.type === 'required' && <p className="text-danger" role="alert">Description is required</p>}
+            {errors.description?.type === "required" && (
+              <p className="text-danger" role="alert">
+                Description is required
+              </p>
+            )}
             <Form.Control
               {...register("description", { required: true })}
               as="textarea"
               type="text"
-              aria-invalid={errors.description ? "true" : "false"} 
+              aria-invalid={errors.description ? "true" : "false"}
               // value={description}
               // onChange={(e) => setDescription(e.target.value)}
             />
           </Form.Group>
-       
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Location</Form.Label>
-            {errors.location?.type === 'required' && <p className="text-danger" role="alert">Location is required</p>}
+            {errors.location?.type === "required" && (
+              <p className="text-danger" role="alert">
+                Location is required
+              </p>
+            )}
             <Form.Select
               {...register("location", { required: true })}
               aria-label="Default select example"
@@ -103,15 +121,19 @@ const ModalAddTask = (props: ModalAddConfig) => {
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Status</Form.Label>
-            {errors.status?.type === 'required' && <p className="text-danger" role="alert">Status is required</p>}
+            {errors.status?.type === "required" && (
+              <p className="text-danger" role="alert">
+                Status is required
+              </p>
+            )}
             <Form.Select
               aria-label="Default select example"
-              {...register("status", { required: true })}
-              disabled
+              {...register("taskStatus")}
+              // disabled
               // value={status}
               // onChange={(e) => setStatus(e.target.value)}
             >
-              <option>Opened</option>
+              <option value="Opened">Opened</option>
               {/* {createTask.status.map((item: any) => (
                 <option value={item}>{item}</option>
               ))} */}
@@ -120,7 +142,11 @@ const ModalAddTask = (props: ModalAddConfig) => {
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Status Change Comments</Form.Label>
-            {errors.statusChangeComments?.type === 'required' && <p className="text-danger" role="alert">Status Change Comments is required</p>}
+            {errors.statusChangeComments?.type === "required" && (
+              <p className="text-danger" role="alert">
+                Status Change Comments is required
+              </p>
+            )}
             <Form.Control
               as="textarea"
               type="text"
@@ -132,15 +158,19 @@ const ModalAddTask = (props: ModalAddConfig) => {
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Package</Form.Label>
-            {errors.package?.type === 'required' && <p className="text-danger" role="alert">Package is required</p>}
+            {errors.package?.type === "required" && (
+              <p className="text-danger" role="alert">
+                Package is required
+              </p>
+            )}
             <Form.Select
               aria-label="Default select example"
-              {...register("package", { required: true })}
+              {...register("contractPackage", { required: true })}
               // value={contractPackage}
               // onChange={(e) => setConstractPackage(e.target.value)}
             >
               <option></option>
-              {createTask.package.map((item: any) => (
+              {createTask.contractPackage.map((item: any) => (
                 <option value={item}>{item}</option>
               ))}
             </Form.Select>
@@ -148,10 +178,14 @@ const ModalAddTask = (props: ModalAddConfig) => {
 
           <Form.Group className="mb-3">
             <Form.Label>Target Date</Form.Label>
-            {errors.targetDate?.type === 'required' && <p className="text-danger" role="alert">Target date is required</p>}
+            {errors.targetDate?.type === "required" && (
+              <p className="text-danger" role="alert">
+                Target date is required
+              </p>
+            )}
             <FormControl
               type="date"
-              {...register("targetDate", { required:true })}
+              {...register("targetDate", { required: true })}
               // value={targetDate}
               // onChange={(e) => setTargetDate(e.target.value)}
             ></FormControl>
@@ -159,7 +193,11 @@ const ModalAddTask = (props: ModalAddConfig) => {
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Issued To Organisation</Form.Label>
-            {errors.issuedToOrganisation?.type === 'required' && <p className="text-danger" role="alert">Issued To Organisation is required</p>}
+            {errors.issuedToOrganisation?.type === "required" && (
+              <p className="text-danger" role="alert">
+                Issued To Organisation is required
+              </p>
+            )}
             <Form.Select
               aria-label="Default select example"
               {...register("issuedToOrganisation", { required: true })}
@@ -175,7 +213,11 @@ const ModalAddTask = (props: ModalAddConfig) => {
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Issued By User</Form.Label>
-            {errors.issuedByUser?.type === 'required' && <p className="text-danger" role="alert">Issued By User is required</p>}
+            {errors.issuedByUser?.type === "required" && (
+              <p className="text-danger" role="alert">
+                Issued By User is required
+              </p>
+            )}
             <Form.Select
               aria-label="Default select example"
               {...register("issuedByUser", { required: true })}
@@ -191,7 +233,11 @@ const ModalAddTask = (props: ModalAddConfig) => {
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Cause</Form.Label>
-            {errors.cause?.type === 'required' && <p className="text-danger" role="alert">Cause is required</p>}
+            {errors.cause?.type === "required" && (
+              <p className="text-danger" role="alert">
+                Cause is required
+              </p>
+            )}
             <Form.Select
               aria-label="Default select example"
               {...register("cause", { required: true })}
@@ -207,7 +253,11 @@ const ModalAddTask = (props: ModalAddConfig) => {
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Caused By</Form.Label>
-            {errors.causedBy?.type === 'required' && <p className="text-danger" role="alert">Caused by is required</p>}
+            {errors.causedBy?.type === "required" && (
+              <p className="text-danger" role="alert">
+                Caused by is required
+              </p>
+            )}
             <Form.Select
               aria-label="Default select example"
               {...register("causedBy", { required: true })}
@@ -222,7 +272,10 @@ const ModalAddTask = (props: ModalAddConfig) => {
           </Form.Group>
 
           <InputGroup className="mb-3">
-            <InputGroup.Checkbox aria-label="Checkbox for following text input"      {...register("saveAsLibraryTask", { required: false })}/>
+            <InputGroup.Checkbox
+              aria-label="Checkbox for following text input"
+              {...register("saveAsLibraryTask", { required: false })}
+            />
             <InputGroup.Text>Save As Library Task</InputGroup.Text>
           </InputGroup>
 

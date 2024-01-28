@@ -69,7 +69,7 @@ const ModalAddForm = (props: ModalAddConfig) => {
       signature: "",
     };
     dispatch(addForm(data));
-    navigate(`/forms/form_edit/${id}`);
+    navigate(`/forms/edit/${id}`);
   }
 
   return (

@@ -2,7 +2,11 @@ import { Container, Table } from "react-bootstrap";
 
 const Processes = () => {
   return (
-    <Container fluid className="overflow-auto" style={{height:"80vh",marginTop:"60px"}}>
+    <Container
+      fluid
+      className="overflow-auto"
+      style={{ height: "80vh", marginTop: "60px" }}
+    >
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -30,10 +34,35 @@ const Processes = () => {
             <td>eXPANDED</td>
             <td>17/20/21</td>
           </tr>
+          <tr>
+            <td>
+              <a href=" ">51841</a>
+            </td>
+            <td>Waterproof Ext Faces of HH & CB Tracker - HS2OOC</td>
+            <td>eXPANDED</td>
+            <td>17/20/21</td>
+          </tr>
+          <tr>
+            <td>
+              <a href=" ">51840</a>
+            </td>
+            <td>
+              Waterproofing UG Roof Slabs & SBS InstallationTracker - HS2OOC
+            </td>
+            <td>eXPANDED</td>
+            <td>17/20/21</td>
+          </tr>
+          <tr>
+            <td>
+              <a href=" ">51842</a>
+            </td>
+            <td>UTX Concrete Works Tracker with Waterproofing - HS200C</td>
+            <td>eXPANDED</td>
+            <td>17/20/21</td>
+          </tr>
         </tbody>
       </Table>
     </Container>
-
   );
 };
 

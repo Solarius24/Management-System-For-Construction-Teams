@@ -69,7 +69,12 @@ const FormsTab = () => {
                 BULK EXPORT PDF
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#/action-6">DELETE</NavDropdown.Item>
+              <NavDropdown.Item
+                onClick={() => alert("FORM DELATED")}
+                href="#/action-6"
+              >
+                DELETE
+              </NavDropdown.Item>
               <NavDropdown.Divider />
             </NavDropdown>
           </Nav>

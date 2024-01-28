@@ -1,5 +1,5 @@
 //@ts-ignore
-import {useEffect} from "react";
+import { useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
@@ -14,7 +14,7 @@ const TasksList = () => {
   return (
     <Container fluid>
       <Table striped bordered hover>
-      <thead>
+        <thead>
           <tr>
             <th>
               <input type="checkbox" />
@@ -33,7 +33,7 @@ const TasksList = () => {
             <th>
               <a href=" ">Location</a>
             </th>
-  
+
             <th>
               <span></span>
               <a href=" ">Status</a>
@@ -63,17 +63,18 @@ const TasksList = () => {
           {data.map((item) => (
             <>
               <tr>
-                <td></td>
+                <th>
+                  <input type="checkbox" />
+                  <label>&nbsp;</label>
+                </th>
                 <td id="ref">
-                  <Link to={`/tasks/edit/${item.taskRef}`}>
-                    {item.taskRef}
-                  </Link>
+                  <Link to={`/tasks/edit/${item.taskRef}`}>{item.taskRef}</Link>
                 </td>
                 <td id="description">{item.description}</td>
                 <td id="taskType">{item.taskType}</td>
                 <td id="location">{item.location}</td>
-                <td id="status">{item.status}</td>
-                <td id="package">{item.package}</td>
+                <td id="status">{item.taskStatus}</td>
+                <td id="package">{item.contractPackage}</td>
                 <td id="targetDate">{item.targetDate}</td>
                 <td id="issuedToOrgaznization">{item.issuedToOrganisation}</td>
                 <td id="issuedByUser">{item.issuedByUser}</td>

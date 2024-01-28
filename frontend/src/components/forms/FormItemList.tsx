@@ -1,15 +1,28 @@
-import { useEffect } from "react";
+// @ts-nocheck
+import { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
 import { fetchForms } from "../../redux/slices/formSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
 import { Link } from "react-router-dom";
 
 const FormItemList = () => {
+  const [selectedItems, setSelectedItems] = useState([]);
   const data = useAppSelector((state) => state.form.data);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchForms());
   }, [dispatch]);
+
+  function handleCheckboxChange(e) {
+    const value = e.target.id;
+    console.log(value);
+    if (e.target.checked) {
+      setSelectedItems([...selectedItems, value]);
+    } else {
+      setSelectedItems(selectedItems.filter((item) => item !== value));
+    }
+  }
+  console.log(selectedItems);
 
   return (
     <Container fluid>
@@ -62,7 +75,14 @@ const FormItemList = () => {
           {data.map((item) => (
             <>
               <tr>
-                <td></td>
+                <td>
+                  <input
+                    type="checkbox"
+                    id={item.documentRef}
+                    onChange={handleCheckboxChange}
+                  />
+                  <label>&nbsp;</label>
+                </td>
                 <td id="ref">
                   <Link to={`/forms/edit/${item.documentRef}`}>
                     {item.documentRef}

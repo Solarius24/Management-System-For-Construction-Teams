@@ -1,6 +1,7 @@
 import {
   Button,
   Card,
+  CardFooter,
   CardHeader,
   CardText,
   Col,
@@ -38,10 +39,7 @@ const FormTemplate = (props: any) => {
   }
 
   return (
-    <Container
-      className="overflow-auto"
-      style={{ height: "80vh", marginTop: "60px" }}
-    >
+    <Container style={{ marginTop: "60px" }}>
       <Card>
         <CardHeader>
           <Row>
@@ -150,7 +148,11 @@ const FormTemplate = (props: any) => {
               />
             </Col>
           </Form.Group>
-          <Button type="submit">SAVE</Button>
+          <CardFooter>
+            <Row>
+              <Button type="submit">SAVE</Button>
+            </Row>
+          </CardFooter>
         </Form>
       </Card>
     </Container>

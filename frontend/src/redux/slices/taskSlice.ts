@@ -11,8 +11,8 @@ interface TaskState {
     issuedByUser: string;
     issuedToOrganisation: string;
     location: string;
-    package: string;
-    status: string;
+    contractPackage: string;
+    taskStatus: string;
     statusChangeComments: string;
     targetDate: string;
     taskType: string;
@@ -30,8 +30,8 @@ const initialState: TaskState = {
       issuedByUser: "",
       issuedToOrganisation: "",
       location: "",
-      package: "",
-      status: "OPEN",
+      contractPackage: "",
+      taskStatus: "OPEN",
       statusChangeComments: "",
       targetDate: "",
       taskType: "",

@@ -35,9 +35,9 @@ const createTask = async (req, res) => {
     description,
     issuedByUser,
     issuedToOrganisation,
-    locations,
-    package,
-    status,
+    location,
+    contractPackage,
+    taskStatus,
     statusChangeComments,
     targetDate,
     taskType,
@@ -52,9 +52,9 @@ const createTask = async (req, res) => {
       description,
       issuedByUser,
       issuedToOrganisation,
-      locations,
-      package,
-      status,
+      location,
+      contractPackage,
+      taskStatus,
       statusChangeComments,
       targetDate,
       taskType,
@@ -86,12 +86,13 @@ const deleteTask = async (req, res) => {
 const updateTask = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({ error: "No such form" });
-  }
+  // if (!mongoose.Types.ObjectId.isValid(id)) {
+  //   return res.status(400).json({ error: "No such form" });
+  // }
 
   const task = await Task.findOneAndUpdate(
-    { _id: id },
+    // { _id: id },
+    { id: id },
     {
       ...req.body,
     }
