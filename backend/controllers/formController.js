@@ -63,13 +63,8 @@ const createForm = async (req, res) => {
 
 // delete a form
 const deleteForm = async (req, res) => {
-  const { id } = req.params;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({ error: "No such form" });
-  }
-
-  const form = await Form.findOneAndDelete({ _id: id });
+  const listOfFormsToDelete = req.body;
+  const form = await Form.deleteMany({ id: { $in: listOfFormsToDelete } });
 
   if (!form) {
     return res.status(400).json({ error: "No such workout" });

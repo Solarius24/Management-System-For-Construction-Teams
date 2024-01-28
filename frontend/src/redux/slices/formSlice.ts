@@ -60,6 +60,15 @@ export const formSlice = createSlice({
       );
       state.data[index] = { ...state.data[index], ...action.payload };
     },
+    deleteForm: (state, action) => {
+      axios.delete("/api/forms", { data: action.payload }).then((response) => {
+        console.log(response.data);
+      });
+
+      state.data = state.data.filter(
+        (item) => action.payload.includes(item.id) === false
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchForms.fulfilled, (state, action) => {
@@ -69,6 +78,6 @@ export const formSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addForm, updateForm } = formSlice.actions;
+export const { addForm, updateForm, deleteForm } = formSlice.actions;
 
 export default formSlice.reducer;

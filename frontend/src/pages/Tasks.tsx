@@ -4,15 +4,18 @@ import Fillters from "../components/Fillters";
 import ColumnConfig from "../components/ColumnConfig";
 import tasksFilter from "../configData/tasksConfig/tasksFilter";
 import TasksList from "../components/task/TasksList";
-import tasksActionList from "../configData/tasksConfig/tasksActionList";
 import columnConfigList from "../configData/columnConfigList";
 import tasksList from "../configData/tasksConfig/tasksList";
 import ModalAddTask from "../components/modals/ModalAddTask";
+import { deleteTask } from "../redux/slices/taskSlice";
+import { useAppDispatch } from "../redux/reduxHooks";
 
 const Tasks = () => {
+  const [selectedItems, setSelectedItems] = useState([]);
   const [modalAddShow, setModalAddShow] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [showColumnConfig, setShowColumnConfig] = useState(false);
+  const dispatch = useAppDispatch();
   const handleCloseShowFilter = () => {
     if (!showFilter) {
       setShowColumnConfig(false);
@@ -30,6 +33,10 @@ const Tasks = () => {
       setShowColumnConfig(false);
     }
   };
+
+  function handleTaskDelate() {
+    dispatch(deleteTask(selectedItems));
+  }
 
   return (
     <div className="mt-5">
@@ -61,16 +68,28 @@ const Tasks = () => {
               </Nav.Link>
             </Nav.Item>
             <NavDropdown title="ACTIONS" id="basic-nav-dropdown">
-              {tasksActionList.map((item) => {
-                return (
-                  <>
-                    <NavDropdown.Item href={item.id} key={item.id}>
-                      {item.name}
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                  </>
-                );
-              })}
+              <NavDropdown.Item>CHAGE STATUS</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#/action-2">
+                DISTRIBUTE FROM
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#/action-3">
+                FORMS REPORTS
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#/action-4">
+                EXPORT AS CSV
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#/action-5">
+                BULK EXPORT PDF
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item onClick={handleTaskDelate} href="#/action-6">
+                DELETE
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
             </NavDropdown>
           </Nav>
         </Col>
@@ -98,7 +117,7 @@ const Tasks = () => {
           </Col>
         )}
         <Col>
-          <TasksList />
+          <TasksList setSelectedItems={setSelectedItems} />
         </Col>
       </Row>
     </div>

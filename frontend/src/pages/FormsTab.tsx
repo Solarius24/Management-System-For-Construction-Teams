@@ -7,11 +7,15 @@ import formFilters from "../configData/formsConfig/formsFilter";
 import formsList from "../configData/formsConfig/formsList";
 import formsColumnConfigList from "../configData/formsConfig/formsColumnConfigList";
 import FormItemList from "../components/forms/FormItemList";
+import { deleteForm } from "../redux/slices/formSlice";
+import { useAppDispatch } from "../redux/reduxHooks";
 
 const FormsTab = () => {
+  const [selectedItems, setSelectedItems] = useState([]);
   const [modalAddShow, setModalAddShow] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [showColumnConfig, setShowColumnConfig] = useState(false);
+  const dispatch = useAppDispatch();
   const handleCloseShowFilter = () => {
     if (!showFilter) {
       setShowColumnConfig(false);
@@ -29,6 +33,9 @@ const FormsTab = () => {
       setShowColumnConfig(false);
     }
   };
+  function handleFormDelate() {
+    dispatch(deleteForm(selectedItems));
+  }
 
   return (
     <div>
@@ -69,10 +76,7 @@ const FormsTab = () => {
                 BULK EXPORT PDF
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item
-                onClick={() => alert("FORM DELATED")}
-                href="#/action-6"
-              >
+              <NavDropdown.Item onClick={handleFormDelate} href="#/action-6">
                 DELETE
               </NavDropdown.Item>
               <NavDropdown.Divider />
@@ -103,7 +107,7 @@ const FormsTab = () => {
           </Col>
         )}
         <Col>
-          <FormItemList />
+          <FormItemList setSelectedItems={setSelectedItems} />
         </Col>
       </Row>
       <ModalAddForm

@@ -60,6 +60,13 @@ export const taskSlice = createSlice({
       );
       state.data[index] = { ...state.data[index], ...action.payload };
     },
+    deleteTask: (state, action) => {
+      axios.delete("/api/tasks", { data: action.payload });
+
+      state.data = state.data.filter(
+        (item) => action.payload.includes(item.id) === false
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchTasks.fulfilled, (state, action) => {
@@ -69,6 +76,6 @@ export const taskSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { updateTask, addTask } = taskSlice.actions;
+export const { updateTask, addTask, deleteTask } = taskSlice.actions;
 
 export default taskSlice.reducer;

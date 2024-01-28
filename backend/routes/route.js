@@ -40,9 +40,9 @@ router.post("/forms_schedule", createFormSchedule);
 router.post("/tasks", createTask);
 
 // DELETE task/form
-router.delete("/forms/:id", deleteForm);
-router.delete("/forms_schedule/:id", deleteFormSchedule);
-router.delete("/task/:id", deleteTask);
+router.delete("/forms", deleteForm);
+router.delete("/forms_schedule", deleteFormSchedule);
+router.delete("/tasks", deleteTask);
 
 // UPDATE task/form
 router.patch("/forms/:id", updateForm);

@@ -5,8 +5,8 @@ import { fetchForms } from "../../redux/slices/formSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
 import { Link } from "react-router-dom";
 
-const FormItemList = () => {
-  const [selectedItems, setSelectedItems] = useState([]);
+const FormItemList = (props) => {
+  const [selectedItem, setSelectedItem] = useState([]);
   const data = useAppSelector((state) => state.form.data);
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -15,14 +15,13 @@ const FormItemList = () => {
 
   function handleCheckboxChange(e) {
     const value = e.target.id;
-    console.log(value);
     if (e.target.checked) {
-      setSelectedItems([...selectedItems, value]);
+      setSelectedItem([...selectedItem, value]);
     } else {
-      setSelectedItems(selectedItems.filter((item) => item !== value));
+      setSelectedItem(selectedItem.filter((item) => item !== value));
     }
   }
-  console.log(selectedItems);
+  props.setSelectedItems(selectedItem);
 
   return (
     <Container fluid>

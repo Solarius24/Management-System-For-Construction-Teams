@@ -1,16 +1,28 @@
-//@ts-ignore
-import { useEffect } from "react";
+// @ts-nocheck
+import { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
 import { fetchTasks } from "../../redux/slices/taskSlice";
 
-const TasksList = () => {
+const TasksList = (props) => {
+  const [selectedItem, setSelectedItem] = useState([]);
   const data = useAppSelector((state) => state.task.data);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchTasks());
   }, [dispatch]);
+
+  function handleCheckboxChange(e) {
+    const value = e.target.id;
+    if (e.target.checked) {
+      setSelectedItem([...selectedItem, value]);
+    } else {
+      setSelectedItem(selectedItem.filter((item) => item !== value));
+    }
+  }
+  props.setSelectedItems(selectedItem);
+
   return (
     <Container fluid>
       <Table striped bordered hover>
@@ -63,10 +75,14 @@ const TasksList = () => {
           {data.map((item) => (
             <>
               <tr>
-                <th>
-                  <input type="checkbox" />
+                <td>
+                  <input
+                    type="checkbox"
+                    id={item.taskRef}
+                    onChange={handleCheckboxChange}
+                  />
                   <label>&nbsp;</label>
-                </th>
+                </td>
                 <td id="ref">
                   <Link to={`/tasks/edit/${item.taskRef}`}>{item.taskRef}</Link>
                 </td>
