@@ -1,12 +1,9 @@
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
-import Widget from "../Widget";
-import { Image, ListGroup, Tab, Tabs } from "react-bootstrap";
-import widget01 from "../widgets/images/widget01.jpg";
+import { Image, ListGroup, ListGroupItem, Tab, Tabs } from "react-bootstrap";
 
 const ModalAddWidget = (props: any) => {
-  const source = "https://1drv.ms/i/s!AkRrvIfQEchA-c1zu7JH3fmW16O3hw?e=j8Xnjy";
   return (
     <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
       <Modal.Header closeButton>
@@ -27,7 +24,16 @@ const ModalAddWidget = (props: any) => {
               <ListGroup>
                 {props.listOfWidgets.map(
                   (widget: { name: string; image: string }) => (
-                    <Widget name={widget.name} image={widget.image} />
+                    <div>
+                      <ListGroupItem
+                        className="border border-info m-2"
+                        variant="light"
+                        action
+                      >
+                        <Image src={widget.image} alt=" " />
+                        <h5 className="h6">{widget.name}</h5>
+                      </ListGroupItem>
+                    </div>
                   )
                 )}
               </ListGroup>
@@ -41,7 +47,16 @@ const ModalAddWidget = (props: any) => {
                 {props.listOfWidgets
                   .filter((item: { type: string }) => item.type === "form")
                   .map((widget: { name: string; image: string }) => (
-                    <Widget name={widget.name} image={widget.image} />
+                    <div>
+                      <ListGroupItem
+                        className="border border-info m-2"
+                        variant="light"
+                        action
+                      >
+                        <Image src={widget.image} alt=" " />
+                        <h5 className="h6">{widget.name}</h5>
+                      </ListGroupItem>
+                    </div>
                   ))}
               </ListGroup>
             </Container>
@@ -54,7 +69,16 @@ const ModalAddWidget = (props: any) => {
                 {props.listOfWidgets
                   .filter((item: { type: string }) => item.type === "task")
                   .map((widget: { name: string; image: string }) => (
-                    <Widget name={widget.name} image={widget.image} />
+                    <div>
+                      <ListGroupItem
+                        className="border border-info m-2"
+                        variant="light"
+                        action
+                      >
+                        <Image src={widget.image} alt=" " />
+                        <h5 className="h6">{widget.name}</h5>
+                      </ListGroupItem>
+                    </div>
                   ))}
               </ListGroup>
             </Container>
@@ -68,7 +92,16 @@ const ModalAddWidget = (props: any) => {
                 {props.listOfWidgets
                   .filter((item: { type: string }) => item.type === "processe")
                   .map((widget: { name: string; image: string }) => (
-                    <Widget name={widget.name} image={widget.image} />
+                    <div>
+                      <ListGroupItem
+                        className="border border-info m-2"
+                        variant="light"
+                        action
+                      >
+                        <Image src={widget.image} alt=" " />
+                        <h5 className="h6">{widget.name}</h5>
+                      </ListGroupItem>
+                    </div>
                   ))}
               </ListGroup>
             </Container>

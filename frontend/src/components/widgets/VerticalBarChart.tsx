@@ -28,7 +28,7 @@ const data = [
   },
 ];
 
-const TinyBarChart = () => {
+const VerticalBarChart = () => {
   return (
     <Card style={{ maxWidth: "40%" }}>
       <CardTitle>Forms By Form Status</CardTitle>
@@ -43,4 +43,4 @@ const TinyBarChart = () => {
     </Card>
   );
 };
-export default TinyBarChart;
+export default VerticalBarChart;
