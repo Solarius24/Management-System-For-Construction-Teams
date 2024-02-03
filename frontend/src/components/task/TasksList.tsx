@@ -4,6 +4,7 @@ import { Container, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
 import { fetchTasks } from "../../redux/slices/taskSlice";
+import BasicSpiner from "../BasicSpinner";
 
 const TasksList = (props) => {
   const [selectedItem, setSelectedItem] = useState([]);
@@ -72,6 +73,7 @@ const TasksList = (props) => {
         </thead>
 
         <tbody className="s">
+          {!data && <BasicSpiner />}
           {data.map((item) => (
             <>
               <tr>
