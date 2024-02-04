@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Navbar, Tab, Tabs } from "react-bootstrap";
-import ModalSettings from "../components/modals/ModalSettings";
+import ModalSettings from "../components/modals/ModalTabSettings";
 import ModalAddTab from "../components/modals/ModalAddTab";
 import listOfWidgets from "../configData/widgetsConfig/listOfWidgets";
 import ModalAddWidget from "../components/modals/ModalAddWidget";

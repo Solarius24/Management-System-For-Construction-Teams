@@ -55,6 +55,22 @@ const deleteUserTabs = async (req, res) => {
 };
 
 // update a tab
+const updateUserTabName = async (req, res) => {
+  const { id } = req.query;
+  const { tabId } = req.body;
+  const { tabName } = req.body;
+  const tab = await User.findOneAndUpdate(
+    { id: id },
+    { $set: { "listOfTabs.$[elem].tabName": tabName } },
+    { arrayFilters: [{ "elem.id": tabId }] }
+  );
+  if (!tab) {
+    return res.status(400).json({ error: "No such form" });
+  }
+
+  res.status(200).json(tab);
+};
+
 const updateUserTabs = async (req, res) => {
   const { id } = req.query;
   // const { id } = req.params;
@@ -62,7 +78,6 @@ const updateUserTabs = async (req, res) => {
   // if (!mongoose.Types.ObjectId.isValid(id)) {
   //   return res.status(400).json({ error: "No such form" });
   // }
-  console.log(req.body);
   const tab = await User.findOneAndUpdate(
     { id: id },
     { $addToSet: { listOfTabs: req.body } }
@@ -80,4 +95,5 @@ module.exports = {
   createUserTabs,
   deleteUserTabs,
   updateUserTabs,
+  updateUserTabName,
 };

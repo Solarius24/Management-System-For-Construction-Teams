@@ -27,6 +27,7 @@ const {
   createUserTabs,
   deleteUserTabs,
   updateUserTabs,
+  updateUserTabName,
 } = require("../controllers/userController");
 
 const router = express.Router();
@@ -59,5 +60,8 @@ router.patch("/forms/:id", updateForm);
 router.patch("/forms_schedule/:id", updateFormSchedule);
 router.patch("/tasks/:id", updateTask);
 router.patch("/userData", updateUserTabs);
+
+//update TAB NAME
+router.patch("/userDataTabName", updateUserTabName);
 
 module.exports = router;

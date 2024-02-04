@@ -1,24 +1,29 @@
+// @ts-nocheck
 import React, { useState } from "react";
 import { Button, Container, ListGroup, Modal } from "react-bootstrap";
 import ModalInput from "./ModalInput";
+import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
+import { updateUserTabName } from "../../redux/slices/userSlice";
 
-const ModalSettings = (props: any) => {
+const ModalTabSettings = (props: any) => {
   const [showModal, setShowModal] = useState(false);
- const [tabTitle,setTabTitle] = useState(" ")
+  const [tabTitle, setTabTitle] = useState("");
+  const [tabId, setTabId] = useState("");
+  const data = useAppSelector((state) => state.userData.listOfTabs);
 
-  function handleAddNewTab(e: any) {
-    setTabTitle(e.target.innerText)
-    setShowModal(true);
-
+  function handlerSelectTab(e) {
+    setTabId(e.target.id);
+    setTabTitle(e.target.title);
+    console.log(tabId, tabTitle);
   }
+
   function handleDeleteTab(e: any) {
     setShowModal(true);
-    setTabTitle(e.target.innerText)
+    setTabTitle(e.target.innerText);
   }
 
   function handleEditTab(e: any) {
     setShowModal(true);
-    setTabTitle(e.target.innerText)
   }
 
   return (
@@ -31,15 +36,20 @@ const ModalSettings = (props: any) => {
         </Modal.Header>
         <Modal.Body className="grid-example">
           <Container fluid>
-            <Button onClick={handleAddNewTab}> NEW TAB </Button>
             <Button onClick={handleEditTab}> EDIT SELECTED</Button>
             <Button onClick={handleDeleteTab}> DELETE SELECTED </Button>
             <ListGroup>
-              <ListGroup.Item action>Cras justo odio</ListGroup.Item>
-              <ListGroup.Item action>Dapibus ac facilisis in</ListGroup.Item>
-              <ListGroup.Item action>Morbi leo risus</ListGroup.Item>
-              <ListGroup.Item action>Porta ac consectetur ac</ListGroup.Item>
-              <ListGroup.Item action>Vestibulum at eros</ListGroup.Item>
+              {data.map((item) => (
+                <ListGroup.Item
+                  id={item.id}
+                  title={item.tabName}
+                  action
+                  variant="light"
+                  onClick={handlerSelectTab}
+                >
+                  {item.tabName}
+                </ListGroup.Item>
+              ))}
             </ListGroup>
           </Container>
         </Modal.Body>
@@ -51,10 +61,12 @@ const ModalSettings = (props: any) => {
       <ModalInput
         show={showModal}
         onHide={() => setShowModal(false)}
-        title={tabTitle}
+        title="Enter Tab New Title"
+        tabName={tabTitle}
+        tabId={tabId}
       />
     </>
   );
 };
 
-export default ModalSettings;
+export default ModalTabSettings;
