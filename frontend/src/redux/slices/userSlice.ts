@@ -47,7 +47,6 @@ export const userSlice = createSlice({
       //   state.data[index] = { ...state.data[index], ...action.payload };
     },
     updateUserTabName: (state, action) => {
-      console.log(action.payload);
       axios.patch("/api/userDataTabName", action.payload, {
         params: { id: "001" },
       });
@@ -59,11 +58,11 @@ export const userSlice = createSlice({
         ...action.payload,
       };
     },
-    deleteUserData: (state, action) => {
-      //   axios.delete("/api/forms_schedule", { data: action.payload });
-      //   state.data = state.data.filter(
-      //     (item) => action.payload.includes(item.id) === false
-      //   );
+    deleteUserTab: (state, action) => {
+      axios.delete("/api/userData/001", { data: action.payload });
+      state.listOfTabs = state.listOfTabs.filter(
+        (item) => item.id !== action.payload.tabId
+      );
     },
   },
   extraReducers: (builder) => {
@@ -74,11 +73,7 @@ export const userSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const {
-  addUserData,
-  updateUserData,
-  deleteUserData,
-  updateUserTabName,
-} = userSlice.actions;
+export const { addUserData, updateUserData, deleteUserTab, updateUserTabName } =
+  userSlice.actions;
 
 export default userSlice.reducer;

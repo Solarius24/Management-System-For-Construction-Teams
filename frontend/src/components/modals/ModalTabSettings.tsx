@@ -3,23 +3,22 @@ import React, { useState } from "react";
 import { Button, Container, ListGroup, Modal } from "react-bootstrap";
 import ModalInput from "./ModalInput";
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
-import { updateUserTabName } from "../../redux/slices/userSlice";
+import { deleteUserTab } from "../../redux/slices/userSlice";
 
 const ModalTabSettings = (props: any) => {
   const [showModal, setShowModal] = useState(false);
   const [tabTitle, setTabTitle] = useState("");
   const [tabId, setTabId] = useState("");
   const data = useAppSelector((state) => state.userData.listOfTabs);
+  const dispatch = useAppDispatch();
 
   function handlerSelectTab(e) {
     setTabId(e.target.id);
     setTabTitle(e.target.title);
-    console.log(tabId, tabTitle);
   }
 
-  function handleDeleteTab(e: any) {
-    setShowModal(true);
-    setTabTitle(e.target.innerText);
+  function handleDeleteTab() {
+    dispatch(deleteUserTab({ tabId: tabId }));
   }
 
   function handleEditTab(e: any) {

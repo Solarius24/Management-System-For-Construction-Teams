@@ -53,7 +53,7 @@ router.post("/userData", createUserTabs);
 router.delete("/forms", deleteForm);
 router.delete("/forms_schedule", deleteFormSchedule);
 router.delete("/tasks", deleteTask);
-router.delete("/userData", deleteUserTabs);
+router.delete("/userData/:id", deleteUserTabs);
 
 // UPDATE task/form/userData
 router.patch("/forms/:id", updateForm);

@@ -44,8 +44,17 @@ const createUserTabs = async (req, res) => {
 
 // delete a tab
 const deleteUserTabs = async (req, res) => {
-  const listOfTasksToDelete = req.body;
-  const tab = await User.findOneAndDelete({ _id: id });
+  const id = req.params;
+  const { tabId } = req.body;
+  console.log("id", id, req.body);
+  const tab = await User.updateMany(
+    { id: id },
+    {
+      $pull: {
+        listOfTabs: { $in: [{ id: tabId }] },
+      },
+    }
+  );
 
   if (!tab) {
     return res.status(400).json({ error: "No such workout" });
