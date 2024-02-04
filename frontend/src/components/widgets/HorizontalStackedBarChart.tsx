@@ -58,7 +58,7 @@ const data = [
 
 const HorizontalStackedBarChart = () => {
   return (
-    <Card>
+    <Card style={{ maxWidth: "40%" }}>
       <CardTitle>Locations With Most Open Forms</CardTitle>
       <CardBody>
         <ComposedChart

@@ -1,36 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Container, Navbar, Tab, Tabs } from "react-bootstrap";
 import ModalSettings from "../components/modals/ModalSettings";
-import ModalInput from "../components/modals/ModalInput";
+import ModalAddTab from "../components/modals/ModalAddTab";
 import listOfWidgets from "../configData/widgetsConfig/listOfWidgets";
 import ModalAddWidget from "../components/modals/ModalAddWidget";
 import ListOfWidgets from "../components/widgets/ListOfWidgets";
+import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
+import { fetchUserData } from "../redux/slices/userSlice";
 
 const Dashboard = () => {
   const [modalGridShow, setModalGridShow] = useState(false);
   const [modalSettingsShow, setModalSettingsShow] = useState(false);
-  const [modalInputShow, setModalInputShow] = useState(false);
+  const [modalAddTabShow, setModalAddTabShow] = useState(false);
+  const data = useAppSelector((state) => state.userData.listOfTabs);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    console.log("fetch User data");
+    dispatch(fetchUserData());
+  }, [dispatch]);
 
-  const listOfTabs = [
-    {
-      name: "Default",
-      listOfWidgets: [
-        "Organizations With Most Tasks",
-        "Location With Most Tasks",
-      ],
-    },
-    { name: "Tab 01", listOfWidgets: ["Overdue Task Count"] },
-    { name: "Tab 02", listOfWidgets: ["Task S Curve"] },
-  ];
-
+  function handleAddNewTab() {
+    setModalAddTabShow(true);
+    // dispatch(addUserData)
+  }
   return (
     <div>
       <Navbar bg="white" className="mt-5">
-        <Button
-          disabled
-          variant="primary"
-          onClick={() => setModalInputShow(true)}
-        >
+        <Button variant="primary" onClick={handleAddNewTab}>
           ADD NEW TAB
         </Button>
         <Button className="ml-5" onClick={() => setModalSettingsShow(true)}>
@@ -40,12 +36,12 @@ const Dashboard = () => {
 
       <Container>
         <Tabs
-          defaultActiveKey={"formsTab"}
+          defaultActiveKey={"Default"}
           id="controlled-tab-example"
           className="mb-3"
         >
-          {listOfTabs.map((tab) => (
-            <Tab title={tab.name} eventKey={tab.name}>
+          {data.map((tab: any) => (
+            <Tab title={tab.tabName} eventKey={tab.tabName}>
               <Button variant="primary" onClick={() => setModalGridShow(true)}>
                 ADD WIDGET
               </Button>
@@ -66,9 +62,9 @@ const Dashboard = () => {
         onHide={() => setModalSettingsShow(false)}
         title={"TAB SETTINGS"}
       />
-      <ModalInput
-        show={modalInputShow}
-        onHide={() => setModalInputShow(false)}
+      <ModalAddTab
+        show={modalAddTabShow}
+        onHide={() => setModalAddTabShow(false)}
         title={"ADD TAB"}
       />
     </div>

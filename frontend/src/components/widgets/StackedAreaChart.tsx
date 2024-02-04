@@ -55,7 +55,7 @@ const data = [
 
 export default function StackedAreaChart() {
   return (
-    <Card>
+    <Card style={{ maxWidth: "40%" }}>
       <CardTitle>STACKED AREA CHART</CardTitle>
       <CardBody>
         <AreaChart

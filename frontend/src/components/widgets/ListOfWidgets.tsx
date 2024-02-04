@@ -1,9 +1,14 @@
 import Widget from "./Widget";
 
 function ListOfWidgets(props: any) {
-  console.log("nazwa widgeta", props.widgets);
   return (
-    <div>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr ",
+        gap: "10px",
+      }}
+    >
       {props.widgets.map((item: any) => (
         <Widget widgetTitle={item} />
       ))}

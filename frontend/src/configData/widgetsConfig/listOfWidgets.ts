@@ -23,7 +23,7 @@ const listOfWidgets = [
     type: "task",
     name: "Overdue Task Count",
     image: widget03,
-    widgetType: "Pie Chart Witch Custom Labels",
+    widgetType: "Pie Chart With Custom Labels",
   },
   {
     type: "task",
@@ -66,14 +66,14 @@ const listOfWidgets = [
     type: "form",
     name: "Form Breakdown",
     image: widget03,
-    widgetType: "Pie Chart Witch Custom Labels",
+    widgetType: "Pie Chart With Custom Labels",
   },
 
   {
     type: "form",
     name: "Form Detail Status",
     image: widget03,
-    widgetType: "Pie Chart Witch Custom Labels",
+    widgetType: "Pie Chart With Custom Labels",
   },
   {
     type: "form",
@@ -97,6 +97,7 @@ const listOfWidgets = [
     type: "form",
     name: "Forms Recent Activity",
     image: widget01,
+    widgetType: "Cyrcle",
   },
   {
     type: "form",

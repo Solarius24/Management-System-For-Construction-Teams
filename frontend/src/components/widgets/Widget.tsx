@@ -1,5 +1,5 @@
 import listOfWidgets from "../../configData/widgetsConfig/listOfWidgets";
-import HorizontalBarchart from "./HorizontalBarChart";
+import HorizontalBarChart from "./HorizontalBarChart";
 import HorizontalStackedBarChart from "./HorizontalStackedBarChart";
 import PieChartWithCustomLabels from "./PieChartWithCustomLabels";
 import StackedAreaChart from "./StackedAreaChart";
@@ -12,10 +12,10 @@ const Widget = (props: any) => {
 
   switch (widgetType) {
     case "Horizontal Bar Chart":
-      return <HorizontalBarchart />;
+      return <HorizontalBarChart />;
     case "Horizontal Stacked Bar Chart":
       return <HorizontalStackedBarChart />;
-    case "Pie Chart Witch Custom Labels":
+    case "Pie Chart With Custom Labels":
       return <PieChartWithCustomLabels />;
     case "Stacked Area Chart":
       return <StackedAreaChart />;

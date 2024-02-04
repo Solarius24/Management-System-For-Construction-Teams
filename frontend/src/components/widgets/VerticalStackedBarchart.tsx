@@ -56,7 +56,7 @@ const data = [
 
 export default function VerticalStackedBarChart() {
   return (
-    <Card>
+    <Card style={{ maxWidth: "40%" }}>
       <CardTitle>Stacked Chart Bar</CardTitle>
       <CardBody>
         <BarChart

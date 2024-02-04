@@ -39,7 +39,7 @@ const renderCustomizedLabel = ({
 };
 const PieChartWithCustomLabels = () => {
   return (
-    <Card style={{ maxWidth: "40%" }}>
+    <Card>
       <CardTitle>Form Detail Status</CardTitle>
       <CardBody>
         <PieChart width={400} height={400}>
