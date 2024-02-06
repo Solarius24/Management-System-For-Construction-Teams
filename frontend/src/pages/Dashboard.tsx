@@ -15,13 +15,11 @@ const Dashboard = () => {
   const data = useAppSelector((state) => state.userData.listOfTabs);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    console.log("fetch User data");
     dispatch(fetchUserData());
   }, [dispatch]);
 
   function handleAddNewTab() {
     setModalAddTabShow(true);
-    // dispatch(addUserData)
   }
   return (
     <div>

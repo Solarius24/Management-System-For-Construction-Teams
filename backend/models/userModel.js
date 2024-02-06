@@ -6,7 +6,7 @@ const UserSchema = new Schema({
   id: { type: String },
   listOfTabs: [
     {
-      id: { type: String },
+      // id: { type: String },
       tabName: { type: String },
       listOfWidgets: { type: Array },
     },

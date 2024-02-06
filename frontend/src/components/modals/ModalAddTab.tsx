@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useAppDispatch } from "../../redux/reduxHooks";
-import { addUserData } from "../../redux/slices/userSlice";
+import { addUserData, fetchUserData } from "../../redux/slices/userSlice";
 
 const ModalAddTab = (props: any) => {
   const [tabTitle, setTabTitle] = useState(" ");
   const dispatch = useAppDispatch();
 
-  function handleAddNewTab(e: any) {
-    dispatch(
-      addUserData({ id: new Date(), tabName: tabTitle, listOfWidgets: [] })
-    );
+  function handleAddNewTab() {
+    dispatch(addUserData({ tabName: tabTitle, listOfWidgets: [] }));
+    dispatch(fetchUserData());
     props.onHide();
     setTabTitle("");
   }

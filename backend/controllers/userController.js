@@ -26,13 +26,12 @@ const getUserTabs = async (req, res) => {
   res.status(200).json(user);
 };
 
-// create a new form
+// create a new TAB
 const createUserTabs = async (req, res) => {
-  const { id, tabName, listOfWidgets } = req.body;
-  // add to the database
+  const { tabName } = req.body;
+  // add TAB to the database
   try {
     const tab = await User.create({
-      id,
       tabName,
       listOfWidgets,
     });
@@ -44,14 +43,12 @@ const createUserTabs = async (req, res) => {
 
 // delete a tab
 const deleteUserTabs = async (req, res) => {
-  const id = req.params;
   const { tabId } = req.body;
-  console.log("id", id, req.body);
   const tab = await User.updateMany(
-    { id: id },
+    {},
     {
       $pull: {
-        listOfTabs: { $in: [{ id: tabId }] },
+        listOfTabs: { _id: tabId },
       },
     }
   );
@@ -65,13 +62,12 @@ const deleteUserTabs = async (req, res) => {
 
 // update a tab
 const updateUserTabName = async (req, res) => {
-  const { id } = req.query;
   const { tabId } = req.body;
   const { tabName } = req.body;
   const tab = await User.findOneAndUpdate(
-    { id: id },
+    {},
     { $set: { "listOfTabs.$[elem].tabName": tabName } },
-    { arrayFilters: [{ "elem.id": tabId }] }
+    { arrayFilters: [{ "elem._id": tabId }] }
   );
   if (!tab) {
     return res.status(400).json({ error: "No such form" });

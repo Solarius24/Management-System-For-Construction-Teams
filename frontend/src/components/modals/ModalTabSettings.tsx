@@ -1,9 +1,10 @@
 // @ts-nocheck
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Container, ListGroup, Modal } from "react-bootstrap";
 import ModalInput from "./ModalInput";
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
 import { deleteUserTab } from "../../redux/slices/userSlice";
+import { fetchUserData } from "../../redux/slices/userSlice";
 
 const ModalTabSettings = (props: any) => {
   const [showModal, setShowModal] = useState(false);
@@ -40,7 +41,7 @@ const ModalTabSettings = (props: any) => {
             <ListGroup>
               {data.map((item) => (
                 <ListGroup.Item
-                  id={item.id}
+                  id={item._id}
                   title={item.tabName}
                   action
                   variant="light"
