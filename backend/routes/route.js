@@ -28,6 +28,7 @@ const {
   deleteUserTabs,
   updateUserTabs,
   updateUserTabName,
+  updateWidgetList,
 } = require("../controllers/userController");
 
 const router = express.Router();
@@ -44,6 +45,7 @@ router.get("/tasks/:id", getTask);
 router.get("/userData", getUserTabs);
 
 // POST a new task/form
+
 router.post("/forms", createForm);
 router.post("/forms_schedule", createFormSchedule);
 router.post("/tasks", createTask);
@@ -56,6 +58,7 @@ router.delete("/tasks", deleteTask);
 router.delete("/userData/:id", deleteUserTabs);
 
 // UPDATE task/form/userData
+
 router.patch("/forms/:id", updateForm);
 router.patch("/forms_schedule/:id", updateFormSchedule);
 router.patch("/tasks/:id", updateTask);
@@ -63,5 +66,8 @@ router.patch("/userData", updateUserTabs);
 
 //update TAB NAME
 router.patch("/userDataTabName", updateUserTabName);
+
+//ADD WIDGET TO WIDGET LIST
+router.patch("/userData/:id", updateWidgetList);
 
 module.exports = router;

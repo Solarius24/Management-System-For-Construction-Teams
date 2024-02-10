@@ -95,10 +95,29 @@ const updateUserTabs = async (req, res) => {
   res.status(200).json(tab);
 };
 
+//ADD WIDGET TO THE LIST OF WIDGETS
+const updateWidgetList = async (req, res) => {
+  const { widgetName } = req.body;
+  const { tabId } = req.body;
+
+  const widgetList = await User.findOneAndUpdate(
+    {},
+    { $push: { "listOfTabs.$[elem].listOfWidgets": widgetName } },
+    { arrayFilters: [{ "elem._id": tabId }] }
+  );
+
+  if (!widgetList) {
+    return res.status(400).json({ error: "No such wisget list" });
+  }
+
+  res.status(200).json(widgetList);
+};
+
 module.exports = {
   getUserTabs,
   createUserTabs,
   deleteUserTabs,
   updateUserTabs,
   updateUserTabName,
+  updateWidgetList,
 };

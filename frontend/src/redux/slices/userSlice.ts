@@ -36,6 +36,17 @@ export const userSlice = createSlice({
       });
       state.listOfTabs.push(action.payload);
     },
+
+    addWidget: (state, action) => {
+      axios.patch("/api/userData/001", action.payload);
+
+      const index = state.listOfTabs.findIndex(
+        (item) => item._id === action.payload.tabId
+      );
+      console.log(index, action.payload.widgetName);
+      state.listOfTabs[index].listOfWidgets.push(action.payload.widgetName);
+    },
+
     updateUserData: (state, action) => {},
     updateUserTabName: (state, action) => {
       axios.patch("/api/userDataTabName", action.payload, {
@@ -64,7 +75,12 @@ export const userSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addUserData, updateUserData, deleteUserTab, updateUserTabName } =
-  userSlice.actions;
+export const {
+  addUserData,
+  updateUserData,
+  deleteUserTab,
+  updateUserTabName,
+  addWidget,
+} = userSlice.actions;
 
 export default userSlice.reducer;

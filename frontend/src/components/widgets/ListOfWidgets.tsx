@@ -9,9 +9,8 @@ function ListOfWidgets(props: any) {
         gap: "10px",
       }}
     >
-      {props.widgets.map((item: any) => (
-        <Widget widgetTitle={item} />
-      ))}
+      {props.widget &&
+        props.widgets.map((item: any) => <Widget widgetTitle={item} />)}
     </div>
   );
 }

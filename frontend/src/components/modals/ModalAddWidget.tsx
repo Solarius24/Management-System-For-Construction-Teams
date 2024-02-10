@@ -2,8 +2,23 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
 import { Image, ListGroup, ListGroupItem, Tab, Tabs } from "react-bootstrap";
+import { useState } from "react";
+import { addWidget } from "../../redux/slices/userSlice";
+import { useAppDispatch } from "../../redux/reduxHooks";
 
 const ModalAddWidget = (props: any) => {
+  const [widget, setWidget] = useState("");
+  const dispatch = useAppDispatch();
+
+  function handleSelect(e: any) {
+    console.log(e.target.innerText);
+    setWidget(e.target.innerText);
+  }
+
+  function handleAddWidgetToWidgetList(e: any) {
+    dispatch(addWidget({ widgetName: widget, tabId: props.tabId }));
+    props.onHide();
+  }
   return (
     <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
       <Modal.Header closeButton>
@@ -29,6 +44,7 @@ const ModalAddWidget = (props: any) => {
                         className="border border-info m-2"
                         variant="light"
                         action
+                        onClick={handleSelect}
                       >
                         <Image src={widget.image} alt=" " />
                         <h5 className="h6">{widget.name}</h5>
@@ -110,7 +126,7 @@ const ModalAddWidget = (props: any) => {
       </Tabs>
 
       <Modal.Footer>
-        <Button onClick={props.onHide}> OK </Button>
+        <Button onClick={handleAddWidgetToWidgetList}> OK </Button>
         <Button onClick={props.onHide}>CANCEL</Button>
       </Modal.Footer>
     </Modal>

@@ -12,6 +12,7 @@ const Dashboard = () => {
   const [modalGridShow, setModalGridShow] = useState(false);
   const [modalSettingsShow, setModalSettingsShow] = useState(false);
   const [modalAddTabShow, setModalAddTabShow] = useState(false);
+  const [tabId, setTabId] = useState("");
   const data = useAppSelector((state) => state.userData.listOfTabs);
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -20,6 +21,10 @@ const Dashboard = () => {
 
   function handleAddNewTab() {
     setModalAddTabShow(true);
+  }
+
+  function handleAddWidget() {
+    setModalGridShow(true);
   }
   return (
     <div>
@@ -39,8 +44,12 @@ const Dashboard = () => {
           className="mb-3"
         >
           {data.map((tab: any) => (
-            <Tab title={tab.tabName} eventKey={tab.tabName}>
-              <Button variant="primary" onClick={() => setModalGridShow(true)}>
+            <Tab
+              title={tab.tabName}
+              eventKey={tab.tabName}
+              onClick={() => setTabId(tab._id)}
+            >
+              <Button active variant="primary" onClick={handleAddWidget}>
                 ADD WIDGET
               </Button>
               <ListOfWidgets widgets={tab.listOfWidgets} />
@@ -54,6 +63,7 @@ const Dashboard = () => {
         onHide={() => setModalGridShow(false)}
         title={"ADD WIDGET"}
         listOfWidgets={listOfWidgets}
+        tabId={tabId}
       />
       <ModalSettings
         show={modalSettingsShow}
