@@ -54,10 +54,10 @@ const data = [
   },
 ];
 
-export default function VerticalStackedBarChart() {
+export default function VerticalStackedBarChart(props: any) {
   return (
     <Card style={{ maxWidth: "40%" }}>
-      <CardTitle>Stacked Chart Bar</CardTitle>
+      <CardTitle>{props.widgetName}</CardTitle>
       <CardBody>
         <BarChart
           width={500}

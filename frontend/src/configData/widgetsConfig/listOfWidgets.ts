@@ -62,12 +62,12 @@ const listOfWidgets = [
     image: widget01,
     widgetType: "Cyrcle",
   },
-  {
-    type: "form",
-    name: "Form Breakdown",
-    image: widget03,
-    widgetType: "Pie Chart With Custom Labels",
-  },
+  // {
+  //   type: "form",
+  //   name: "Form Breakdown",
+  //   image: widget03,
+  //   widgetType: "Pie Chart With Custom Labels",
+  // },
 
   {
     type: "form",
@@ -114,7 +114,7 @@ const listOfWidgets = [
 
   {
     type: "processe",
-    name: "Process Percentage Complete ",
+    name: "Process Percentage Complete",
     image: widget07,
     widgetType: "Vertical Bar Chart",
   },

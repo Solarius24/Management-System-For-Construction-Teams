@@ -28,10 +28,10 @@ const data = [
   },
 ];
 
-const VerticalBarChart = () => {
+const VerticalBarChart = (props: any) => {
   return (
     <Card style={{ maxWidth: "40%" }}>
-      <CardTitle>Forms By Form Status</CardTitle>
+      <CardTitle>{props.widgetName}</CardTitle>
       <CardBody>
         <BarChart width={400} height={400} data={data}>
           <XAxis dataKey="name" />

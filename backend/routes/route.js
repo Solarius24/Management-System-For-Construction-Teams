@@ -29,6 +29,7 @@ const {
   updateUserTabs,
   updateUserTabName,
   updateWidgetList,
+  deleteWidget,
 } = require("../controllers/userController");
 
 const router = express.Router();
@@ -50,15 +51,16 @@ router.post("/forms", createForm);
 router.post("/forms_schedule", createFormSchedule);
 router.post("/tasks", createTask);
 router.post("/userData", createUserTabs);
+// router.post("/userData", updateWidgetList);
 
 // DELETE task/form/userdata
 router.delete("/forms", deleteForm);
 router.delete("/forms_schedule", deleteFormSchedule);
 router.delete("/tasks", deleteTask);
 router.delete("/userData/:id", deleteUserTabs);
+router.delete("/userDataWidget/:id", deleteWidget);
 
 // UPDATE task/form/userData
-
 router.patch("/forms/:id", updateForm);
 router.patch("/forms_schedule/:id", updateFormSchedule);
 router.patch("/tasks/:id", updateTask);

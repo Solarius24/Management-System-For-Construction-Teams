@@ -6,7 +6,7 @@ interface UserState {
   listOfTabs: {
     _id: string;
     tabName: string;
-    listOfWidgets: string[];
+    listOfWidgets: { _id: string; widgetName: string; widgetType: string }[];
   }[];
 }
 
@@ -16,7 +16,13 @@ const initialState: UserState = {
     {
       _id: "def01",
       tabName: "Default",
-      listOfWidgets: ["Organizations With Most Tasks"],
+      listOfWidgets: [
+        {
+          _id: "def21",
+          widgetName: "Form Detail Status",
+          widgetType: "Pie Chart With Custom Labels",
+        },
+      ],
     },
   ],
 };
@@ -43,8 +49,24 @@ export const userSlice = createSlice({
       const index = state.listOfTabs.findIndex(
         (item) => item._id === action.payload.tabId
       );
-      console.log(index, action.payload.widgetName);
-      state.listOfTabs[index].listOfWidgets.push(action.payload.widgetName);
+      state.listOfTabs[index].listOfWidgets.push({
+        widgetType: action.payload.widgetType,
+        widgetName: action.payload.widgetName,
+        _id: "",
+      });
+    },
+
+    deleteWidget: (state, action) => {
+      axios.delete("/api/userDataWidget/001", { data: action.payload });
+      console.log("action payload", action.payload);
+
+      const index = state.listOfTabs.findIndex(
+        (item) => item._id === action.payload.tabId
+      );
+
+      state.listOfTabs[index].listOfWidgets = state.listOfTabs[
+        index
+      ].listOfWidgets.filter((item) => item._id !== action.payload.widgetId);
     },
 
     updateUserData: (state, action) => {},
@@ -81,6 +103,7 @@ export const {
   deleteUserTab,
   updateUserTabName,
   addWidget,
+  deleteWidget,
 } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -53,10 +53,10 @@ const data = [
   },
 ];
 
-export default function StackedAreaChart() {
+export default function StackedAreaChart(props: any) {
   return (
     <Card style={{ maxWidth: "40%" }}>
-      <CardTitle>STACKED AREA CHART</CardTitle>
+      <CardTitle>{props.widgetName}</CardTitle>
       <CardBody>
         <AreaChart
           width={500}

@@ -7,18 +7,26 @@ import { addWidget } from "../../redux/slices/userSlice";
 import { useAppDispatch } from "../../redux/reduxHooks";
 
 const ModalAddWidget = (props: any) => {
-  const [widget, setWidget] = useState("");
+  const [widgetName, setWidgetName] = useState("");
+  const [widgetType, setWidgetType] = useState("");
   const dispatch = useAppDispatch();
 
   function handleSelect(e: any) {
-    console.log(e.target.innerText);
-    setWidget(e.target.innerText);
+    setWidgetType(e.target.title);
+    setWidgetName(e.target.innerText);
   }
 
   function handleAddWidgetToWidgetList(e: any) {
-    dispatch(addWidget({ widgetName: widget, tabId: props.tabId }));
+    dispatch(
+      addWidget({
+        widgetName: widgetName,
+        tabId: props.tabId,
+        widgetType: widgetType,
+      })
+    );
     props.onHide();
   }
+
   return (
     <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
       <Modal.Header closeButton>
@@ -38,13 +46,18 @@ const ModalAddWidget = (props: any) => {
             <Container fluid>
               <ListGroup>
                 {props.listOfWidgets.map(
-                  (widget: { name: string; image: string }) => (
+                  (widget: {
+                    name: string;
+                    image: string;
+                    widgetType: string;
+                  }) => (
                     <div>
                       <ListGroupItem
                         className="border border-info m-2"
                         variant="light"
                         action
                         onClick={handleSelect}
+                        title={widget.widgetType}
                       >
                         <Image src={widget.image} alt=" " />
                         <h5 className="h6">{widget.name}</h5>
@@ -62,18 +75,26 @@ const ModalAddWidget = (props: any) => {
               <ListGroup>
                 {props.listOfWidgets
                   .filter((item: { type: string }) => item.type === "form")
-                  .map((widget: { name: string; image: string }) => (
-                    <div>
-                      <ListGroupItem
-                        className="border border-info m-2"
-                        variant="light"
-                        action
-                      >
-                        <Image src={widget.image} alt=" " />
-                        <h5 className="h6">{widget.name}</h5>
-                      </ListGroupItem>
-                    </div>
-                  ))}
+                  .map(
+                    (widget: {
+                      name: string;
+                      image: string;
+                      widgetType: string;
+                    }) => (
+                      <div>
+                        <ListGroupItem
+                          className="border border-info m-2"
+                          variant="light"
+                          action
+                          onClick={handleSelect}
+                          title={widget.widgetType}
+                        >
+                          <Image src={widget.image} alt=" " />
+                          <h5 className="h6">{widget.name}</h5>
+                        </ListGroupItem>
+                      </div>
+                    )
+                  )}
               </ListGroup>
             </Container>
           </Modal.Body>
@@ -84,18 +105,26 @@ const ModalAddWidget = (props: any) => {
               <ListGroup>
                 {props.listOfWidgets
                   .filter((item: { type: string }) => item.type === "task")
-                  .map((widget: { name: string; image: string }) => (
-                    <div>
-                      <ListGroupItem
-                        className="border border-info m-2"
-                        variant="light"
-                        action
-                      >
-                        <Image src={widget.image} alt=" " />
-                        <h5 className="h6">{widget.name}</h5>
-                      </ListGroupItem>
-                    </div>
-                  ))}
+                  .map(
+                    (widget: {
+                      name: string;
+                      image: string;
+                      widgetType: string;
+                    }) => (
+                      <div>
+                        <ListGroupItem
+                          className="border border-info m-2"
+                          variant="light"
+                          action
+                          onClick={handleSelect}
+                          title={widget.widgetType}
+                        >
+                          <Image src={widget.image} alt=" " />
+                          <h5 className="h6">{widget.name}</h5>
+                        </ListGroupItem>
+                      </div>
+                    )
+                  )}
               </ListGroup>
             </Container>
           </Modal.Body>
@@ -107,18 +136,26 @@ const ModalAddWidget = (props: any) => {
               <ListGroup>
                 {props.listOfWidgets
                   .filter((item: { type: string }) => item.type === "processe")
-                  .map((widget: { name: string; image: string }) => (
-                    <div>
-                      <ListGroupItem
-                        className="border border-info m-2"
-                        variant="light"
-                        action
-                      >
-                        <Image src={widget.image} alt=" " />
-                        <h5 className="h6">{widget.name}</h5>
-                      </ListGroupItem>
-                    </div>
-                  ))}
+                  .map(
+                    (widget: {
+                      name: string;
+                      image: string;
+                      widgetType: string;
+                    }) => (
+                      <div>
+                        <ListGroupItem
+                          className="border border-info m-2"
+                          variant="light"
+                          action
+                          onClick={handleSelect}
+                          title={widget.widgetType}
+                        >
+                          <Image src={widget.image} alt=" " />
+                          <h5 className="h6">{widget.name}</h5>
+                        </ListGroupItem>
+                      </div>
+                    )
+                  )}
               </ListGroup>
             </Container>
           </Modal.Body>

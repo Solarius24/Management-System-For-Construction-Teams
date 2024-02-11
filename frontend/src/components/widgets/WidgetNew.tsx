@@ -8,8 +8,12 @@ import VerticalBarChart from "./graphs/VerticalBarChart";
 import VerticalStackedBarChart from "./graphs/VerticalStackedBarchart";
 import { useAppDispatch } from "../../redux/reduxHooks";
 import { deleteWidget } from "../../redux/slices/userSlice";
+import Cyrcle from "./graphs/Cyrcle";
+import { useFormStatusData } from "./widgetsInputData/useFormStatusData";
+import FormStatus from "./graphs/FormStatus";
 
 const Widget = (props: any) => {
+  const formStatusData = useFormStatusData();
   const dispatch = useAppDispatch();
   const widgetNameFiltered = listOfWidgets.filter(
     (item) => item.name === props.widgetName
@@ -27,8 +31,8 @@ const Widget = (props: any) => {
     dispatch(deleteWidget({ tabId: props.tabId, widgetId: props.widgetId }));
   }
 
-  switch (widgetType) {
-    case "Horizontal Bar Chart":
+  switch (props.widgetName) {
+    case "Organizations With Most Tasks":
       return (
         <Card>
           <Button onClick={handleWidgetDelete}>DELETE</Button>
@@ -36,39 +40,56 @@ const Widget = (props: any) => {
         </Card>
       );
 
-    case "Horizontal Stacked Bar Chart":
+    case "Location With Most Tasks":
       return (
         <Card>
           <Button onClick={handleWidgetDelete}>DELETE</Button>
-          <HorizontalStackedBarChart widgetName={props.widgetName} />
+          <HorizontalBarChart widgetName={props.widgetName} />
         </Card>
       );
-    case "Pie Chart With Custom Labels":
+    case "Overdue Task Count":
       return (
         <Card>
           <Button onClick={handleWidgetDelete}>DELETE</Button>
           <PieChartWithCustomLabels widgetName={props.widgetName} />
         </Card>
       );
-    case "Stacked Area Chart":
+    case "Recent Task Activity":
       return (
         <Card>
           <Button onClick={handleWidgetDelete}>DELETE</Button>
-          ) <StackedAreaChart widgetName={props.widgetName} />
+          ) <Cyrcle widgetName={props.widgetName} />
         </Card>
       );
-    case "Vertical Bar Chart":
+    case "Task Grouped By Organization Type":
       return (
         <Card>
           <Button onClick={handleWidgetDelete}>DELETE</Button>
           <VerticalBarChart widgetName={props.widgetName} />
         </Card>
       );
-    case "Vertical Stacked Bar Chart":
+    case "Task Grouped By Task Type":
       return (
         <Card>
           <Button onClick={handleWidgetDelete}>DELETE</Button>
           <VerticalStackedBarChart widgetName={props.widgetName} />
+        </Card>
+      );
+    case "Form Detail Status":
+      return (
+        <Card>
+          <Button onClick={handleWidgetDelete}>DELETE</Button>
+          <PieChartWithCustomLabels
+            data={formStatusData}
+            widgetName={props.widgetName}
+          />
+        </Card>
+      );
+    case "Form Status":
+      return (
+        <Card>
+          <Button onClick={handleWidgetDelete}>DELETE</Button>
+          <FormStatus />
         </Card>
       );
     default:

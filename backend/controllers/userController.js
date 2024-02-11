@@ -2,13 +2,6 @@ const mongoose = require("mongoose");
 const User = require("../models/userModel");
 const { query } = require("express");
 
-// get all forms
-// const getTasks = async (req, res) => {
-//   const user = await User.find({}).sort({ createdAt: -1 });
-
-//   res.status(200).json(user);
-// };
-
 // get a single form
 const getUserTabs = async (req, res) => {
   const { id } = req.query;
@@ -97,12 +90,20 @@ const updateUserTabs = async (req, res) => {
 
 //ADD WIDGET TO THE LIST OF WIDGETS
 const updateWidgetList = async (req, res) => {
-  const { widgetName } = req.body;
+  const { widgetName, widgetType } = req.body;
   const { tabId } = req.body;
 
-  const widgetList = await User.findOneAndUpdate(
+  const widgetList = await User.updateOne(
     {},
-    { $push: { "listOfTabs.$[elem].listOfWidgets": widgetName } },
+
+    {
+      $addToSet: {
+        "listOfTabs.$[elem].listOfWidgets": {
+          widgetName: widgetName,
+          widgetType: widgetType,
+        },
+      },
+    },
     { arrayFilters: [{ "elem._id": tabId }] }
   );
 
@@ -113,6 +114,28 @@ const updateWidgetList = async (req, res) => {
   res.status(200).json(widgetList);
 };
 
+const deleteWidget = async (req, res) => {
+  const { widgetId, tabId } = req.body;
+  const widget = await User.updateOne(
+    {},
+
+    {
+      $pull: {
+        "listOfTabs.$[elem].listOfWidgets": {
+          _id: widgetId,
+        },
+      },
+    },
+    { arrayFilters: [{ "elem._id": tabId }] }
+  );
+
+  if (!widget) {
+    return res.status(400).json({ error: "No such workout" });
+  }
+
+  res.status(200).json(widget);
+};
+
 module.exports = {
   getUserTabs,
   createUserTabs,
@@ -120,4 +143,5 @@ module.exports = {
   updateUserTabs,
   updateUserTabName,
   updateWidgetList,
+  deleteWidget,
 };

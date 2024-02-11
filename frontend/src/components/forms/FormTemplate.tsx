@@ -94,7 +94,7 @@ const FormTemplate = (props: any) => {
                 aria-label="Default select example"
               >
                 <option>{status}</option>
-                <option value="OPENED">OPENED</option>
+                <option value="OPEN">OPENED</option>
                 <option value="IN PROGRESS">IN PROGRESS</option>
                 <option value="COMPLETED AND SIGNED OFF">
                   COMPLETED AND SIGNED OFF

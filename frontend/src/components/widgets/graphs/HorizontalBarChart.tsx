@@ -56,10 +56,10 @@ const data = [
   },
 ];
 
-const HorizontalStackedBarChart = () => {
+const HorizontalBarchart = (props: any) => {
   return (
-    <Card style={{ maxWidth: "40%" }}>
-      <CardTitle>Locations With Most Open Forms</CardTitle>
+    <Card>
+      <CardTitle>{props.widgetName}</CardTitle>
       <CardBody>
         <ComposedChart
           layout="vertical"
@@ -87,4 +87,4 @@ const HorizontalStackedBarChart = () => {
   );
 };
 
-export default HorizontalStackedBarChart;
+export default HorizontalBarchart;

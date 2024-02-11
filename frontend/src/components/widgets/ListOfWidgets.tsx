@@ -1,4 +1,5 @@
 import Widget from "./Widget";
+import WidgetNew from "./WidgetNew";
 
 function ListOfWidgets(props: any) {
   return (
@@ -9,8 +10,14 @@ function ListOfWidgets(props: any) {
         gap: "10px",
       }}
     >
-      {props.widget &&
-        props.widgets.map((item: any) => <Widget widgetTitle={item} />)}
+      {props.widgets.length > 0 &&
+        props.widgets.map((item: any) => (
+          <WidgetNew
+            tabId={props.tabId}
+            widgetName={item.widgetName}
+            widgetId={item._id}
+          />
+        ))}
     </div>
   );
 }

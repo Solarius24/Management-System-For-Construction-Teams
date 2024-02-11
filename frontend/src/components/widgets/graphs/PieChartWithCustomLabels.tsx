@@ -1,13 +1,12 @@
-import React, { useCallback, useState } from "react";
 import { Card, CardBody, CardTitle } from "react-bootstrap";
-import { PieChart, Pie, Cell } from "recharts";
+import { propTypes } from "react-bootstrap/esm/Image";
+import { PieChart, Pie, Cell, Legend } from "recharts";
 
-const data = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 },
-];
+// const data = [
+//   { name: "OPEN", value: 400 },
+//   { name: "IN PROGRESS", value: 300 },
+//   { name: "CLOSED AND SIGNED OFF", value: 300 },
+// ];
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
@@ -37,29 +36,37 @@ const renderCustomizedLabel = ({
     </text>
   );
 };
-const PieChartWithCustomLabels = () => {
+const PieChartWithCustomLabels = (props: any) => {
+  const data = props.data;
   return (
     <Card>
-      <CardTitle>Form Detail Status</CardTitle>
+      <CardTitle>{props.widgetName}</CardTitle>
       <CardBody>
         <PieChart width={400} height={400}>
           <Pie
             data={data}
-            cx={200}
-            cy={200}
+            cx={250}
+            cy={250}
             labelLine={false}
             label={renderCustomizedLabel}
-            outerRadius={80}
+            outerRadius={140}
             fill="#8884d8"
             dataKey="value"
           >
-            {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
+            {data &&
+              data.map((entry: any, index: number) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
           </Pie>
+          <Legend
+            iconSize={10}
+            layout="vertical"
+            verticalAlign="top"
+            align="right"
+          />
         </PieChart>
       </CardBody>
     </Card>
