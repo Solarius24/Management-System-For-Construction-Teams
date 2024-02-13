@@ -12,6 +12,9 @@ import Cyrcle from "./graphs/Cyrcle";
 import { useFormStatusData } from "./widgetsInputData/useFormStatusData";
 import FormStatus from "./graphs/FormStatus";
 import FormsRecentActivity from "./graphs/FormsRecentActivity";
+import FormKPI from "./graphs/FormKPI";
+import ExpiredForms from "./graphs/ExpiredForms";
+import LocationsWithMostTasks from "./graphs/LocationsWithMostTasks";
 
 const Widget = (props: any) => {
   const formStatusData = useFormStatusData();
@@ -41,13 +44,6 @@ const Widget = (props: any) => {
         </Card>
       );
 
-    case "Location With Most Tasks":
-      return (
-        <Card>
-          <Button onClick={handleWidgetDelete}>DELETE</Button>
-          <HorizontalBarChart widgetName={props.widgetName} />
-        </Card>
-      );
     case "Overdue Task Count":
       return (
         <Card>
@@ -98,6 +94,27 @@ const Widget = (props: any) => {
         <Card>
           <Button onClick={handleWidgetDelete}>DELETE</Button>
           <FormsRecentActivity />
+        </Card>
+      );
+    case "Form KPI":
+      return (
+        <Card>
+          <Button onClick={handleWidgetDelete}>DELETE</Button>
+          <FormKPI />
+        </Card>
+      );
+    case "Expired Forms":
+      return (
+        <Card>
+          <Button onClick={handleWidgetDelete}>DELETE</Button>
+          <ExpiredForms />
+        </Card>
+      );
+    case "Location With Most Tasks":
+      return (
+        <Card>
+          <Button onClick={handleWidgetDelete}>DELETE</Button>
+          <LocationsWithMostTasks />
         </Card>
       );
     default:
