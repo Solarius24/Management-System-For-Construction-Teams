@@ -11,6 +11,7 @@ import { deleteWidget } from "../../redux/slices/userSlice";
 import Cyrcle from "./graphs/Cyrcle";
 import { useFormStatusData } from "./widgetsInputData/useFormStatusData";
 import FormStatus from "./graphs/FormStatus";
+import FormsRecentActivity from "./graphs/FormsRecentActivity";
 
 const Widget = (props: any) => {
   const formStatusData = useFormStatusData();
@@ -90,6 +91,13 @@ const Widget = (props: any) => {
         <Card>
           <Button onClick={handleWidgetDelete}>DELETE</Button>
           <FormStatus />
+        </Card>
+      );
+    case "Forms Recent Activity":
+      return (
+        <Card>
+          <Button onClick={handleWidgetDelete}>DELETE</Button>
+          <FormsRecentActivity />
         </Card>
       );
     default:
