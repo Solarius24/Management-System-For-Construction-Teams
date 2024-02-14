@@ -1,11 +1,11 @@
 import { Button, Card } from "react-bootstrap";
 import listOfWidgets from "../../configData/widgetsConfig/listOfWidgets";
-import HorizontalBarChart from "./graphs/HorizontalBarChart";
-import HorizontalStackedBarChart from "./graphs/HorizontalStackedBarChart";
-import PieChartWithCustomLabels from "./graphs/PieChartWithCustomLabels";
-import StackedAreaChart from "./graphs/StackedAreaChart";
-import VerticalBarChart from "./graphs/VerticalBarChart";
-import VerticalStackedBarChart from "./graphs/VerticalStackedBarchart";
+import HorizontalBarChart from "./graphs/rechartTemp/HorizontalBarChart";
+import HorizontalStackedBarChart from "./graphs/rechartTemp/HorizontalStackedBarChart";
+import PieChartWithCustomLabels from "./graphs/rechartTemp/PieChartWithCustomLabels";
+import StackedAreaChart from "./graphs/rechartTemp/StackedAreaChart";
+import VerticalBarChart from "./graphs/rechartTemp/VerticalBarChart";
+import VerticalStackedBarChart from "./graphs/rechartTemp/VerticalStackedBarchart";
 import { useAppDispatch } from "../../redux/reduxHooks";
 import { deleteWidget } from "../../redux/slices/userSlice";
 
