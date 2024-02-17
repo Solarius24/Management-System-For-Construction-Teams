@@ -48,7 +48,6 @@ export default function FormStatus() {
       index === self.findIndex((t) => t.name === value.name)
   );
 
-  console.log(uniqueForms);
   return (
     <Card style={{ maxWidth: "40%" }}>
       <CardTitle>Form Status</CardTitle>

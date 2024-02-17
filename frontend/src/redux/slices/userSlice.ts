@@ -58,7 +58,6 @@ export const userSlice = createSlice({
 
     deleteWidget: (state, action) => {
       axios.delete("/api/userDataWidget/001", { data: action.payload });
-      console.log("action payload", action.payload);
 
       const index = state.listOfTabs.findIndex(
         (item) => item._id === action.payload.tabId

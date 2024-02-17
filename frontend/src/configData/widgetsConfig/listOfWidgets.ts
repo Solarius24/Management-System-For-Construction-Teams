@@ -56,12 +56,12 @@ const listOfWidgets = [
     widgetType: "Stacked Area Chart",
   },
 
-  {
-    type: "form",
-    name: "Expired Forms",
-    image: widget01,
-    widgetType: "Cyrcle",
-  },
+  // {
+  //   type: "form",
+  //   name: "Expired Forms",
+  //   image: widget01,
+  //   widgetType: "Cyrcle",
+  // },
   // {
   //   type: "form",
   //   name: "Form Breakdown",
@@ -75,24 +75,24 @@ const listOfWidgets = [
     image: widget03,
     widgetType: "Pie Chart With Custom Labels",
   },
-  {
-    type: "form",
-    name: "Form KPI",
-    image: widget01,
-    widgetType: "Cyrcle",
-  },
+  // {
+  //   type: "form",
+  //   name: "Form KPI",
+  //   image: widget01,
+  //   widgetType: "Cyrcle",
+  // },
   {
     type: "form",
     name: "Form S Curve",
     image: widget05,
     widgetType: "Stacked Area Chart",
   },
-  {
-    type: "form",
-    name: "Forms Issued By Month",
-    image: widget04,
-    widgetType: "Vertical Stacked Bar Chart",
-  },
+  // {
+  //   type: "form",
+  //   name: "Forms Issued By Month",
+  //   image: widget04,
+  //   widgetType: "Vertical Stacked Bar Chart",
+  // },
   {
     type: "form",
     name: "Forms Recent Activity",

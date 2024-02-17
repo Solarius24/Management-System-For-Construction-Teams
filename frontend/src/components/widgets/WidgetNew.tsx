@@ -1,21 +1,17 @@
 import { Button, Card } from "react-bootstrap";
 import listOfWidgets from "../../configData/widgetsConfig/listOfWidgets";
 import HorizontalBarChart from "./graphs/rechartTemp/HorizontalBarChart";
-import HorizontalStackedBarChart from "./graphs/rechartTemp/HorizontalStackedBarChart";
 import PieChartWithCustomLabels from "./graphs/rechartTemp/PieChartWithCustomLabels";
-import StackedAreaChart from "./graphs/rechartTemp/StackedAreaChart";
 import VerticalBarChart from "./graphs/rechartTemp/VerticalBarChart";
 import VerticalStackedBarChart from "./graphs/rechartTemp/VerticalStackedBarchart";
 import { useAppDispatch } from "../../redux/reduxHooks";
 import { deleteWidget } from "../../redux/slices/userSlice";
-import Cyrcle from "./graphs/rechartTemp/Cyrcle";
 import { useFormStatusData } from "./widgetsInputData/useFormStatusData";
 import FormStatus from "./graphs/forms/FormStatus";
 import FormsRecentActivity from "./graphs/forms/FormsRecentActivity";
-import FormKPI from "./graphs/forms/FormKPI";
-import ExpiredForms from "./graphs/forms/ExpiredForms";
 import LocationsWithMostTasks from "./graphs/tasks/LocationsWithMostTasks";
 import RecentTaskActivity from "./graphs/tasks/RecentTaskActivity";
+import FormsStatusByMonth from "./graphs/forms/FormsStatusByMonth";
 
 const Widget = (props: any) => {
   const formStatusData = useFormStatusData();
@@ -91,20 +87,7 @@ const Widget = (props: any) => {
           <FormsRecentActivity />
         </Card>
       );
-    case "Form KPI":
-      return (
-        <Card>
-          <Button onClick={handleWidgetDelete}>DELETE</Button>
-          <FormKPI />
-        </Card>
-      );
-    case "Expired Forms":
-      return (
-        <Card>
-          <Button onClick={handleWidgetDelete}>DELETE</Button>
-          <ExpiredForms />
-        </Card>
-      );
+
     case "Location With Most Tasks":
       return (
         <Card>
@@ -117,6 +100,13 @@ const Widget = (props: any) => {
         <Card>
           <Button onClick={handleWidgetDelete}>DELETE</Button>
           <RecentTaskActivity />
+        </Card>
+      );
+    case "Forms Status By Month":
+      return (
+        <Card>
+          <Button onClick={handleWidgetDelete}>DELETE</Button>
+          <FormsStatusByMonth />
         </Card>
       );
     default:

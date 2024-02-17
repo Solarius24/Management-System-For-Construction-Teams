@@ -43,7 +43,6 @@ const ModalAddTask = (props: ModalAddConfig) => {
   const id = String(Date.now());
 
   function onSubmitTask(data: any) {
-    console.log(data);
     data.id = id;
     data.taskRef = id;
     dispatch(addTask(data));
