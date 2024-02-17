@@ -49,25 +49,31 @@ export default function FormStatus() {
   );
 
   return (
-    <Card style={{ maxWidth: "40%" }}>
-      <CardTitle>Form Status</CardTitle>
+    <Card>
+      <CardTitle className="p-4">Form Status</CardTitle>
       <CardBody>
         <BarChart
           width={500}
-          height={300}
+          height={400}
           data={uniqueForms}
           margin={{
-            top: 20,
             right: 30,
             left: 20,
             bottom: 5,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" angle={270} />
+
+          <XAxis
+            dataKey="name"
+            angle={270}
+            dy={30}
+            height={100}
+            fontSize={10}
+          />
           <YAxis />
           <Tooltip />
-          <Legend />
+          <Legend verticalAlign="top" height={36} />
           <Bar dataKey="OPEN" stackId="a" fill="#8884d8" />
           <Bar dataKey="PROGRESS" stackId="a" fill="#82ca9d" />
           <Bar dataKey="CLOSED" stackId="a" fill="#82ca9d" />
