@@ -15,7 +15,6 @@ import { useNavigate } from "react-router-dom";
 import { updateFormSchedule } from "../../redux/slices/formScheduleSlice";
 
 const FormScheduleTemplate = (props: any) => {
-  console.log("template", props.formScheduleData);
   const [location, setLocation] = useState(props.formScheduleData[0].location);
   const [startDate, setStartDate] = useState(
     props.formScheduleData[0].startDate

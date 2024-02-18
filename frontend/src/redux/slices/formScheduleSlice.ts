@@ -59,6 +59,13 @@ export const formScheduleSlice = createSlice({
       );
       state.data[index] = { ...state.data[index], ...action.payload };
     },
+    deleteFormSchedule: (state, action) => {
+      axios.delete("/api/forms_schedule", { data: action.payload });
+
+      state.data = state.data.filter(
+        (item) => action.payload.includes(item.id) === false
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchFormsSchedule.fulfilled, (state, action) => {
@@ -68,7 +75,7 @@ export const formScheduleSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addFormSchedule, updateFormSchedule } =
+export const { addFormSchedule, updateFormSchedule, deleteFormSchedule } =
   formScheduleSlice.actions;
 
 export default formScheduleSlice.reducer;

@@ -61,9 +61,9 @@ export const formSlice = createSlice({
       state.data[index] = { ...state.data[index], ...action.payload };
     },
     deleteForm: (state, action) => {
-      axios.delete("/api/forms", { data: action.payload }).then((response) => {
-        console.log(response.data);
-      });
+      axios
+        .delete("/api/forms", { data: action.payload })
+        .then((response) => {});
 
       state.data = state.data.filter(
         (item) => action.payload.includes(item.id) === false
