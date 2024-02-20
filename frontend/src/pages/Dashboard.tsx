@@ -66,6 +66,7 @@ const Dashboard = () => {
         onHide={() => setModalSettingsShow(false)}
         title={"TAB SETTINGS"}
       />
+
       <ModalAddTab
         show={modalAddTabShow}
         onHide={() => setModalAddTabShow(false)}
