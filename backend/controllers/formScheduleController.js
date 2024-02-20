@@ -59,13 +59,10 @@ const createFormSchedule = async (req, res) => {
 
 // delete a form schedule
 const deleteFormSchedule = async (req, res) => {
-  const { id } = req.params;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({ error: "No such form" });
-  }
-
-  const formSchedule = await FormSchedule.findOneAndDelete({ _id: id });
+  const listOfFormsScheduleToDelete = req.body;
+  const formSchedule = await FormSchedule.deleteMany({
+    id: { $in: listOfFormsScheduleToDelete },
+  });
 
   if (!formSchedule) {
     return res.status(400).json({ error: "No such workout" });

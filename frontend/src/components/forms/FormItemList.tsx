@@ -4,6 +4,7 @@ import { Container, Table } from "react-bootstrap";
 import { fetchForms } from "../../redux/slices/formSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
 import { Link } from "react-router-dom";
+import BasicSpinner from "../BasicSpinner";
 
 const FormItemList = (props) => {
   const [selectedItem, setSelectedItem] = useState([]);
@@ -70,6 +71,7 @@ const FormItemList = (props) => {
             </th>
           </tr>
         </thead>
+        {!data && <BasicSpinner />}
         <tbody className="s">
           {data.map((item) => (
             <>

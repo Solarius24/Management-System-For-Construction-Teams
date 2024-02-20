@@ -1,5 +1,4 @@
 import { Container, Table } from "react-bootstrap";
-import assetsColumnConfigList from "../../configData/assetsConfig/assetsColumnConfigList";
 
 const AssetsList = () => {
   return (

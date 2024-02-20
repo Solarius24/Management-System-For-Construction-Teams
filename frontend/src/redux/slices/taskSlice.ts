@@ -16,6 +16,7 @@ interface TaskState {
     statusChangeComments: string;
     targetDate: string;
     taskType: string;
+    createdAt: string;
   }[];
 }
 
@@ -35,11 +36,12 @@ const initialState: TaskState = {
       statusChangeComments: "",
       targetDate: "",
       taskType: "",
+      createdAt: "",
     },
   ],
 };
 
-export const fetchTasks = createAsyncThunk("fetchForm", async () => {
+export const fetchTasks = createAsyncThunk("fetchTask", async () => {
   const response = await fetch("/api/tasks");
   const data = await response.json();
   return data;

@@ -94,11 +94,9 @@ const FormTemplate = (props: any) => {
                 aria-label="Default select example"
               >
                 <option>{status}</option>
-                <option value="OPENED">OPENED</option>
+                <option value="OPEN">OPEN</option>
                 <option value="IN PROGRESS">IN PROGRESS</option>
-                <option value="COMPLETED AND SIGNED OFF">
-                  COMPLETED AND SIGNED OFF
-                </option>
+                <option value="CLOSED">CLOSED</option>
               </Form.Select>
             </Col>
           </Form.Group>
@@ -106,12 +104,15 @@ const FormTemplate = (props: any) => {
           <Form.Group className="m-3" as={Row}>
             <Form.Label column>Location</Form.Label>
             <Col>
-              <Form.Control
-                value={location}
+              <Form.Select
                 {...register("location", { required: true })}
-                as="textarea"
                 onChange={(e) => setLocation(e.target.value)}
-              />
+              >
+                <option>{location}</option>
+                <option value="GROUND FLOOR LEVEL">GROUND FLOOR LEVEL</option>
+                <option value="INTERMEDIATE LEVEL">INTERMEDIATE LEVEL</option>
+                <option value="BASEMENT LEVEL">BASEMENT LEVEL</option>
+              </Form.Select>
             </Col>
           </Form.Group>
           <Form.Group className="m-3" as={Row}>

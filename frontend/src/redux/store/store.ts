@@ -2,12 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import formReducer from "../slices/formSlice";
 import formScheduleReducer from "../slices/formScheduleSlice";
 import taskReducer from "../slices/taskSlice";
-
+import userReducer from "../slices/userSlice";
 const store = configureStore({
   reducer: {
     form: formReducer,
     formSchedule: formScheduleReducer,
     task: taskReducer,
+    userData: userReducer,
   },
 });
 

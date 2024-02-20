@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
 import formsScheduleList from "../configData/formsConfig/formScheduleList";
-import ModalAdd from "../components/modals/ModalAddFormSchedule";
 import Fillters from "../components/Fillters";
 import taskScheduleFilter from "../configData/tasksConfig/taskScheduleFilter";
 import ModalAddFormSchedule from "../components/modals/ModalAddFormSchedule";
 import FormScheduleList from "../components/forms/FormScheduleList";
+import { deleteFormSchedule } from "../redux/slices/formScheduleSlice";
+import { useAppDispatch } from "../redux/reduxHooks";
 
 const FormScheduleTab = () => {
+  const [selectedItems, setSelectedItems] = useState([]);
   const [modalAddShow, setModalAddShow] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
+  const dispatch = useAppDispatch();
 
   const handleCloseShowFilter = () => {
     if (!showFilter) {
@@ -18,6 +21,10 @@ const FormScheduleTab = () => {
       setShowFilter(false);
     }
   };
+
+  function handleFormScheduleDelate() {
+    dispatch(deleteFormSchedule(selectedItems));
+  }
 
   return (
     <div>
@@ -39,7 +46,12 @@ const FormScheduleTab = () => {
               <Nav.Link onClick={handleCloseShowFilter}>FILTERS</Nav.Link>
             </Nav.Item>
             <NavDropdown title="ACTIONS" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#/action-6">DELETE</NavDropdown.Item>
+              <NavDropdown.Item
+                onClick={handleFormScheduleDelate}
+                href="#/action-6"
+              >
+                DELETE
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Col>
@@ -57,7 +69,7 @@ const FormScheduleTab = () => {
           </Col>
         )}
         <Col>
-          <FormScheduleList />
+          <FormScheduleList setSelectedItems={setSelectedItems} />
         </Col>
       </Row>
     </div>
