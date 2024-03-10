@@ -1,15 +1,27 @@
-import { useEffect } from "react";
+// @ts-nocheck
+import { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
 import { fetchFormsSchedule } from "../../redux/slices/formScheduleSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
 import { Link } from "react-router-dom";
 
-const FormScheduleList = () => {
+const FormScheduleList = (props) => {
+  const [selectedItem, setSelectedItem] = useState([]);
   const data = useAppSelector((state) => state.formSchedule.data);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchFormsSchedule());
   }, [dispatch]);
+
+  function handleCheckboxChange(e) {
+    const value = e.target.id;
+    if (e.target.checked) {
+      setSelectedItem([...selectedItem, value]);
+    } else {
+      setSelectedItem(selectedItem.filter((item) => item !== value));
+    }
+  }
+  props.setSelectedItems(selectedItem);
 
   return (
     <Container fluid>
@@ -57,8 +69,12 @@ const FormScheduleList = () => {
             <>
               <tr>
                 <td>
-                  {" "}
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    id={item.id}
+                    onChange={handleCheckboxChange}
+                  />
+                  <label>&nbsp;</label>
                 </td>
                 <td id="ref">
                   <Link to={`/forms_schedule/edit/${item.id}`}>{item.id}</Link>

@@ -27,7 +27,7 @@ const initialState: FormState = {
       id: `temp01`,
       formTitle: "templated",
       documentRef: " ",
-      createdDate: `${Date.now()}`,
+      createdDate: "12/01/1900",
       status: "OPEN",
       formType: "",
       details: " ",
@@ -61,9 +61,9 @@ export const formSlice = createSlice({
       state.data[index] = { ...state.data[index], ...action.payload };
     },
     deleteForm: (state, action) => {
-      axios.delete("/api/forms", { data: action.payload }).then((response) => {
-        console.log(response.data);
-      });
+      axios
+        .delete("/api/forms", { data: action.payload })
+        .then((response) => {});
 
       state.data = state.data.filter(
         (item) => action.payload.includes(item.id) === false

@@ -43,7 +43,6 @@ const ModalAddTask = (props: ModalAddConfig) => {
   const id = String(Date.now());
 
   function onSubmitTask(data: any) {
-    console.log(data);
     data.id = id;
     data.taskRef = id;
     dispatch(addTask(data));
@@ -133,7 +132,7 @@ const ModalAddTask = (props: ModalAddConfig) => {
               // value={status}
               // onChange={(e) => setStatus(e.target.value)}
             >
-              <option value="Opened">Opened</option>
+              <option value="OPEN">OPEN</option>
               {/* {createTask.status.map((item: any) => (
                 <option value={item}>{item}</option>
               ))} */}

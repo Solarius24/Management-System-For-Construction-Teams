@@ -1,12 +1,12 @@
 import React from "react";
-import { Card, CardImg } from "react-bootstrap";
+import { ListGroupItem } from "react-bootstrap";
 
 const Widget = (props: any) => {
   return (
-    <div className="border border-info">
+    <ListGroupItem className="border border-info m-2" variant="light" action>
       <img src={props.image} alt=" " />
       <h5 className="h6">{props.name}</h5>
-    </div>
+    </ListGroupItem>
   );
 };
 

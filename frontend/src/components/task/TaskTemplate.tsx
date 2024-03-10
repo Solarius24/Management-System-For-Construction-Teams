@@ -145,13 +145,13 @@ const TaskTemplate = (props: TaskTemplateData) => {
             <Form.Select
               defaultValue={props.taskData[0].taskStatus}
               aria-label="Default select example"
-              {...register("status", { required: true })}
-              value={taskStatus}
+              {...register("taskStatus", { required: true })}
               onChange={(e) => setTaskStatus(e.target.value)}
             >
-              {createTask.status.map((item: any) => (
-                <option value={item}>{item}</option>
-              ))}
+              <option>{taskStatus}</option>
+              <option value="OPEN">OPEN</option>
+              <option value="IN PROGRESS">IN PROGRESS</option>
+              <option value="CLOSED">CLOSED</option>
             </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
