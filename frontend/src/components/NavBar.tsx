@@ -33,6 +33,34 @@ const NavBar = () => {
 
   return (
     <>
+      {/* <Navbar bg="dark" data-bs-theme="dark" fixed="top" expand="lg">
+        <Nav className="me-auto mx-3">
+          <NavItem>
+            <NavLink>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "#fff",
+                }}
+                to="/"
+              >
+                FIELD VIEW
+              </Link>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "#fff",
+                }}
+                to="/forms"
+              >
+                FORMS
+              </Link>
+            </NavLink>
+          </NavItem> */}
       <Navbar bg="dark" data-bs-theme="dark" fixed="top" expand="lg">
         <Nav className="me-auto mx-3">
           <NavItem>
@@ -75,7 +103,33 @@ const NavBar = () => {
               </Link>
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "#fff",
+                }}
+                to="/tasks"
+              >
+                TASKS
+              </Link>
+            </NavLink>
+          </NavItem>
 
+          <NavItem>
+            <NavLink>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "#fff",
+                }}
+                to="/processes"
+              >
+                PROCESSES
+              </Link>
+            </NavLink>
+          </NavItem>
           <NavItem>
             <NavLink>
               <Link
