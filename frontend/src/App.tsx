@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import FormEdit from "./pages/FormEdit";
 import TaskEdit from "./pages/TaskEdit";
 import FormScheduleEdit from "./pages/FormScheduleEdit";
+import PrivacyNotice from "./pages/PrivacyNotice";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             element={<FormScheduleEdit />}
           ></Route>
           <Route path="/tasks/edit/:taskRef" element={<TaskEdit />}></Route>
+          <Route path="/privacy_notice" element={<PrivacyNotice />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

@@ -5,12 +5,13 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import ModalSwitchProject from "./modals/ModalSwitchProject";
 import { useState } from "react";
-import ModalSwitchBusinessUnit from "./modals/ModalSwitchBusinessUnit";
+import ModalMySettings from "./modals/ModalMySettings";
+import ModalProjectSetup from "./modals/ModalProjectSetup";
 
 const NavBar = () => {
   const [showSwitchProjectModal, setShowSwitchProjectModal] = useState(false);
-  const [showSwitchBusinessUnitModal, setShowBusinsessUnitModal] =
-    useState(false);
+  const [showModalMySettings, setModalMySettings] = useState(false);
+  const [showModalProjectSetup, setModalProjectSetup] = useState(false);
   const [navbarItemSelected, setNavbarItemSelected] = useState("");
   console.log(navbarItemSelected);
 
@@ -18,49 +19,25 @@ const NavBar = () => {
     setNavbarItemSelected(eventKey);
     if (eventKey === "SwitchProject") {
       setShowSwitchProjectModal(true);
-    } else if (eventKey === "SwitchBusinessUnit") {
-      setShowBusinsessUnitModal(true);
+    } else if (eventKey === "MySettings") {
+      setModalMySettings(true);
+    } else if (eventKey === "ProjectSetup") {
+      setModalProjectSetup(true);
     }
   };
 
   const handleClose = () => {
     if (navbarItemSelected === "SwitchProject") {
       setShowSwitchProjectModal(false);
-    } else if (navbarItemSelected === "SwitchBusinessUnit") {
-      setShowBusinsessUnitModal(false);
+    } else if (navbarItemSelected === "MySettings") {
+      setModalMySettings(false);
+    } else if (navbarItemSelected === "ProjectSetup") {
+      setModalProjectSetup(false);
     }
   };
 
   return (
     <>
-      {/* <Navbar bg="dark" data-bs-theme="dark" fixed="top" expand="lg">
-        <Nav className="me-auto mx-3">
-          <NavItem>
-            <NavLink>
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "#fff",
-                }}
-                to="/"
-              >
-                FIELD VIEW
-              </Link>
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink>
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "#fff",
-                }}
-                to="/forms"
-              >
-                FORMS
-              </Link>
-            </NavLink>
-          </NavItem> */}
       <Navbar bg="dark" data-bs-theme="dark" fixed="top" expand="lg">
         <Nav className="me-auto mx-3">
           <NavItem>
@@ -103,33 +80,7 @@ const NavBar = () => {
               </Link>
             </NavLink>
           </NavItem>
-          <NavItem>
-            <NavLink>
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "#fff",
-                }}
-                to="/tasks"
-              >
-                TASKS
-              </Link>
-            </NavLink>
-          </NavItem>
 
-          <NavItem>
-            <NavLink>
-              <Link
-                style={{
-                  textDecoration: "none",
-                  color: "#fff",
-                }}
-                to="/processes"
-              >
-                PROCESSES
-              </Link>
-            </NavLink>
-          </NavItem>
           <NavItem>
             <NavLink>
               <Link
@@ -169,34 +120,23 @@ const NavBar = () => {
               Switch Project
             </NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item eventKey="SwitchBusinessUnit">
-              Switch Business Unit
+            <NavDropdown.Item eventKey="MySettings">
+              My Settings
             </NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item eventKey="4.3">My Settings</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item eventKey="4.4">Project Setup</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item eventKey="4.5">Business Setup</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item eventKey="4.6">
-              ViewPoint For Projects
+
+            <NavDropdown.Item eventKey="PrivacyNotice">
+              <Link to="/privacy_notice"> Privacy Notice</Link>
             </NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item eventKey="4.7">Sign off</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item eventKey="4.8">
-              Viewpoint Privacy Notice
-            </NavDropdown.Item>
+            <NavDropdown.Item eventKey="SignOff">Sign off</NavDropdown.Item>
             <NavDropdown.Divider />
           </NavDropdown>
         </Nav>
       </Navbar>
       <ModalSwitchProject show={showSwitchProjectModal} onHide={handleClose} />
-      <ModalSwitchBusinessUnit
-        show={showSwitchBusinessUnitModal}
-        onHide={handleClose}
-      />
+      <ModalMySettings show={showModalMySettings} onHide={handleClose} />
+      <ModalProjectSetup show={showModalProjectSetup} onHide={handleClose} />
     </>
   );
 };

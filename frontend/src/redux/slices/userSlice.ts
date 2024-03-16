@@ -8,6 +8,11 @@ interface UserState {
     tabName: string;
     listOfWidgets: { _id: string; widgetName: string; widgetType: string }[];
   }[];
+  listOfColumnsToDisplay: {
+    form: string[];
+    formSchedule: string[];
+    task: string[];
+  };
 }
 
 const initialState: UserState = {
@@ -25,6 +30,22 @@ const initialState: UserState = {
       ],
     },
   ],
+  listOfColumnsToDisplay: {
+    form: [
+      "Ref",
+      "Title",
+      "Status",
+      "Location",
+      "Created date",
+      "Type",
+      "By Organisation",
+      "Status Changed",
+      "Expiry Date",
+      "Actions",
+    ],
+    formSchedule: [],
+    task: [],
+  },
 };
 
 export const fetchUserData = createAsyncThunk("fetchUserData", async () => {
@@ -41,6 +62,13 @@ export const userSlice = createSlice({
         params: { id: "001" },
       });
       state.listOfTabs.push(action.payload);
+    },
+    addColumnToListOfColumnToDisplay: (state, action) => {
+      console.log(action.payload);
+      // axios.patch("/api/userData", action.payload, {
+      //   params: { id: "001" },
+      // });
+      state.listOfColumnsToDisplay.form = action.payload;
     },
 
     addWidget: (state, action) => {
@@ -97,6 +125,7 @@ export const userSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
+  addColumnToListOfColumnToDisplay,
   addUserData,
   updateUserData,
   deleteUserTab,

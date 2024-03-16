@@ -1,14 +1,12 @@
 import { Button, ListGroup, ListGroupItem, Modal } from "react-bootstrap";
 
-const ModalSwitchBusinessUnit = (props: any) => {
-  function handleSelect() {
-    console.log("selected");
-  }
+const ModalProjectSetup = (props: any) => {
+  function handleSelect() {}
   return (
     <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          SWITCH BUSINESS UNIT
+          Project Setup
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -41,4 +39,4 @@ const ModalSwitchBusinessUnit = (props: any) => {
   );
 };
 
-export default ModalSwitchBusinessUnit;
+export default ModalProjectSetup;

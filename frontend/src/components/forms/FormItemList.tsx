@@ -9,6 +9,9 @@ import BasicSpinner from "../BasicSpinner";
 const FormItemList = (props) => {
   const [selectedItem, setSelectedItem] = useState([]);
   const data = useAppSelector((state) => state.form.data);
+  const listOfColumnsToDisplay = useAppSelector(
+    (state) => state.userData.listOfColumnsToDisplay.form
+  );
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchForms());
@@ -34,41 +37,49 @@ const FormItemList = (props) => {
               <label>&nbsp;</label>
             </th>
 
-            <th>
+            {listOfColumnsToDisplay.map((item) => {
+              return (
+                <th id="item">
+                  <a href=" ">{item}</a>
+                </th>
+              );
+            })}
+            {/* 
+            <th id="ref">
               <a href=" ">Ref</a>
             </th>
-            <th>
+            <th id="title">
               <a href=" ">Title</a>
             </th>
-            <th>
+            <th id="status">
               <a href=" ">Status</a>
             </th>
-            <th>
+            <th id="location">
               <a href=" ">Location</a>
             </th>
 
-            <th>
+            <th id="createdDate">
               <span></span>
               <a href=" ">Created</a>
             </th>
-            <th>
+            <th id="type">
               <a href=" ">Type</a>
             </th>
-            <th>
+            <th id="byUser">
               <a href=" ">By User</a>
             </th>
-            <th>
+            <th id="byOrganisation">
               <a href=" ">By Organisation</a>
             </th>
-            <th>
+            <th id="statusChanged">
               <a href=" ">Status Changed</a>
             </th>
-            <th>
+            <th id="expiryDate">
               <a href=" ">Expiry Date</a>
             </th>
-            <th>
+            <th id="actions">
               <a href=" ">Actions</a>
-            </th>
+            </th> */}
           </tr>
         </thead>
         {!data && <BasicSpinner />}
@@ -94,11 +105,11 @@ const FormItemList = (props) => {
                 <td id="location">{item.location}</td>
                 <td id="createdDate">{item.createdDate}</td>
                 <td id="type">{item.formType}</td>
-                <td id="createdBy"></td>
-                <td id="organizationName"></td>
-                <td id="statusChangedDate"></td>
+                <td id="byUser"></td>
+                <td id="byOrganisation"></td>
+                <td id="statusChanged"></td>
                 <td id="expiryDate"></td>
-                <td id="action"></td>
+                <td id="actions"></td>
               </tr>
               <div></div>
             </>
