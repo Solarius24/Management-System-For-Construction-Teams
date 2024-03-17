@@ -40,7 +40,7 @@ const FormItemList = (props) => {
             {listOfColumnsToDisplay.map((item) => {
               return (
                 <th id="item">
-                  <a href=" ">{item}</a>
+                  <a href=" ">{item.substring(2)}</a>
                 </th>
               );
             })}
@@ -95,12 +95,45 @@ const FormItemList = (props) => {
                   />
                   <label>&nbsp;</label>
                 </td>
-                <td id="ref">
-                  <Link to={`/forms/edit/${item.documentRef}`}>
-                    {item.documentRef}
-                  </Link>
-                </td>
-                <td id="title">{item.formTitle}</td>
+                {listOfColumnsToDisplay.includes("01Ref") && (
+                  <td id="ref">
+                    <Link to={`/forms/edit/${item.documentRef}`}>
+                      {item.documentRef}
+                    </Link>
+                  </td>
+                )}
+                {listOfColumnsToDisplay.includes("02Title") && (
+                  <td id="title">{item.formTitle}</td>
+                )}
+                {listOfColumnsToDisplay.includes("03Status") && (
+                  <td id="status">{item.status}</td>
+                )}
+                {listOfColumnsToDisplay.includes("04Location") && (
+                  <td id="location">{item.location}</td>
+                )}
+                {listOfColumnsToDisplay.includes("05Created date") && (
+                  <td id="createdDate">{item.createdDate}</td>
+                )}
+                {listOfColumnsToDisplay.includes("06Type") && (
+                  <td id="type">{item.formType}</td>
+                )}
+                {listOfColumnsToDisplay.includes("07By User") && (
+                  <td id="byUser"></td>
+                )}
+                {listOfColumnsToDisplay.includes("08By Organisation") && (
+                  <td id="byOrganisation"></td>
+                )}
+                {listOfColumnsToDisplay.includes("09Status Changed") && (
+                  <td id="statusChanged"></td>
+                )}
+                {listOfColumnsToDisplay.includes("10Expiry Date") && (
+                  <td id="expiryDate"></td>
+                )}
+                {listOfColumnsToDisplay.includes("11Actions") && (
+                  <td id="actions"></td>
+                )}
+
+                {/* <td id="title">{item.formTitle}</td>
                 <td id="status">{item.status}</td>
                 <td id="location">{item.location}</td>
                 <td id="createdDate">{item.createdDate}</td>
@@ -109,7 +142,7 @@ const FormItemList = (props) => {
                 <td id="byOrganisation"></td>
                 <td id="statusChanged"></td>
                 <td id="expiryDate"></td>
-                <td id="actions"></td>
+                <td id="actions"></td> */}
               </tr>
               <div></div>
             </>

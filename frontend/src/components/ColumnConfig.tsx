@@ -33,7 +33,10 @@ const ColumnConfig = (props: ColumnConfigList) => {
     return dispatch(addColumnToListOfColumnToDisplay(copyData));
   }
   return (
-    <Card className="d-flex flex-column flex-shrink-0 text-white bg-dark ove">
+    <Card
+      className="d-flex flex-column text-white bg-dark ove"
+      style={{ width: "15rem" }}
+    >
       <CardTitle className="d-flex justify-content-between m-2">
         <div className="fs-6">COLUMN CONFIGURATION</div>
         <Button onClick={props.onHide}>CLOSE</Button>
@@ -44,33 +47,73 @@ const ColumnConfig = (props: ColumnConfigList) => {
           style={{ height: "100%" }}
         >
           <FormGroup onChange={addColumn}>
-            {/* {props.columnConfigList.map((item) => (
-              <Form.Check
-                label={item.name}
-                name="6"
-                type="checkbox"
-                id={item.id}
-              />
-            ))} */}
-            <FormCheck type="checkbox" id="Ref" label="REF" />
-            <FormCheck type="checkbox" id="Title" label="TITLE" />
-            <FormCheck type="checkbox" id="Status" label="STATUS" />
-            <FormCheck type="checkbox" id="Location" label="LOCATION" />
-            <FormCheck type="checkbox" id="Created date" label="CREATED DATE" />
-            <FormCheck type="checkbox" id="Type" label="TYPE" />
+            <FormCheck
+              checked={data.includes("01Ref") ? true : false}
+              type="checkbox"
+              id="01Ref"
+              label="REF"
+            />
+            <FormCheck
+              checked={data.includes("02Title") ? true : false}
+              type="checkbox"
+              id="02Title"
+              label="TITLE"
+            />
+            <FormCheck
+              checked={data.includes("03Status") ? true : false}
+              type="checkbox"
+              id="03Status"
+              label="STATUS"
+            />
+            <FormCheck
+              checked={data.includes("04Location") ? true : false}
+              type="checkbox"
+              id="04Location"
+              label="LOCATION"
+            />
+            <FormCheck
+              checked={data.includes("05Created date") ? true : false}
+              type="checkbox"
+              id="05Created date"
+              label="CREATED DATE"
+            />
+            <FormCheck
+              checked={data.includes("06Type") ? true : false}
+              type="checkbox"
+              id="06Type"
+              label="TYPE"
+            />
+            <FormCheck
+              checked={data.includes("07By User") ? true : false}
+              type="checkbox"
+              id="07By User"
+              label="BY USER"
+            />
 
             <FormCheck
+              checked={data.includes("08By Organisation") ? true : false}
               type="checkbox"
-              id="By Organisation"
+              id="08By Organisation"
               label="BY ORGANISATION"
             />
             <FormCheck
+              checked={data.includes("09Status Changed") ? true : false}
               type="checkbox"
-              id="Status Changed"
+              id="09Status Changed"
               label="STATUS CHANGED"
             />
-            <FormCheck type="checkbox" id="Expiry Date" label="EXPIRY DATE" />
-            <FormCheck type="checkbox" id="Actions" label="ACTIONS" />
+            <FormCheck
+              checked={data.includes("10Expiry Date") ? true : false}
+              type="checkbox"
+              id="10Expiry Date"
+              label="EXPIRY DATE"
+            />
+            <FormCheck
+              checked={data.includes("11Actions") ? true : false}
+              type="checkbox"
+              id="11Actions"
+              label="ACTIONS"
+            />
           </FormGroup>
         </Form>
       </CardBody>
@@ -79,30 +122,3 @@ const ColumnConfig = (props: ColumnConfigList) => {
 };
 
 export default ColumnConfig;
-
-{
-  /* <div
-className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark ove"
-style={{ width: "280px" }}
->
-<div className="d-flex justify-content-between m-2">
-  <div className="fs-6">COLUMN CONFIGURATION</div>
-  <Button onClick={props.onHide}>CLOSE</Button>
-</div>
-
-<hr />
-<ul className="nav nav-pills flex-column mb-auto">
-  <Form>
-    {columnConfigList.map((item) => (
-      <Form.Check
-        label={item.name}
-        name="6"
-        type="checkbox"
-        id={item.id}
-      />
-    ))}
-  </Form>
-</ul>
-<hr />
-</div> */
-}

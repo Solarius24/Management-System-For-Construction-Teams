@@ -97,7 +97,7 @@ const FormsTab = () => {
           </Col>
         )}
         {showColumnConfig && (
-          <Col>
+          <Col className="col-2">
             <ColumnConfig
               handleClose={handleCloseShowColumnConfig}
               show={showColumnConfig}
@@ -106,7 +106,7 @@ const FormsTab = () => {
             />
           </Col>
         )}
-        <Col>
+        <Col className="col">
           <FormItemList setSelectedItems={setSelectedItems} />
         </Col>
       </Row>

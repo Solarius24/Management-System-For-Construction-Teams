@@ -15,6 +15,11 @@ const UserSchema = new Schema({
       ],
     },
   ],
+  listOfColumnToDisplay: {
+    form: [String],
+    task: [String],
+    formSchedule: [String],
+  },
 });
 
 module.exports = mongoose.model("User", UserSchema);

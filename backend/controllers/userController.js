@@ -136,6 +136,21 @@ const deleteWidget = async (req, res) => {
   res.status(200).json(widget);
 };
 
+const updateListOfColumnToDisplay = async (req, res) => {
+  const data = req.body;
+
+  const listOfColumnToDisplay = await User.updateOne(
+    {},
+    { $set: { "listOfColumnToDisplay.form": data } }
+  );
+
+  if (!listOfColumnToDisplay) {
+    return res.status(400).json({ error: "Data Load Error" });
+  }
+
+  res.status(200).json(listOfColumnToDisplay);
+};
+
 module.exports = {
   getUserTabs,
   createUserTabs,
@@ -144,4 +159,5 @@ module.exports = {
   updateUserTabName,
   updateWidgetList,
   deleteWidget,
+  updateListOfColumnToDisplay,
 };

@@ -11,7 +11,7 @@ const FormScheduleSchema = new Schema(
     location: { type: String },
     issuedByOrganisation: { type: String },
     startDate: { type: String },
-    repeat: { String },
+    repeat: { type: String },
     issuedBy: { type: String },
   },
   { timestamps: true }

@@ -32,16 +32,17 @@ const initialState: UserState = {
   ],
   listOfColumnsToDisplay: {
     form: [
-      "Ref",
-      "Title",
-      "Status",
-      "Location",
-      "Created date",
-      "Type",
-      "By Organisation",
-      "Status Changed",
-      "Expiry Date",
-      "Actions",
+      "01Ref",
+      "02Title",
+      "03Status",
+      "04Location",
+      "05Created date",
+      "06Type",
+      "07By User",
+      "08By Organisation",
+      "09Status Changed",
+      "10Expiry Date",
+      "11Actions",
     ],
     formSchedule: [],
     task: [],
@@ -64,11 +65,11 @@ export const userSlice = createSlice({
       state.listOfTabs.push(action.payload);
     },
     addColumnToListOfColumnToDisplay: (state, action) => {
-      console.log(action.payload);
-      // axios.patch("/api/userData", action.payload, {
-      //   params: { id: "001" },
-      // });
-      state.listOfColumnsToDisplay.form = action.payload;
+      console.log("add column");
+      axios.patch("/api/updateListOfColumns", action.payload, {
+        params: { id: "001" },
+      });
+      state.listOfColumnsToDisplay.form = action.payload.sort();
     },
 
     addWidget: (state, action) => {

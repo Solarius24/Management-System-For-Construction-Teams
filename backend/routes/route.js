@@ -30,6 +30,7 @@ const {
   updateUserTabName,
   updateWidgetList,
   deleteWidget,
+  updateListOfColumnToDisplay,
 } = require("../controllers/userController");
 
 const router = express.Router();
@@ -71,5 +72,8 @@ router.patch("/userDataTabName", updateUserTabName);
 
 //ADD WIDGET TO WIDGET LIST
 router.patch("/userData/:id", updateWidgetList);
+
+//ADD LIST OF COLUMNS TO DISPLAY
+router.patch("/updateListOfColumns", updateListOfColumnToDisplay);
 
 module.exports = router;
