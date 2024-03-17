@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, Col, Container, Nav, NavDropdown, Row } from "react-bootstrap";
 import Fillters from "../components/Fillters";
 import assetsFilter from "../configData/assetsConfig/assetsFilter";
-import ColumnConfig from "../components/ColumnConfig";
+import ColumnConfig from "../components/forms/FormColumnConfig";
 import assetsColumnConfigList from "../configData/assetsConfig/assetsColumnConfigList";
 import assetsActionList from "../configData/assetsConfig/assetsActionList";
 import AssetsList from "../components/assets/AssetsList";

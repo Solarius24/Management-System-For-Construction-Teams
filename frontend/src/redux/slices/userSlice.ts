@@ -10,7 +10,7 @@ interface UserState {
   }[];
   listOfColumnsToDisplay: {
     form: string[];
-    formSchedule: string[];
+
     task: string[];
   };
 }
@@ -44,8 +44,20 @@ const initialState: UserState = {
       "10Expiry Date",
       "11Actions",
     ],
-    formSchedule: [],
-    task: [],
+
+    task: [
+      "01Ref",
+      "02Description",
+      "03Task Type",
+      "04Location",
+      "05Status",
+      "06Package",
+      "07Target Date",
+      "08By Organisation",
+      "09By User",
+      "10Cause",
+      "11Cause By",
+    ],
   },
 };
 
@@ -64,12 +76,17 @@ export const userSlice = createSlice({
       });
       state.listOfTabs.push(action.payload);
     },
-    addColumnToListOfColumnToDisplay: (state, action) => {
-      console.log("add column");
-      axios.patch("/api/updateListOfColumns", action.payload, {
+    addFormColumnToListOfColumnToDisplay: (state, action) => {
+      axios.patch("/api/updateFormListOfColumns", action.payload, {
         params: { id: "001" },
       });
       state.listOfColumnsToDisplay.form = action.payload.sort();
+    },
+    addTaskColumnToListOfColumnToDisplay: (state, action) => {
+      axios.patch("/api/updateTaskListOfColumns", action.payload, {
+        params: { id: "001" },
+      });
+      state.listOfColumnsToDisplay.task = action.payload.sort();
     },
 
     addWidget: (state, action) => {
@@ -126,7 +143,8 @@ export const userSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
-  addColumnToListOfColumnToDisplay,
+  addFormColumnToListOfColumnToDisplay,
+  addTaskColumnToListOfColumnToDisplay,
   addUserData,
   updateUserData,
   deleteUserTab,

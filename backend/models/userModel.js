@@ -18,7 +18,6 @@ const UserSchema = new Schema({
   listOfColumnToDisplay: {
     form: [String],
     task: [String],
-    formSchedule: [String],
   },
 });
 

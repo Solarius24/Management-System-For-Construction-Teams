@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
 import Fillters from "../components/Fillters";
-import ColumnConfig from "../components/ColumnConfig";
+import ColumnConfig from "../components/forms/FormColumnConfig";
 import ModalAddForm from "../components/modals/ModalAddForm";
 import formFilters from "../configData/formsConfig/formsFilter";
 import formsList from "../configData/formsConfig/formsList";
@@ -9,6 +9,7 @@ import formsColumnConfigList from "../configData/formsConfig/formsColumnConfigLi
 import FormItemList from "../components/forms/FormItemList";
 import { deleteForm } from "../redux/slices/formSlice";
 import { useAppDispatch } from "../redux/reduxHooks";
+import FormColumnConfig from "../components/forms/FormColumnConfig";
 
 const FormsTab = () => {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -98,7 +99,7 @@ const FormsTab = () => {
         )}
         {showColumnConfig && (
           <Col className="col-2">
-            <ColumnConfig
+            <FormColumnConfig
               handleClose={handleCloseShowColumnConfig}
               show={showColumnConfig}
               onHide={() => setShowColumnConfig(false)}

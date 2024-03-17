@@ -7,8 +7,8 @@ import {
   FormCheck,
   FormGroup,
 } from "react-bootstrap";
-import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
-import { addColumnToListOfColumnToDisplay } from "../redux/slices/userSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
+import { addTaskColumnToListOfColumnToDisplay } from "../../redux/slices/userSlice";
 
 interface ColumnConfigList {
   handleClose: () => void;
@@ -19,7 +19,7 @@ interface ColumnConfigList {
 
 const ColumnConfig = (props: ColumnConfigList) => {
   const data = useAppSelector(
-    (state) => state.userData.listOfColumnsToDisplay.form
+    (state) => state.userData.listOfColumnsToDisplay.task
   );
   const dispatch = useAppDispatch();
   function addColumn(e: any) {
@@ -30,20 +30,20 @@ const ColumnConfig = (props: ColumnConfigList) => {
       let unchecked = copyData.filter((col) => col !== e.target.id);
       copyData = unchecked;
     }
-    return dispatch(addColumnToListOfColumnToDisplay(copyData));
+    return dispatch(addTaskColumnToListOfColumnToDisplay(copyData));
   }
   return (
     <Card
-      className="d-flex flex-column text-white bg-dark ove"
+      className="d-flex flex-column text-white bg-dark"
       style={{ width: "15rem" }}
     >
       <CardTitle className="d-flex justify-content-between m-2">
         <div className="fs-6">COLUMN CONFIGURATION</div>
         <Button onClick={props.onHide}>CLOSE</Button>
       </CardTitle>
-      <CardBody style={{ height: "70vh" }} className="p-2">
+      <CardBody className="p-2">
         <Form
-          className="nav nav-pills flex-column mb-auto overflow-scroll"
+          className="nav nav-pills flex-column mb-auto"
           style={{ height: "100%" }}
         >
           <FormGroup onChange={addColumn}>
@@ -54,16 +54,16 @@ const ColumnConfig = (props: ColumnConfigList) => {
               label="REF"
             />
             <FormCheck
-              checked={data.includes("02Title") ? true : false}
+              checked={data.includes("02Description") ? true : false}
               type="checkbox"
-              id="02Title"
-              label="TITLE"
+              id="02Description"
+              label="DESCRIPTION"
             />
             <FormCheck
-              checked={data.includes("03Status") ? true : false}
+              checked={data.includes("03Task Type") ? true : false}
               type="checkbox"
-              id="03Status"
-              label="STATUS"
+              id="03Task Type"
+              label="TASK TYPE"
             />
             <FormCheck
               checked={data.includes("04Location") ? true : false}
@@ -72,22 +72,22 @@ const ColumnConfig = (props: ColumnConfigList) => {
               label="LOCATION"
             />
             <FormCheck
-              checked={data.includes("05Created date") ? true : false}
+              checked={data.includes("05Status") ? true : false}
               type="checkbox"
-              id="05Created date"
-              label="CREATED DATE"
+              id="05Status"
+              label="STATUS"
             />
             <FormCheck
-              checked={data.includes("06Type") ? true : false}
+              checked={data.includes("06Package") ? true : false}
               type="checkbox"
-              id="06Type"
-              label="TYPE"
+              id="06Package"
+              label="PACKAGE"
             />
             <FormCheck
-              checked={data.includes("07By User") ? true : false}
+              checked={data.includes("07Target Date") ? true : false}
               type="checkbox"
-              id="07By User"
-              label="BY USER"
+              id="07Target Date"
+              label="TARGET DATE"
             />
 
             <FormCheck
@@ -97,22 +97,22 @@ const ColumnConfig = (props: ColumnConfigList) => {
               label="BY ORGANISATION"
             />
             <FormCheck
-              checked={data.includes("09Status Changed") ? true : false}
+              checked={data.includes("09By User") ? true : false}
               type="checkbox"
-              id="09Status Changed"
-              label="STATUS CHANGED"
+              id="09By User"
+              label="BY USER"
             />
             <FormCheck
-              checked={data.includes("10Expiry Date") ? true : false}
+              checked={data.includes("10Cause") ? true : false}
               type="checkbox"
-              id="10Expiry Date"
-              label="EXPIRY DATE"
+              id="10Cause"
+              label="CAUSE"
             />
             <FormCheck
-              checked={data.includes("11Actions") ? true : false}
+              checked={data.includes("11Cause By") ? true : false}
               type="checkbox"
-              id="11Actions"
-              label="ACTIONS"
+              id="11Cause By"
+              label="CAUSE BY"
             />
           </FormGroup>
         </Form>

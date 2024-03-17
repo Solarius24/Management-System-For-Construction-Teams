@@ -30,7 +30,8 @@ const {
   updateUserTabName,
   updateWidgetList,
   deleteWidget,
-  updateListOfColumnToDisplay,
+  updateFormListOfColumnToDisplay,
+  updateTaskListOfColumnToDisplay,
 } = require("../controllers/userController");
 
 const router = express.Router();
@@ -73,7 +74,9 @@ router.patch("/userDataTabName", updateUserTabName);
 //ADD WIDGET TO WIDGET LIST
 router.patch("/userData/:id", updateWidgetList);
 
-//ADD LIST OF COLUMNS TO DISPLAY
-router.patch("/updateListOfColumns", updateListOfColumnToDisplay);
+//ADD LIST OF COLUMNS TO DISPLAY ON FORM PAGE
+router.patch("/updateFormListOfColumns", updateFormListOfColumnToDisplay);
+//ADD LIST OF COLUMNS TO DISPLAY ON TASK PAGE
+router.patch("/updateTaskListOfColumns", updateTaskListOfColumnToDisplay);
 
 module.exports = router;

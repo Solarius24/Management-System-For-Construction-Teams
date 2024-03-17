@@ -9,6 +9,9 @@ import BasicSpiner from "../BasicSpinner";
 const TasksList = (props) => {
   const [selectedItem, setSelectedItem] = useState([]);
   const data = useAppSelector((state) => state.task.data);
+  const listOfColumnsToDisplay = useAppSelector(
+    (state) => state.userData.listOfColumnsToDisplay.task
+  );
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchTasks());
@@ -33,42 +36,13 @@ const TasksList = (props) => {
               <input type="checkbox" />
               <label>&nbsp;</label>
             </th>
-
-            <th>
-              <a href=" ">Ref</a>
-            </th>
-            <th>
-              <a href=" ">Description</a>
-            </th>
-            <th>
-              <a href=" ">Task Type</a>
-            </th>
-            <th>
-              <a href=" ">Location</a>
-            </th>
-
-            <th>
-              <span></span>
-              <a href=" ">Status</a>
-            </th>
-            <th>
-              <a href=" ">Package</a>
-            </th>
-            <th>
-              <a href=" ">Target Date</a>
-            </th>
-            <th>
-              <a href=" ">By Organisation</a>
-            </th>
-            <th>
-              <a href=" ">By User</a>
-            </th>
-            <th>
-              <a href=" ">Cause</a>
-            </th>
-            <th>
-              <a href=" ">Cause By</a>
-            </th>
+            {listOfColumnsToDisplay.map((item) => {
+              return (
+                <th id="item">
+                  <a href=" ">{item.substring(2)}</a>
+                </th>
+              );
+            })}
           </tr>
         </thead>
 
@@ -85,19 +59,43 @@ const TasksList = (props) => {
                   />
                   <label>&nbsp;</label>
                 </td>
-                <td id="ref">
-                  <Link to={`/tasks/edit/${item.taskRef}`}>{item.taskRef}</Link>
-                </td>
-                <td id="description">{item.description}</td>
-                <td id="taskType">{item.taskType}</td>
-                <td id="location">{item.location}</td>
-                <td id="status">{item.taskStatus}</td>
-                <td id="package">{item.contractPackage}</td>
-                <td id="targetDate">{item.targetDate}</td>
-                <td id="issuedToOrgaznization">{item.issuedToOrganisation}</td>
-                <td id="issuedByUser">{item.issuedByUser}</td>
-                <td id="cause">{item.cause}</td>
-                <td id="causedBy">{item.causedBy}</td>
+                {listOfColumnsToDisplay.includes("01Ref") && (
+                  <td id="ref">
+                    <Link to={`/forms/edit/${item.documentRef}`}>
+                      {item.taskRef}
+                    </Link>
+                  </td>
+                )}
+                {listOfColumnsToDisplay.includes("02Description") && (
+                  <td id="description">{item.description}</td>
+                )}
+                {listOfColumnsToDisplay.includes("03Task Type") && (
+                  <td id="task type">{item.taskType}</td>
+                )}
+                {listOfColumnsToDisplay.includes("04Location") && (
+                  <td id="location">{item.location}</td>
+                )}
+                {listOfColumnsToDisplay.includes("05Status") && (
+                  <td id="status">{item.taskStatus}</td>
+                )}
+                {listOfColumnsToDisplay.includes("06Package") && (
+                  <td id="package">{item.contractPackage}</td>
+                )}
+                {listOfColumnsToDisplay.includes("07Target Date") && (
+                  <td id="target date">{item.targetDate}</td>
+                )}
+                {listOfColumnsToDisplay.includes("08By Organisation") && (
+                  <td id="byOrganisation">{item.issuedToOrganisation}</td>
+                )}
+                {listOfColumnsToDisplay.includes("09By User") && (
+                  <td id="byUser">{item.issuedByUser}</td>
+                )}
+                {listOfColumnsToDisplay.includes("10Cause") && (
+                  <td id="cause">{item.cause}</td>
+                )}
+                {listOfColumnsToDisplay.includes("11Cause By") && (
+                  <td id="cause by">{item.causedBy}</td>
+                )}
               </tr>
             </>
           ))}

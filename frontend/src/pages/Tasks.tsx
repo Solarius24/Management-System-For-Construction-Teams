@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
 import Fillters from "../components/Fillters";
-import ColumnConfig from "../components/ColumnConfig";
 import tasksFilter from "../configData/tasksConfig/tasksFilter";
 import TasksList from "../components/task/TasksList";
 import columnConfigList from "../configData/columnConfigList";
@@ -9,6 +8,7 @@ import tasksList from "../configData/tasksConfig/tasksList";
 import ModalAddTask from "../components/modals/ModalAddTask";
 import { deleteTask } from "../redux/slices/taskSlice";
 import { useAppDispatch } from "../redux/reduxHooks";
+import TaskColumnConfig from "../components/task/TaskColumnConfig";
 
 const Tasks = () => {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -41,15 +41,6 @@ const Tasks = () => {
   return (
     <div className="mt-5">
       <Row>
-        {modalAddShow && (
-          <ModalAddTask
-            title="ADD NEW TASK"
-            show={modalAddShow}
-            onHide={() => setModalAddShow(false)}
-            list={tasksList}
-          />
-        )}
-
         <Col>
           <Nav justify variant="tabs" defaultActiveKey="/home">
             <Nav.Item>
@@ -105,10 +96,9 @@ const Tasks = () => {
             />
           </Col>
         )}
-
         {showColumnConfig && (
-          <Col>
-            <ColumnConfig
+          <Col className="col-2">
+            <TaskColumnConfig
               handleClose={handleCloseShowColumnConfig}
               show={showColumnConfig}
               onHide={() => setShowColumnConfig(false)}
@@ -116,10 +106,18 @@ const Tasks = () => {
             />
           </Col>
         )}
-        <Col>
+        <Col className="col">
           <TasksList setSelectedItems={setSelectedItems} />
         </Col>
       </Row>
+      {modalAddShow && (
+        <ModalAddTask
+          title="ADD NEW TASK"
+          show={modalAddShow}
+          onHide={() => setModalAddShow(false)}
+          list={tasksList}
+        />
+      )}
     </div>
   );
 };
