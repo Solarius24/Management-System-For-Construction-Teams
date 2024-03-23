@@ -42,9 +42,9 @@ const initialState: TaskState = {
 };
 
 export const fetchTasks = createAsyncThunk("fetchTask", async () => {
-  const response = await fetch("/api/tasks");
-  const data = await response.json();
-  return data;
+  const response = await axios("/api/tasks");
+  // const data = await response.json();
+  return response.data;
 });
 
 export const taskSlice = createSlice({

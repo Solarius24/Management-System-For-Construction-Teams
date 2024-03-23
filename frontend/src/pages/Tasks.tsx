@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
 import Fillters from "../components/Fillters";
-import tasksFilter from "../configData/tasksConfig/tasksFilter";
 import TasksList from "../components/task/TasksList";
 import columnConfigList from "../configData/columnConfigList";
 import tasksList from "../configData/tasksConfig/tasksList";
@@ -92,7 +91,6 @@ const Tasks = () => {
               handleClose={handleCloseShowFilter}
               show={showFilter}
               onHide={() => setShowFilter(false)}
-              filterData={tasksFilter}
             />
           </Col>
         )}

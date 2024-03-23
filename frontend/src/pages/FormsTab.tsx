@@ -1,22 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
-import Fillters from "../components/Fillters";
-import ColumnConfig from "../components/forms/FormColumnConfig";
 import ModalAddForm from "../components/modals/ModalAddForm";
-import formFilters from "../configData/formsConfig/formsFilter";
 import formsList from "../configData/formsConfig/formsList";
 import formsColumnConfigList from "../configData/formsConfig/formsColumnConfigList";
 import FormItemList from "../components/forms/FormItemList";
-import { deleteForm } from "../redux/slices/formSlice";
+import { deleteForm, fetchForms } from "../redux/slices/formSlice";
 import { useAppDispatch } from "../redux/reduxHooks";
 import FormColumnConfig from "../components/forms/FormColumnConfig";
+import FormFillters from "../components/forms/FormFillters";
 
 const FormsTab = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [modalAddShow, setModalAddShow] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [showColumnConfig, setShowColumnConfig] = useState(false);
+  const [filterData, setFilterData] = useState({});
   const dispatch = useAppDispatch();
+  // useEffect(() => {
+  //   console.log(filterData);
+  //   dispatch(fetchForms(filterData));
+  // }, [filterData]);
+
   const handleCloseShowFilter = () => {
     if (!showFilter) {
       setShowColumnConfig(false);
@@ -89,11 +93,11 @@ const FormsTab = () => {
       <Row>
         {showFilter && (
           <Col>
-            <Fillters
+            <FormFillters
               handleClose={handleCloseShowFilter}
               show={showFilter}
               onHide={() => setShowFilter(false)}
-              filterData={formFilters}
+              setFilterData={(filterData) => setFilterData(filterData)}
             />
           </Col>
         )}

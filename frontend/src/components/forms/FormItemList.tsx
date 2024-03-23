@@ -13,9 +13,9 @@ const FormItemList = (props) => {
     (state) => state.userData.listOfColumnsToDisplay.form
   );
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchForms());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchForms());
+  // }, [dispatch]);
 
   function handleCheckboxChange(e) {
     const value = e.target.id;
@@ -31,7 +31,7 @@ const FormItemList = (props) => {
     <Container fluid>
       <Table striped bordered hover>
         <thead>
-          <tr>
+          <tr style={{ fontSize: "0.9rem" }}>
             <th>
               <input type="checkbox" />
               <label>&nbsp;</label>
@@ -44,49 +44,13 @@ const FormItemList = (props) => {
                 </th>
               );
             })}
-            {/* 
-            <th id="ref">
-              <a href=" ">Ref</a>
-            </th>
-            <th id="title">
-              <a href=" ">Title</a>
-            </th>
-            <th id="status">
-              <a href=" ">Status</a>
-            </th>
-            <th id="location">
-              <a href=" ">Location</a>
-            </th>
-
-            <th id="createdDate">
-              <span></span>
-              <a href=" ">Created</a>
-            </th>
-            <th id="type">
-              <a href=" ">Type</a>
-            </th>
-            <th id="byUser">
-              <a href=" ">By User</a>
-            </th>
-            <th id="byOrganisation">
-              <a href=" ">By Organisation</a>
-            </th>
-            <th id="statusChanged">
-              <a href=" ">Status Changed</a>
-            </th>
-            <th id="expiryDate">
-              <a href=" ">Expiry Date</a>
-            </th>
-            <th id="actions">
-              <a href=" ">Actions</a>
-            </th> */}
           </tr>
         </thead>
         {!data && <BasicSpinner />}
         <tbody className="s">
           {data.map((item) => (
             <>
-              <tr>
+              <tr style={{ fontSize: "0.9rem" }}>
                 <td>
                   <input
                     type="checkbox"
@@ -132,17 +96,6 @@ const FormItemList = (props) => {
                 {listOfColumnsToDisplay.includes("11Actions") && (
                   <td id="actions"></td>
                 )}
-
-                {/* <td id="title">{item.formTitle}</td>
-                <td id="status">{item.status}</td>
-                <td id="location">{item.location}</td>
-                <td id="createdDate">{item.createdDate}</td>
-                <td id="type">{item.formType}</td>
-                <td id="byUser"></td>
-                <td id="byOrganisation"></td>
-                <td id="statusChanged"></td>
-                <td id="expiryDate"></td>
-                <td id="actions"></td> */}
               </tr>
               <div></div>
             </>

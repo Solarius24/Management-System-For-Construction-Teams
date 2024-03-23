@@ -39,11 +39,14 @@ const initialState: FormState = {
   ],
 };
 
-export const fetchForms = createAsyncThunk("fetchForm", async () => {
-  const response = await fetch("/api/forms");
-  const data = await response.json();
-  return data;
-});
+export const fetchForms = createAsyncThunk(
+  "fetchForm",
+  async (filter?: Object) => {
+    const response = await axios("/api/forms", { params: filter });
+    // const data = await response.json();
+    return response.data;
+  }
+);
 
 export const formSlice = createSlice({
   name: "form",

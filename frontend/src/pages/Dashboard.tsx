@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
 import { fetchUserData } from "../redux/slices/userSlice";
 import { fetchForms } from "../redux/slices/formSlice";
 import { fetchTasks } from "../redux/slices/taskSlice";
+import { fetchFormsSchedule } from "../redux/slices/formScheduleSlice";
 
 const Dashboard = () => {
   const [key, setKey] = useState("65c7c94f4217846243781a98");
@@ -21,7 +22,8 @@ const Dashboard = () => {
     dispatch(fetchUserData());
     dispatch(fetchForms());
     dispatch(fetchTasks());
-  }, [dispatch]);
+    dispatch(fetchFormsSchedule());
+  }, []);
 
   function handleAddNewTab() {
     setModalAddTabShow(true);

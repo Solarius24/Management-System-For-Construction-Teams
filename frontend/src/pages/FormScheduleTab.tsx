@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
 import formsScheduleList from "../configData/formsConfig/formScheduleList";
 import Fillters from "../components/Fillters";
-import taskScheduleFilter from "../configData/tasksConfig/taskScheduleFilter";
 import ModalAddFormSchedule from "../components/modals/ModalAddFormSchedule";
 import FormScheduleList from "../components/forms/FormScheduleList";
 import { deleteFormSchedule } from "../redux/slices/formScheduleSlice";
@@ -64,7 +63,6 @@ const FormScheduleTab = () => {
               handleClose={handleCloseShowFilter}
               show={showFilter}
               onHide={() => setShowFilter(false)}
-              filterData={taskScheduleFilter}
             />
           </Col>
         )}

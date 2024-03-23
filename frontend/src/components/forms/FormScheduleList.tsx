@@ -8,10 +8,10 @@ import { Link } from "react-router-dom";
 const FormScheduleList = (props) => {
   const [selectedItem, setSelectedItem] = useState([]);
   const data = useAppSelector((state) => state.formSchedule.data);
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchFormsSchedule());
-  }, [dispatch]);
+  // const dispatch = useAppDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchFormsSchedule());
+  // }, [dispatch]);
 
   function handleCheckboxChange(e) {
     const value = e.target.id;

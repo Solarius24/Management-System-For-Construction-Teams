@@ -38,9 +38,9 @@ const initialState: FormScheduleState = {
 export const fetchFormsSchedule = createAsyncThunk(
   "fetchFormSchedule",
   async () => {
-    const response = await fetch("/api/forms_schedule");
-    const data = await response.json();
-    return data;
+    const response = await axios("/api/forms_schedule");
+    // const data = await response.json();
+    return response.data;
   }
 );
 

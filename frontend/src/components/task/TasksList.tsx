@@ -12,10 +12,10 @@ const TasksList = (props) => {
   const listOfColumnsToDisplay = useAppSelector(
     (state) => state.userData.listOfColumnsToDisplay.task
   );
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchTasks());
-  }, [dispatch]);
+  // const dispatch = useAppDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchTasks());
+  // }, [dispatch]);
 
   function handleCheckboxChange(e) {
     const value = e.target.id;
@@ -31,7 +31,7 @@ const TasksList = (props) => {
     <Container fluid>
       <Table striped bordered hover>
         <thead>
-          <tr>
+          <tr style={{ fontSize: "0.9rem" }}>
             <th>
               <input type="checkbox" />
               <label>&nbsp;</label>
@@ -46,11 +46,11 @@ const TasksList = (props) => {
           </tr>
         </thead>
 
-        <tbody className="s">
+        <tbody>
           {!data && <BasicSpiner />}
           {data.map((item) => (
             <>
-              <tr>
+              <tr style={{ fontSize: "0.9rem" }}>
                 <td>
                   <input
                     type="checkbox"
@@ -61,7 +61,7 @@ const TasksList = (props) => {
                 </td>
                 {listOfColumnsToDisplay.includes("01Ref") && (
                   <td id="ref">
-                    <Link to={`/forms/edit/${item.documentRef}`}>
+                    <Link to={`/tasks/edit/${item.taskRef}`}>
                       {item.taskRef}
                     </Link>
                   </td>

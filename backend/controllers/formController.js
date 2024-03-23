@@ -3,7 +3,9 @@ const Form = require("../models/FormModel");
 
 // get all forms
 const getForms = async (req, res) => {
-  const forms = await Form.find({}).sort({ createdAt: -1 });
+  const query = req.query;
+
+  const forms = await Form.find(query).sort({ createdAt: -1 });
 
   res.status(200).json(forms);
 };
@@ -95,6 +97,15 @@ const updateForm = async (req, res) => {
 
   res.status(200).json(form);
 };
+const filterForms = async (res, req) => {
+  // const filteredForms = await Form.find({ status: "OPEN" });
+  console.log("forms");
+  // if (!filterForms) {
+  //   return res.status(400).json({ error: "No such form" });
+  // }
+
+  // res.status(200).json(filteredForms);
+};
 
 module.exports = {
   getForms,
@@ -102,4 +113,5 @@ module.exports = {
   createForm,
   deleteForm,
   updateForm,
+  filterForms,
 };
