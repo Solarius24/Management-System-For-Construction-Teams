@@ -7,11 +7,36 @@ import { Link } from "react-router-dom";
 
 const FormScheduleList = (props) => {
   const [selectedItem, setSelectedItem] = useState([]);
-  const data = useAppSelector((state) => state.formSchedule.data);
-  // const dispatch = useAppDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchFormsSchedule());
-  // }, [dispatch]);
+  const formScheduleData = useAppSelector((state) => state.formSchedule.data);
+  let data = [];
+
+  // function filterData(item) {
+  //   const filter = props.filter;
+  //   if (filter.status && filter.status === item.status) {
+  //     return true;
+  //   }
+  //   if (filter.location && filter.location === item.location) {
+  //     return true;
+  //   }
+  //   if (filter.ref && filter.ref === item.id) {
+  //     return true;
+  //   }
+  // }
+  function newFilter(item) {
+    let filterValues = Object.values(props.filter);
+    let itemValues = Object.values(item);
+    return filterValues.every((v) => itemValues.includes(v));
+  }
+
+  if (Object.keys(props.filter).length > 0) {
+    data = formScheduleData.filter(newFilter);
+  } else {
+    data = formScheduleData;
+  }
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchFormsSchedule());
+  }, [dispatch]);
 
   function handleCheckboxChange(e) {
     const value = e.target.id;
