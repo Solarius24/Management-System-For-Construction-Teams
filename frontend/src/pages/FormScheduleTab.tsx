@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
 import formsScheduleList from "../configData/formsConfig/formScheduleList";
 import Fillters from "../components/Fillters";
 import ModalAddFormSchedule from "../components/modals/ModalAddFormSchedule";
 import FormScheduleList from "../components/forms/FormScheduleList";
-import { deleteFormSchedule } from "../redux/slices/formScheduleSlice";
+import {
+  deleteFormSchedule,
+  fetchFormsSchedule,
+} from "../redux/slices/formScheduleSlice";
 import { useAppDispatch } from "../redux/reduxHooks";
 
 const FormScheduleTab = () => {
@@ -12,6 +15,10 @@ const FormScheduleTab = () => {
   const [modalAddShow, setModalAddShow] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchFormsSchedule());
+  }, [dispatch]);
 
   const handleCloseShowFilter = () => {
     if (!showFilter) {
@@ -67,7 +74,11 @@ const FormScheduleTab = () => {
           </Col>
         )}
         <Col>
-          <FormScheduleList setSelectedItems={setSelectedItems} />
+          <FormScheduleList
+            setSelectedItems={(selectedItems: SetStateAction<never[]>) =>
+              setSelectedItems(selectedItems)
+            }
+          />
         </Col>
       </Row>
     </div>

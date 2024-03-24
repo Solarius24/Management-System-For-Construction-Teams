@@ -1,18 +1,43 @@
 // @ts-nocheck
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Container, Table } from "react-bootstrap";
-import { fetchForms } from "../../redux/slices/formSlice";
-import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
+import { useAppSelector } from "../../redux/reduxHooks";
 import { Link } from "react-router-dom";
 import BasicSpinner from "../BasicSpinner";
 
 const FormItemList = (props) => {
   const [selectedItem, setSelectedItem] = useState([]);
-  const data = useAppSelector((state) => state.form.data);
+  const formData = useAppSelector((state) => state.form.data);
   const listOfColumnsToDisplay = useAppSelector(
     (state) => state.userData.listOfColumnsToDisplay.form
   );
-  const dispatch = useAppDispatch();
+  let data = [];
+
+  // function filterData(item) {
+  //   const filter = props.filter;
+  //   if (filter.status && filter.status === item.status) {
+  //     return true;
+  //   }
+  //   if (filter.location && filter.location === item.location) {
+  //     return true;
+  //   }
+  //   if (filter.ref && filter.ref === item.id) {
+  //     return true;
+  //   }
+  // }
+  function newFilter(item) {
+    let filterValues = Object.values(props.filter);
+    let itemValues = Object.values(item);
+    return filterValues.every((v) => itemValues.includes(v));
+  }
+
+  if (Object.keys(props.filter).length > 0) {
+    data = formData.filter(newFilter);
+  } else {
+    data = formData;
+  }
+
+  // const dispatch = useAppDispatch();
   // useEffect(() => {
   //   dispatch(fetchForms());
   // }, [dispatch]);

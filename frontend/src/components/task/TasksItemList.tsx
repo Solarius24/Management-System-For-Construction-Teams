@@ -6,16 +6,29 @@ import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
 import { fetchTasks } from "../../redux/slices/taskSlice";
 import BasicSpiner from "../BasicSpinner";
 
-const TasksList = (props) => {
+const TasksItemList = (props) => {
   const [selectedItem, setSelectedItem] = useState([]);
-  const data = useAppSelector((state) => state.task.data);
+  const taskData = useAppSelector((state) => state.task.data);
   const listOfColumnsToDisplay = useAppSelector(
     (state) => state.userData.listOfColumnsToDisplay.task
   );
-  // const dispatch = useAppDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchTasks());
-  // }, [dispatch]);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchTasks());
+  }, [dispatch]);
+
+  let data = [];
+  function newFilter(item) {
+    let filterValues = Object.values(props.filter);
+    let itemValues = Object.values(item);
+    return filterValues.every((v) => itemValues.includes(v));
+  }
+
+  if (Object.keys(props.filter).length > 0) {
+    data = taskData.filter(newFilter);
+  } else {
+    data = taskData;
+  }
 
   function handleCheckboxChange(e) {
     const value = e.target.id;
@@ -105,4 +118,4 @@ const TasksList = (props) => {
   );
 };
 
-export default TasksList;
+export default TasksItemList;

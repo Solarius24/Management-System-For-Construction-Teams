@@ -1,20 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
 import Fillters from "../components/Fillters";
-import TasksList from "../components/task/TasksList";
+import TasksList from "../components/task/TasksItemList";
 import columnConfigList from "../configData/columnConfigList";
 import tasksList from "../configData/tasksConfig/tasksList";
 import ModalAddTask from "../components/modals/ModalAddTask";
-import { deleteTask } from "../redux/slices/taskSlice";
+import { deleteTask, fetchTasks } from "../redux/slices/taskSlice";
 import { useAppDispatch } from "../redux/reduxHooks";
 import TaskColumnConfig from "../components/task/TaskColumnConfig";
+import TaskFillters from "../components/task/TaskFillters";
 
 const Tasks = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [modalAddShow, setModalAddShow] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [showColumnConfig, setShowColumnConfig] = useState(false);
+  const [filterData, setFilterData] = useState({});
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTasks());
+  }, [dispatch]);
+
   const handleCloseShowFilter = () => {
     if (!showFilter) {
       setShowColumnConfig(false);
@@ -87,10 +94,11 @@ const Tasks = () => {
       <Row>
         {showFilter && (
           <Col>
-            <Fillters
+            <TaskFillters
               handleClose={handleCloseShowFilter}
               show={showFilter}
               onHide={() => setShowFilter(false)}
+              setFilterData={(filterData) => setFilterData(filterData)}
             />
           </Col>
         )}
@@ -105,7 +113,7 @@ const Tasks = () => {
           </Col>
         )}
         <Col className="col">
-          <TasksList setSelectedItems={setSelectedItems} />
+          <TasksList setSelectedItems={setSelectedItems} filter={filterData} />
         </Col>
       </Row>
       {modalAddShow && (

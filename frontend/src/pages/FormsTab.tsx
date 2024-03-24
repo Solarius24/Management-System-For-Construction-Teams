@@ -16,10 +16,9 @@ const FormsTab = () => {
   const [showColumnConfig, setShowColumnConfig] = useState(false);
   const [filterData, setFilterData] = useState({});
   const dispatch = useAppDispatch();
-  // useEffect(() => {
-  //   console.log(filterData);
-  //   dispatch(fetchForms(filterData));
-  // }, [filterData]);
+  useEffect(() => {
+    dispatch(fetchForms());
+  }, [dispatch]);
 
   const handleCloseShowFilter = () => {
     if (!showFilter) {
@@ -112,7 +111,10 @@ const FormsTab = () => {
           </Col>
         )}
         <Col className="col">
-          <FormItemList setSelectedItems={setSelectedItems} />
+          <FormItemList
+            setSelectedItems={setSelectedItems}
+            filter={filterData}
+          />
         </Col>
       </Row>
       <ModalAddForm

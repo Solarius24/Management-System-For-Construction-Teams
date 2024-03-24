@@ -5,7 +5,7 @@ const {
   createForm,
   deleteForm,
   updateForm,
-  filterForms,
+  // filterForms,
 } = require("../controllers/formController");
 const {
   getTasks,
@@ -49,7 +49,7 @@ router.get("/tasks/:id", getTask);
 router.get("/userData", getUserTabs);
 
 //FILTER FORMS
-router.get("/forms/filter", filterForms);
+// router.get("/forms/filter", filterForms);
 
 // POST a new task/form
 
