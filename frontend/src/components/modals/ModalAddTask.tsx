@@ -112,9 +112,9 @@ const ModalAddTask = (props: ModalAddConfig) => {
               // onChange={(e) => setLocation(e.target.value)}
             >
               <option></option>
-              {createTask.location.map((item: any) => (
-                <option value={item}>{item}</option>
-              ))}
+              <option value="GROUND FLOOR LEVEL">GROUND FLOOR LEVEL</option>
+              <option value="INTERMEDIATE LEVEL">INTERMEDIATE LEVEL</option>
+              <option value="BASEMENT LEVEL">BASEMENT LEVEL</option>
             </Form.Select>
           </Form.Group>
 

@@ -38,7 +38,7 @@ const initialState: FormScheduleState = {
 export const fetchFormsSchedule = createAsyncThunk(
   "fetchFormSchedule",
   async () => {
-    const response = await axios("/api/forms_schedule");
+    const response = await axios("/api/forms-schedule");
     // const data = await response.json();
     return response.data;
   }
@@ -49,18 +49,18 @@ export const formScheduleSlice = createSlice({
   initialState,
   reducers: {
     addFormSchedule: (state, action) => {
-      axios.post("/api/forms_schedule", action.payload);
+      axios.post("/api/forms-schedule", action.payload);
       state.data.push(action.payload);
     },
     updateFormSchedule: (state, action) => {
-      axios.patch(`/api/form_schedule/${action.payload.id}`, action.payload);
+      axios.patch(`/api/form-schedule/${action.payload.id}`, action.payload);
       const index = state.data.findIndex(
         (item) => item.id === action.payload.id
       );
       state.data[index] = { ...state.data[index], ...action.payload };
     },
     deleteFormSchedule: (state, action) => {
-      axios.delete("/api/forms_schedule", { data: action.payload });
+      axios.delete("/api/forms-schedule", { data: action.payload });
 
       state.data = state.data.filter(
         (item) => action.payload.includes(item.id) === false

@@ -126,7 +126,7 @@ const NavBar = () => {
             <NavDropdown.Divider />
 
             <NavDropdown.Item eventKey="PrivacyNotice">
-              <Link to="/privacy_notice"> Privacy Notice</Link>
+              <Link to="/privacy-notice"> Privacy Notice</Link>
             </NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item eventKey="SignOff">Sign off</NavDropdown.Item>

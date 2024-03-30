@@ -6,7 +6,7 @@ import Assets from "./pages/Assets";
 import Processes from "./pages/Processes";
 import Forms from "./pages/Forms";
 import "./App.css";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import FormEdit from "./pages/FormEdit";
 import TaskEdit from "./pages/TaskEdit";
 import FormScheduleEdit from "./pages/FormScheduleEdit";
@@ -16,6 +16,7 @@ function App() {
   return (
     <BrowserRouter>
       <div>
+        learn react
         <NavBar />
       </div>
       <div>
@@ -24,17 +25,14 @@ function App() {
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/processes" element={<Processes />} />
           <Route path="/assets" element={<Assets />} />
-          <Route path="/forms" element={<Forms />}>
-            {/* <Route index element={<FormEdit />} />
-            <Route path="edit/:formRef:" element={<FormEdit />} /> */}
-          </Route>
+          <Route path="/forms" element={<Forms />}></Route>
           <Route path="/forms/edit/:formRef" element={<FormEdit />}></Route>
           <Route
-            path="/forms_schedule/edit/:formRef"
+            path="/forms-schedule/edit/:formRef"
             element={<FormScheduleEdit />}
           ></Route>
           <Route path="/tasks/edit/:taskRef" element={<TaskEdit />}></Route>
-          <Route path="/privacy_notice" element={<PrivacyNotice />}></Route>
+          <Route path="/privacy-notice" element={<PrivacyNotice />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
@@ -42,7 +40,3 @@ function App() {
 }
 
 export default App;
-
-//
-//https://www.priority1.uk.net/fieldviewweb/forms/edit/F356486.24
-//https://www.priority1.uk.net/fieldviewweb/forms/edit/F1.2766396
