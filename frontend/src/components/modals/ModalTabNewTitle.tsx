@@ -3,7 +3,7 @@ import { useAppDispatch } from "../../redux/reduxHooks";
 import { updateUserTabName } from "../../redux/slices/userSlice";
 import { useState } from "react";
 
-const ModalInput = (props: any) => {
+const ModalTabNewTitle = (props: any) => {
   const [newTabName, setNewTabName] = useState("");
   function handleChangeTabName() {
     dispatch(updateUserTabName({ tabId: props.tabId, tabName: newTabName }));
@@ -38,4 +38,4 @@ const ModalInput = (props: any) => {
   );
 };
 
-export default ModalInput;
+export default ModalTabNewTitle;

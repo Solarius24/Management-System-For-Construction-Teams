@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button, Container, ListGroup, Modal } from "react-bootstrap";
-import ModalInput from "./ModalInput";
-import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
-import { deleteUserTab } from "../../redux/slices/userSlice";
+import ModalInput from "../ModalTabNewTitle";
+import { useAppDispatch, useAppSelector } from "../../../redux/reduxHooks";
+import { deleteUserTab } from "../../../redux/slices/userSlice";
 
 const ModalTabSettings = (props: any) => {
   const [showModal, setShowModal] = useState(false);
@@ -38,8 +38,10 @@ const ModalTabSettings = (props: any) => {
         </Modal.Header>
         <Modal.Body className="grid-example">
           <Container fluid>
-            <Button onClick={handleEditTab}> EDIT SELECTED</Button>
-            <Button onClick={handleDeleteTab}> DELETE SELECTED </Button>
+            <Button onClick={handleEditTab} name="edit selected">
+              EDIT SELECTED
+            </Button>
+            <Button onClick={handleDeleteTab}>DELETE SELECTED</Button>
             <ListGroup>
               {data.map((item) => (
                 <ListGroup.Item

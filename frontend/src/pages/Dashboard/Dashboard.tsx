@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Navbar, Tab, Tabs } from "react-bootstrap";
-import ModalSettings from "../../components/modals/ModalTabSettings";
+import ModalTabSettings from "../../components/modals/ModalTabSettings/ModalTabSettings";
 import ModalAddTab from "../../components/modals/ModalAddTab";
 import listOfWidgets from "../../configData/widgetsConfig/listOfWidgets";
 import ModalAddWidget from "../../components/modals/ModalAddWidget";
@@ -68,7 +68,7 @@ const Dashboard = () => {
         listOfWidgets={listOfWidgets}
         tabId={key}
       />
-      <ModalSettings
+      <ModalTabSettings
         show={modalSettingsShow}
         onHide={() => setModalSettingsShow(false)}
         title={"TAB SETTINGS"}
