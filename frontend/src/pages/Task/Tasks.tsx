@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
-import Fillters from "../components/Fillters";
-import TasksList from "../components/task/TasksItemList";
-import columnConfigList from "../configData/columnConfigList";
-import tasksList from "../configData/tasksConfig/tasksList";
-import ModalAddTask from "../components/modals/ModalAddTask";
-import { deleteTask, fetchTasks } from "../redux/slices/taskSlice";
-import { useAppDispatch } from "../redux/reduxHooks";
-import TaskColumnConfig from "../components/task/TaskColumnConfig";
-import TaskFillters from "../components/task/TaskFillters";
+import TasksList from "../../components/task/TasksItemList";
+import columnConfigList from "../../configData/columnConfigList";
+import tasksList from "../../configData/tasksConfig/tasksList";
+import ModalAddTask from "../../components/modals/ModalAddTask";
+import { deleteTask, fetchTasks } from "../../redux/slices/taskSlice";
+import { useAppDispatch } from "../../redux/reduxHooks";
+import TaskColumnConfig from "../../components/task/TaskColumnConfig";
+import TaskFillters from "../../components/task/TaskFillters";
 
 const Tasks = () => {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -118,7 +117,7 @@ const Tasks = () => {
       </Row>
       {modalAddShow && (
         <ModalAddTask
-          title="ADD NEW TASK"
+          title="ADD TASK"
           show={modalAddShow}
           onHide={() => setModalAddShow(false)}
           list={tasksList}

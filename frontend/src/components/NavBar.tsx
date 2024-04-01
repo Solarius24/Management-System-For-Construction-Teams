@@ -41,7 +41,7 @@ const NavBar = () => {
       <Navbar bg="dark" data-bs-theme="dark" fixed="top" expand="lg">
         <Nav className="me-auto mx-3">
           <NavItem>
-            <NavLink>
+            <NavLink as="div">
               <Link
                 style={{
                   textDecoration: "none",
@@ -54,7 +54,7 @@ const NavBar = () => {
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink>
+            <NavLink as="div">
               <Link
                 style={{
                   textDecoration: "none",
@@ -68,7 +68,7 @@ const NavBar = () => {
           </NavItem>
 
           <NavItem>
-            <NavLink>
+            <NavLink as="div">
               <Link
                 style={{
                   textDecoration: "none",
@@ -82,7 +82,7 @@ const NavBar = () => {
           </NavItem>
 
           <NavItem>
-            <NavLink>
+            <NavLink as="div">
               <Link
                 style={{
                   textDecoration: "none",
@@ -96,7 +96,7 @@ const NavBar = () => {
           </NavItem>
 
           <Nav.Item>
-            <NavLink>
+            <NavLink as="div">
               <Link
                 style={{
                   textDecoration: "none",

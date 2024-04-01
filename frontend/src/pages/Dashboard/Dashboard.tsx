@@ -46,7 +46,12 @@ const Dashboard = () => {
       <Container>
         <Tabs className="mb-3" activeKey={key} onSelect={(k: any) => setKey(k)}>
           {data.map((tab: any) => (
-            <Tab id={tab._id} title={tab.tabName} eventKey={tab._id}>
+            <Tab
+              key={tab._id}
+              id={tab._id}
+              title={tab.tabName}
+              eventKey={tab._id}
+            >
               <Button
                 id="add_widget"
                 active

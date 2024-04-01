@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Container, ListGroup, Modal } from "react-bootstrap";
-import ModalInput from "../ModalTabNewTitle";
+import ModalTabNewTitle from "../ModalTabNewtitle/ModalTabNewTitle";
 import { useAppDispatch, useAppSelector } from "../../../redux/reduxHooks";
 import { deleteUserTab } from "../../../redux/slices/userSlice";
 
@@ -45,6 +45,7 @@ const ModalTabSettings = (props: any) => {
             <ListGroup>
               {data.map((item) => (
                 <ListGroup.Item
+                  key={item._id}
                   id={item._id}
                   title={item.tabName}
                   action
@@ -62,11 +63,9 @@ const ModalTabSettings = (props: any) => {
           <Button onClick={props.onHide}>CANCEL</Button>
         </Modal.Footer>
       </Modal>
-      <ModalInput
+      <ModalTabNewTitle
         show={showModal}
         onHide={() => setShowModal(false)}
-        title="Enter Tab New Title"
-        tabName={tabTitle}
         tabId={tabId}
       />
     </>

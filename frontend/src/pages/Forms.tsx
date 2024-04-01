@@ -1,5 +1,5 @@
 import { Tab, Tabs } from "react-bootstrap";
-import FormsTab from "./FormsTab";
+import FormsTab from "./FormsTab/FormsTab";
 import FormScheduleTab from "./FormScheduleTab";
 
 const Forms = () => {

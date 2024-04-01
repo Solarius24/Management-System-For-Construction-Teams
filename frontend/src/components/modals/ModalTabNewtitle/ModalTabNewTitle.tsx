@@ -1,6 +1,6 @@
 import { Button, Form, Modal } from "react-bootstrap";
-import { useAppDispatch } from "../../redux/reduxHooks";
-import { updateUserTabName } from "../../redux/slices/userSlice";
+import { useAppDispatch } from "../../../redux/reduxHooks";
+import { updateUserTabName } from "../../../redux/slices/userSlice";
 import { useState } from "react";
 
 const ModalTabNewTitle = (props: any) => {
@@ -14,9 +14,7 @@ const ModalTabNewTitle = (props: any) => {
   return (
     <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          {props.title}
-        </Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">TAB NAME</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form.Control

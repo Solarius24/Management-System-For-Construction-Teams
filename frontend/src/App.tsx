@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Tasks from "./pages/Tasks";
+import Tasks from "./pages/Task/Tasks";
 import Assets from "./pages/Assets";
 import Processes from "./pages/Processes";
 import Forms from "./pages/Forms";

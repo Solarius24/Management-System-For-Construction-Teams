@@ -51,7 +51,7 @@ const ModalAddWidget = (props: any) => {
                     image: string;
                     widgetType: string;
                   }) => (
-                    <div>
+                    <div key={widget.name}>
                       <ListGroupItem
                         className="border border-info m-2"
                         variant="light"
@@ -81,7 +81,7 @@ const ModalAddWidget = (props: any) => {
                       image: string;
                       widgetType: string;
                     }) => (
-                      <div>
+                      <div key={widget.name}>
                         <ListGroupItem
                           className="border border-info m-2"
                           variant="light"
@@ -111,7 +111,7 @@ const ModalAddWidget = (props: any) => {
                       image: string;
                       widgetType: string;
                     }) => (
-                      <div>
+                      <div key={widget.name}>
                         <ListGroupItem
                           className="border border-info m-2"
                           variant="light"
@@ -142,7 +142,7 @@ const ModalAddWidget = (props: any) => {
                       image: string;
                       widgetType: string;
                     }) => (
-                      <div>
+                      <div key={widget.name}>
                         <ListGroupItem
                           className="border border-info m-2"
                           variant="light"

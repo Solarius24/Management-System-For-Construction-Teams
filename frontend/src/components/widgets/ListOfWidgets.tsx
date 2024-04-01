@@ -12,6 +12,7 @@ function ListOfWidgets(props: any) {
       {props.widgets.length > 0 &&
         props.widgets.map((item: any) => (
           <Widget
+            key={props.tabId}
             tabId={props.tabId}
             widgetName={item.widgetName}
             widgetId={item._id}

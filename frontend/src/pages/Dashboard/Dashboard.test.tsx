@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import store from "../../redux/store/store";
 import Dashboard from "./Dashboard";
 
-test("check if Add Widget button displays AddWidgetModal", () => {
+test("Display Add Widget Modal", () => {
   render(
     <Provider store={store}>
       <Dashboard />
@@ -15,7 +15,7 @@ test("check if Add Widget button displays AddWidgetModal", () => {
   fireEvent.click(linkElement);
   expect(screen.getByTitle("ADD WIDGET")).toBeVisible();
 });
-test("Click on the ADD NEW TAB button to check if the ModalAddTab will be displayed", () => {
+test("Display Modal Add Tab", () => {
   render(
     <Provider store={store}>
       <Dashboard />
@@ -25,7 +25,7 @@ test("Click on the ADD NEW TAB button to check if the ModalAddTab will be displa
   fireEvent.click(addTabSettingsButton);
   expect(screen.getByTitle("ADD TAB")).toBeVisible();
 });
-test("Click on the ADD NEW TAB button to check if the ModalTabSettings will be displayed", () => {
+test("Display Modal Tab Settings", () => {
   render(
     <Provider store={store}>
       <Dashboard />
@@ -34,4 +34,17 @@ test("Click on the ADD NEW TAB button to check if the ModalTabSettings will be d
   const addNewTabButton = screen.getByText(/tab settings/i);
   fireEvent.click(addNewTabButton);
   expect(screen.getByTitle("TAB SETTINGS")).toBeVisible();
+});
+
+test("Display Modal Tab New Title", () => {
+  render(
+    <Provider store={store}>
+      <Dashboard />
+    </Provider>
+  );
+  const addNewTabButton = screen.getByText(/tab settings/i);
+  fireEvent.click(addNewTabButton);
+  const editSelectedButton = screen.getByText(/edit selected/i);
+  fireEvent.click(editSelectedButton);
+  expect(screen.getByText("TAB NAME")).toBeVisible();
 });

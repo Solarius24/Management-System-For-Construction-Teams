@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
-import ModalAddForm from "../components/modals/ModalAddForm";
-import formsList from "../configData/formsConfig/formsList";
-import formsColumnConfigList from "../configData/formsConfig/formsColumnConfigList";
-import FormItemList from "../components/forms/FormItemList";
-import { deleteForm, fetchForms } from "../redux/slices/formSlice";
-import { useAppDispatch } from "../redux/reduxHooks";
-import FormColumnConfig from "../components/forms/FormColumnConfig";
-import FormFillters from "../components/forms/FormFillters";
+import ModalAddForm from "../../components/modals/ModalAddForm";
+import formsList from "../../configData/formsConfig/formsList";
+import formsColumnConfigList from "../../configData/formsConfig/formsColumnConfigList";
+import FormItemList from "../../components/forms/FormItemList";
+import { deleteForm, fetchForms } from "../../redux/slices/formSlice";
+import { useAppDispatch } from "../../redux/reduxHooks";
+import FormColumnConfig from "../../components/forms/FormColumnConfig";
+import FormFillters from "../../components/forms/FormFillters";
 
 const FormsTab = () => {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -47,7 +47,10 @@ const FormsTab = () => {
         <Col>
           <Nav justify variant="tabs" defaultActiveKey="/home">
             <Nav.Item>
-              <Nav.Link onClick={() => setModalAddShow(true)}>
+              <Nav.Link
+                title="addNewFormBtn"
+                onClick={() => setModalAddShow(true)}
+              >
                 ADD NEW FORM
               </Nav.Link>
             </Nav.Item>
@@ -120,7 +123,7 @@ const FormsTab = () => {
       <ModalAddForm
         show={modalAddShow}
         onHide={() => setModalAddShow(false)}
-        title={"ADD NEW FORM"}
+        title={"ADD FORM"}
         list={formsList}
       />
     </div>

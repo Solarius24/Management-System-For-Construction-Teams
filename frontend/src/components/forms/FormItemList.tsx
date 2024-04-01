@@ -64,7 +64,7 @@ const FormItemList = (props) => {
 
             {listOfColumnsToDisplay.map((item) => {
               return (
-                <th id="item">
+                <th key={item} id="item">
                   <a href=" ">{item.substring(2)}</a>
                 </th>
               );
@@ -72,58 +72,55 @@ const FormItemList = (props) => {
           </tr>
         </thead>
         {!data && <BasicSpinner />}
-        <tbody className="s">
+        <tbody>
           {data.map((item) => (
-            <>
-              <tr style={{ fontSize: "0.9rem" }}>
-                <td>
-                  <input
-                    type="checkbox"
-                    id={item.documentRef}
-                    onChange={handleCheckboxChange}
-                  />
-                  <label>&nbsp;</label>
+            <tr key={item.id} style={{ fontSize: "0.9rem" }}>
+              <td>
+                <input
+                  type="checkbox"
+                  id={item.documentRef}
+                  onChange={handleCheckboxChange}
+                />
+                <label>&nbsp;</label>
+              </td>
+              {listOfColumnsToDisplay.includes("01Ref") && (
+                <td id="ref">
+                  <Link to={`/forms/edit/${item.documentRef}`}>
+                    {item.documentRef}
+                  </Link>
                 </td>
-                {listOfColumnsToDisplay.includes("01Ref") && (
-                  <td id="ref">
-                    <Link to={`/forms/edit/${item.documentRef}`}>
-                      {item.documentRef}
-                    </Link>
-                  </td>
-                )}
-                {listOfColumnsToDisplay.includes("02Title") && (
-                  <td id="title">{item.formTitle}</td>
-                )}
-                {listOfColumnsToDisplay.includes("03Status") && (
-                  <td id="status">{item.status}</td>
-                )}
-                {listOfColumnsToDisplay.includes("04Location") && (
-                  <td id="location">{item.location}</td>
-                )}
-                {listOfColumnsToDisplay.includes("05Created date") && (
-                  <td id="createdDate">{item.createdDate}</td>
-                )}
-                {listOfColumnsToDisplay.includes("06Type") && (
-                  <td id="type">{item.formType}</td>
-                )}
-                {listOfColumnsToDisplay.includes("07By User") && (
-                  <td id="byUser"></td>
-                )}
-                {listOfColumnsToDisplay.includes("08By Organisation") && (
-                  <td id="byOrganisation"></td>
-                )}
-                {listOfColumnsToDisplay.includes("09Status Changed") && (
-                  <td id="statusChanged"></td>
-                )}
-                {listOfColumnsToDisplay.includes("10Expiry Date") && (
-                  <td id="expiryDate"></td>
-                )}
-                {listOfColumnsToDisplay.includes("11Actions") && (
-                  <td id="actions"></td>
-                )}
-              </tr>
-              <div></div>
-            </>
+              )}
+              {listOfColumnsToDisplay.includes("02Title") && (
+                <td id="title">{item.formTitle}</td>
+              )}
+              {listOfColumnsToDisplay.includes("03Status") && (
+                <td id="status">{item.status}</td>
+              )}
+              {listOfColumnsToDisplay.includes("04Location") && (
+                <td id="location">{item.location}</td>
+              )}
+              {listOfColumnsToDisplay.includes("05Created date") && (
+                <td id="createdDate">{item.createdDate}</td>
+              )}
+              {listOfColumnsToDisplay.includes("06Type") && (
+                <td id="type">{item.formType}</td>
+              )}
+              {listOfColumnsToDisplay.includes("07By User") && (
+                <td id="byUser"></td>
+              )}
+              {listOfColumnsToDisplay.includes("08By Organisation") && (
+                <td id="byOrganisation"></td>
+              )}
+              {listOfColumnsToDisplay.includes("09Status Changed") && (
+                <td id="statusChanged"></td>
+              )}
+              {listOfColumnsToDisplay.includes("10Expiry Date") && (
+                <td id="expiryDate"></td>
+              )}
+              {listOfColumnsToDisplay.includes("11Actions") && (
+                <td id="actions"></td>
+              )}
+            </tr>
           ))}
         </tbody>
       </Table>

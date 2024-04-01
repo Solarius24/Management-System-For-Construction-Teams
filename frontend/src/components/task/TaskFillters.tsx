@@ -50,14 +50,14 @@ const TaskFillters = (props: fillters) => {
 
   return (
     <Card
-      className="d-flex flex-column flex-shrink-0  text-white bg-dark w-auto"
+      className="d-flex flex-column flex-shrink-0  text-white bg-dark"
       // style={{ height: "80vh" }}
     >
       <CardHeader className="d-flex justify-content-between">
         <CardTitle className="fs-5">FILLTERS</CardTitle>
         <Button onClick={props.onHide}>CLOSE</Button>
       </CardHeader>
-      <CardBody className="overflow-scroll">
+      <CardBody className="p-0">
         <ListGroup>
           <Accordion defaultActiveKey={["0"]} alwaysOpen>
             <Form onSubmit={handleSubmit}>
