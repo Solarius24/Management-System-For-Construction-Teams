@@ -18,8 +18,7 @@ const ModalTabNewTitle = (props: any) => {
       </Modal.Header>
       <Modal.Body>
         <Form.Control
-          as="textarea"
-          rows={1}
+          as="input"
           placeholder={props.tabName}
           onChange={(e) => setNewTabName(e.target.value)}
         />

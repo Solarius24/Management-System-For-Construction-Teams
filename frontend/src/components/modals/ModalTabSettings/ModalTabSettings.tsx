@@ -8,24 +8,41 @@ const ModalTabSettings = (props: any) => {
   const [showModal, setShowModal] = useState(false);
   const [tabTitle, setTabTitle] = useState("");
   const [tabId, setTabId] = useState("");
+  const [error, setError] = useState("");
   const data = useAppSelector((state) => state.userData.listOfTabs);
   const dispatch = useAppDispatch();
 
   function handlerSelectTab(e: any) {
     if (e.target.title === "default") {
-      alert("default Tab cannot be remove or edit");
+      setError("default Tab cannot be remove or edit");
     } else {
+      setError("");
       setTabId(e.target.id);
       setTabTitle(e.target.title);
     }
   }
 
   function handleDeleteTab() {
-    dispatch(deleteUserTab({ tabId: tabId }));
+    if (tabId) {
+      dispatch(deleteUserTab({ tabId: tabId }));
+    } else {
+      setError("Please select first the Tab to delete");
+    }
   }
 
   function handleEditTab(e: any) {
-    setShowModal(true);
+    if (tabId) {
+      setError("");
+      setShowModal(true);
+    } else {
+      setError("Please select first the Tab to edit");
+    }
+  }
+  function handleCloseModal() {
+    setError("");
+    setTabId("");
+    setTabTitle("");
+    props.onHide();
   }
 
   return (
@@ -42,6 +59,7 @@ const ModalTabSettings = (props: any) => {
               EDIT SELECTED
             </Button>
             <Button onClick={handleDeleteTab}>DELETE SELECTED</Button>
+            <p className="text-danger">{error}</p>
             <ListGroup>
               {data.map((item) => (
                 <ListGroup.Item
@@ -59,14 +77,15 @@ const ModalTabSettings = (props: any) => {
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}> OK </Button>
-          <Button onClick={props.onHide}>CANCEL</Button>
+          <Button onClick={handleCloseModal}> OK </Button>
+          <Button onClick={handleCloseModal}>CANCEL</Button>
         </Modal.Footer>
       </Modal>
       <ModalTabNewTitle
         show={showModal}
         onHide={() => setShowModal(false)}
         tabId={tabId}
+        tabName={tabTitle}
       />
     </>
   );
