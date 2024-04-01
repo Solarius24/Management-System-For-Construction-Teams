@@ -25,10 +25,10 @@ const ModalTabNewTitle = (props: any) => {
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide} variant="secondary">
-          Close
+          CANCEL
         </Button>
         <Button onClick={handleChangeTabName} variant="primary">
-          Save changes
+          SAVE
         </Button>
       </Modal.Footer>
     </Modal>
