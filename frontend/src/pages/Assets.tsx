@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Col, Container, Nav, NavDropdown, Row } from "react-bootstrap";
-import Fillters from "../components/Fillters";
 import AssetsList from "../components/assets/AssetsList";
+import AssetsFillters from "../components/assets/AssetsFilters";
 
 const Assets = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -36,7 +36,7 @@ const Assets = () => {
       <Row>
         {showFilter && (
           <Col className="col-3">
-            <Fillters
+            <AssetsFillters
               handleClose={handleCloseShowFilter}
               show={showFilter}
               onHide={() => setShowFilter(false)}
@@ -50,5 +50,6 @@ const Assets = () => {
     </Container>
   );
 };
+
 
 export default Assets;

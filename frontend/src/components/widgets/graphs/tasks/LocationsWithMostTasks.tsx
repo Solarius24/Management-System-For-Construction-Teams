@@ -1,7 +1,6 @@
 import { Card, CardBody, CardTitle } from "react-bootstrap";
 import {
   ComposedChart,
-  Line,
   Bar,
   XAxis,
   YAxis,
@@ -15,9 +14,9 @@ function LocationsWithMostTasks() {
   const data = useAppSelector((state) => state.task.data);
   const location = data.map((item) => item.location);
 
-  const groundFloor = location.filter((item) => item === "Ground Floor");
-  const intermedial = location.filter((item) => item === "Itermedial Level");
-  const basement = location.filter((item) => item === "Basement");
+  const groundFloor = location.filter((item) => item === "GROUND FLOOR LEVEL");
+  const intermedial = location.filter((item) => item === "INTERMEDIAL LEVEL");
+  const basement = location.filter((item) => item === "BASEMENT LEVEL");
 
   const inputData = [
     { name: "GROUND FLOOR LEVEL", tasks: groundFloor.length },

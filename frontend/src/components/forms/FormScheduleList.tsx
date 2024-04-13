@@ -91,30 +91,27 @@ const FormScheduleList = (props) => {
         </thead>
         <tbody className="s">
           {data.map((item) => (
-            <>
-              <tr>
-                <td>
-                  <input
-                    type="checkbox"
-                    id={item.id}
-                    onChange={handleCheckboxChange}
-                  />
-                  <label>&nbsp;</label>
-                </td>
-                <td id="ref">
-                  <Link to={`/forms_schedule/edit/${item.id}`}>{item.id}</Link>
-                </td>
-                <td id="type">{item.type}</td>
-                <td id="template">{item.template}</td>
-                <td id="description">{item.description}</td>
-                <td id="location">{item.location}</td>
-                <td id="issuedByOrganisation">{item.issuedByOrganisation}</td>
-                <td id="startDate">{item.startDate}</td>
-                <td id="repeat">{item.repeat}</td>
-                <td id="issuedBy">{item.issuedBy}</td>
-              </tr>
-              <div></div>
-            </>
+            <tr key={item.id}>
+              <td>
+                <input
+                  type="checkbox"
+                  id={item.id}
+                  onChange={handleCheckboxChange}
+                />
+                <label>&nbsp;</label>
+              </td>
+              <td id="ref">
+                <Link to={`/forms_schedule/edit/${item.id}`}>{item.id}</Link>
+              </td>
+              <td id="type">{item.type}</td>
+              <td id="template">{item.template}</td>
+              <td id="description">{item.description}</td>
+              <td id="location">{item.location}</td>
+              <td id="issuedByOrganisation">{item.issuedByOrganisation}</td>
+              <td id="startDate">{item.startDate}</td>
+              <td id="repeat">{item.repeat}</td>
+              <td id="issuedBy">{item.issuedBy}</td>
+            </tr>
           ))}
         </tbody>
       </Table>

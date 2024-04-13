@@ -27,17 +27,13 @@ interface filter {
   location?: string;
   status?: string;
 }
-const FormFillters = (props: fillters) => {
+const AssetsFillters = (props: fillters) => {
   const [ref, setRef] = useState("");
   const [location, setLocation] = useState("");
-  const [status, setStatus] = useState("");
 
   let filter: filter = {};
   if (ref.length > 0) {
     filter.id = ref;
-  }
-  if (status.length > 0) {
-    filter.status = status;
   }
   if (location.length > 0) {
     filter.location = location;
@@ -112,47 +108,7 @@ const FormFillters = (props: fillters) => {
                   </FormGroup>
                 </Accordion.Body>
               </Accordion.Item>
-              <Accordion.Item eventKey="status">
-                <AccordionHeader>STATUS</AccordionHeader>
-                <Accordion.Body>
-                  <FormGroup>
-                    <FormCheck
-                      checked={status === "OPEN"}
-                      id="OPEN"
-                      type="checkbox"
-                      label="OPEN"
-                      onClick={(e) =>
-                        status === "OPEN"
-                          ? setStatus("")
-                          : setStatus(e.target.id)
-                      }
-                    />
 
-                    <FormCheck
-                      checked={status === "IN PROGRESS"}
-                      id="IN PROGRESS"
-                      type="checkbox"
-                      label="IN PROGRESS"
-                      onClick={(e) =>
-                        status === "IN PROGRESS"
-                          ? setStatus("")
-                          : setStatus(e.target.id)
-                      }
-                    />
-                    <FormCheck
-                      checked={status === "CLOSED"}
-                      id="CLOSED"
-                      type="checkbox"
-                      label="CLOSED"
-                      onClick={(e) =>
-                        status === "CLOSED"
-                          ? setStatus("")
-                          : setStatus(e.target.id)
-                      }
-                    />
-                  </FormGroup>
-                </Accordion.Body>
-              </Accordion.Item>
               <Button type="submit">SEARCH</Button>
             </Form>
           </Accordion>
@@ -162,4 +118,4 @@ const FormFillters = (props: fillters) => {
   );
 };
 
-export default FormFillters;
+export default AssetsFillters;

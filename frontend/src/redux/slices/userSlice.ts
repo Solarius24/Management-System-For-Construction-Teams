@@ -15,6 +15,7 @@ interface UserState {
   };
 }
 
+
 const initialState: UserState = {
   id: "def",
   listOfTabs: [
@@ -63,6 +64,7 @@ const initialState: UserState = {
 
 export const fetchUserData = createAsyncThunk("fetchUserData", async () => {
   const response = await axios("/api/userData", { params: { id: "001" } });
+  console.log(response.data);
   return response.data;
 });
 

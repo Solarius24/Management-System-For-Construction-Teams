@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Navbar, Tab, Tabs } from "react-bootstrap";
-import ModalSettings from "../components/modals/ModalTabSettings";
-import ModalAddTab from "../components/modals/ModalAddTab";
-import listOfWidgets from "../configData/widgetsConfig/listOfWidgets";
-import ModalAddWidget from "../components/modals/ModalAddWidget";
-import ListOfWidgets from "../components/widgets/ListOfWidgets";
-import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
-import { fetchUserData } from "../redux/slices/userSlice";
-import { fetchForms } from "../redux/slices/formSlice";
-import { fetchTasks } from "../redux/slices/taskSlice";
-import { fetchFormsSchedule } from "../redux/slices/formScheduleSlice";
+import ModalTabSettings from "../../components/modals/ModalTabSettings/ModalTabSettings";
+import ModalAddTab from "../../components/modals/ModalAddTab";
+import widgetList from "../../components/widgets/widgetList";
+import ModalAddWidget from "../../components/modals/ModalAddWidget";
+import ListOfWidgets from "../../components/widgets/ListOfWidgets01";
+import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
+import { fetchUserData } from "../../redux/slices/userSlice";
+import { fetchForms } from "../../redux/slices/formSlice";
+import { fetchTasks } from "../../redux/slices/taskSlice";
+import { fetchFormsSchedule } from "../../redux/slices/formScheduleSlice";
 
 const Dashboard = () => {
   const [key, setKey] = useState("65c7c94f4217846243781a98");
@@ -46,7 +46,12 @@ const Dashboard = () => {
       <Container>
         <Tabs className="mb-3" activeKey={key} onSelect={(k: any) => setKey(k)}>
           {data.map((tab: any) => (
-            <Tab id={tab._id} title={tab.tabName} eventKey={tab._id}>
+            <Tab
+              key={tab._id}
+              id={tab._id}
+              title={tab.tabName}
+              eventKey={tab._id}
+            >
               <Button
                 id="add_widget"
                 active
@@ -65,10 +70,10 @@ const Dashboard = () => {
         show={modalGridShow}
         onHide={() => setModalGridShow(false)}
         title="ADD WIDGET"
-        listOfWidgets={listOfWidgets}
+        listOfWidgets={widgetList}
         tabId={key}
       />
-      <ModalSettings
+      <ModalTabSettings
         show={modalSettingsShow}
         onHide={() => setModalSettingsShow(false)}
         title={"TAB SETTINGS"}

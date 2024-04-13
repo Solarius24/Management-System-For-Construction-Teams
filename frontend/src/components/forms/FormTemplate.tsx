@@ -15,6 +15,7 @@ import { useAppDispatch } from "../../redux/reduxHooks";
 import { updateForm } from "../../redux/slices/formSlice";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { usePDF } from "react-to-pdf";
 
 const FormTemplate = (props: any) => {
   const [location, setLocation] = useState(props.formData[0].location);
@@ -38,6 +39,7 @@ const FormTemplate = (props: any) => {
     navigate("/forms");
   }
 
+  const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
   return (
     <Container style={{ marginTop: "60px" }}>
       <Card>
@@ -50,7 +52,8 @@ const FormTemplate = (props: any) => {
               </CardText>
             </Col>
             <Col>
-              <NavDropdown
+              <Button onClick={() => toPDF()}>Download PDF</Button>
+              {/* <NavDropdown
                 className="d-flex justify-content-end"
                 title="ACTIONS"
                 id="basic-nav-dropdown"
@@ -59,13 +62,13 @@ const FormTemplate = (props: any) => {
                 <NavDropdown.Divider />
                 <NavDropdown.Item>DISTRIBUTE FORM</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item>VIEW REPORT</NavDropdown.Item>
-                <NavDropdown.Divider />
                 <NavDropdown.Item>VIEW REQUIRED QUESTIONS</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>MARK ALL AS GOOD</NavDropdown.Item>
                 <NavDropdown.Divider />
-              </NavDropdown>
+                <NavDropdown.Item>PRINT TO PDF</NavDropdown.Item>
+                <NavDropdown.Divider />
+              </NavDropdown> */}
             </Col>
           </Row>
         </CardHeader>
@@ -73,81 +76,83 @@ const FormTemplate = (props: any) => {
 
       <Card>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <Form.Group className="m-3" as={Row}>
-            <Form.Label column>Form Type</Form.Label>
-            <Col>
-              <Form.Label>{props.formData[0].formType}</Form.Label>
-            </Col>
-          </Form.Group>
-          <Form.Group className="m-3" as={Row}>
-            <Form.Label column>Form Title</Form.Label>
-            <Col>
-              <Form.Label>{props.formData[0].formTitle}</Form.Label>
-            </Col>
-          </Form.Group>
-          <Form.Group className="m-3" as={Row}>
-            <Form.Label column>Status</Form.Label>
-            <Col>
-              <Form.Select
-                {...register("status", { required: true })}
-                onChange={(e) => setStatus(e.target.value)}
-                aria-label="Default select example"
-              >
-                <option>{status}</option>
-                <option value="OPEN">OPEN</option>
-                <option value="IN PROGRESS">IN PROGRESS</option>
-                <option value="CLOSED">CLOSED</option>
-              </Form.Select>
-            </Col>
-          </Form.Group>
+          <Form.Group ref={targetRef}>
+            <Form.Group className="m-3" as={Row}>
+              <Form.Label column>Form Type</Form.Label>
+              <Col>
+                <Form.Label>{props.formData[0].formType}</Form.Label>
+              </Col>
+            </Form.Group>
+            <Form.Group className="m-3" as={Row}>
+              <Form.Label column>Form Title</Form.Label>
+              <Col>
+                <Form.Label>{props.formData[0].formTitle}</Form.Label>
+              </Col>
+            </Form.Group>
+            <Form.Group className="m-3" as={Row}>
+              <Form.Label column>Status</Form.Label>
+              <Col>
+                <Form.Select
+                  {...register("status", { required: true })}
+                  onChange={(e) => setStatus(e.target.value)}
+                  aria-label="Default select example"
+                >
+                  <option>{status}</option>
+                  <option value="OPEN">OPEN</option>
+                  <option value="IN PROGRESS">IN PROGRESS</option>
+                  <option value="CLOSED">CLOSED</option>
+                </Form.Select>
+              </Col>
+            </Form.Group>
 
-          <Form.Group className="m-3" as={Row}>
-            <Form.Label column>Location</Form.Label>
-            <Col>
-              <Form.Select
-                {...register("location", { required: true })}
-                onChange={(e) => setLocation(e.target.value)}
-              >
-                <option>{location}</option>
-                <option value="GROUND FLOOR LEVEL">GROUND FLOOR LEVEL</option>
-                <option value="INTERMEDIATE LEVEL">INTERMEDIATE LEVEL</option>
-                <option value="BASEMENT LEVEL">BASEMENT LEVEL</option>
-              </Form.Select>
-            </Col>
-          </Form.Group>
-          <Form.Group className="m-3" as={Row}>
-            <Form.Label column>Details</Form.Label>
-            <Col>
-              <Form.Control
-                {...register("details", { required: true })}
-                as="textarea"
-                value={details}
-                onChange={(e) => setDetails(e.target.value)}
-              />
-            </Col>
-          </Form.Group>
-          <Form.Group className="m-3" as={Row}>
-            <Form.Label column>Signature Date</Form.Label>
-            <Col>
-              <Form.Control
-                {...register("signatureDate", { required: true })}
-                as="input"
-                type="date"
-                value={signatureDate}
-                onChange={(e) => setSignatureDate(e.target.value)}
-              />
-            </Col>
-          </Form.Group>
-          <Form.Group className="m-3" as={Row}>
-            <Form.Label column>Signature (Full Name)</Form.Label>
-            <Col>
-              <Form.Control
-                {...register("signature", { required: true })}
-                as="input"
-                value={signature}
-                onChange={(e) => setSignature(e.target.value)}
-              />
-            </Col>
+            <Form.Group className="m-3" as={Row}>
+              <Form.Label column>Location</Form.Label>
+              <Col>
+                <Form.Select
+                  {...register("location", { required: true })}
+                  onChange={(e) => setLocation(e.target.value)}
+                >
+                  <option>{location}</option>
+                  <option value="GROUND FLOOR LEVEL">GROUND FLOOR LEVEL</option>
+                  <option value="INTERMEDIATE LEVEL">INTERMEDIATE LEVEL</option>
+                  <option value="BASEMENT LEVEL">BASEMENT LEVEL</option>
+                </Form.Select>
+              </Col>
+            </Form.Group>
+            <Form.Group className="m-3" as={Row}>
+              <Form.Label column>Details</Form.Label>
+              <Col>
+                <Form.Control
+                  {...register("details", { required: true })}
+                  as="textarea"
+                  value={details}
+                  onChange={(e) => setDetails(e.target.value)}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group className="m-3" as={Row}>
+              <Form.Label column>Signature Date</Form.Label>
+              <Col>
+                <Form.Control
+                  {...register("signatureDate", { required: true })}
+                  as="input"
+                  type="date"
+                  value={signatureDate}
+                  onChange={(e) => setSignatureDate(e.target.value)}
+                />
+              </Col>
+            </Form.Group>
+            <Form.Group className="m-3" as={Row}>
+              <Form.Label column>Signature (Full Name)</Form.Label>
+              <Col>
+                <Form.Control
+                  {...register("signature", { required: true })}
+                  as="input"
+                  value={signature}
+                  onChange={(e) => setSignature(e.target.value)}
+                />
+              </Col>
+            </Form.Group>
           </Form.Group>
           <CardFooter>
             <Row>

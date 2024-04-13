@@ -1,30 +1,23 @@
 // @ts-nocheck
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
-import { useAppSelector } from "../../redux/reduxHooks";
 import { Link } from "react-router-dom";
-import BasicSpinner from "../BasicSpinner";
+import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
+import { fetchTasks } from "../../redux/slices/taskSlice";
+import BasicSpiner from "../BasicSpinner";
 
-const FormItemList = (props) => {
+const TasksItemList = (props) => {
   const [selectedItem, setSelectedItem] = useState([]);
-  const formData = useAppSelector((state) => state.form.data);
+  const taskData = useAppSelector((state) => state.task.data);
   const listOfColumnsToDisplay = useAppSelector(
-    (state) => state.userData.listOfColumnsToDisplay.form
+    (state) => state.userData.listOfColumnsToDisplay.task
   );
-  let data = [];
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchTasks());
+  }, [dispatch]);
 
-  // function filterData(item) {
-  //   const filter = props.filter;
-  //   if (filter.status && filter.status === item.status) {
-  //     return true;
-  //   }
-  //   if (filter.location && filter.location === item.location) {
-  //     return true;
-  //   }
-  //   if (filter.ref && filter.ref === item.id) {
-  //     return true;
-  //   }
-  // }
+  let data = [];
   function newFilter(item) {
     let filterValues = Object.values(props.filter);
     let itemValues = Object.values(item);
@@ -32,15 +25,10 @@ const FormItemList = (props) => {
   }
 
   if (Object.keys(props.filter).length > 0) {
-    data = formData.filter(newFilter);
+    data = taskData.filter(newFilter);
   } else {
-    data = formData;
+    data = taskData;
   }
-
-  // const dispatch = useAppDispatch();
-  // useEffect(() => {
-  //   dispatch(fetchForms());
-  // }, [dispatch]);
 
   function handleCheckboxChange(e) {
     const value = e.target.id;
@@ -61,7 +49,6 @@ const FormItemList = (props) => {
               <input type="checkbox" />
               <label>&nbsp;</label>
             </th>
-
             {listOfColumnsToDisplay.map((item) => {
               return (
                 <th key={item} id="item">
@@ -71,54 +58,53 @@ const FormItemList = (props) => {
             })}
           </tr>
         </thead>
-        {!data && <BasicSpinner />}
+
         <tbody>
+          {!data && <BasicSpiner />}
           {data.map((item) => (
-            <tr key={item.id} style={{ fontSize: "0.9rem" }}>
+            <tr key={item} style={{ fontSize: "0.9rem" }}>
               <td>
                 <input
                   type="checkbox"
-                  id={item.documentRef}
+                  id={item.taskRef}
                   onChange={handleCheckboxChange}
                 />
                 <label>&nbsp;</label>
               </td>
               {listOfColumnsToDisplay.includes("01Ref") && (
                 <td id="ref">
-                  <Link to={`/forms/edit/${item.documentRef}`}>
-                    {item.documentRef}
-                  </Link>
+                  <Link to={`/tasks/edit/${item.taskRef}`}>{item.taskRef}</Link>
                 </td>
               )}
-              {listOfColumnsToDisplay.includes("02Title") && (
-                <td id="title">{item.formTitle}</td>
+              {listOfColumnsToDisplay.includes("02Description") && (
+                <td id="description">{item.description}</td>
               )}
-              {listOfColumnsToDisplay.includes("03Status") && (
-                <td id="status">{item.status}</td>
+              {listOfColumnsToDisplay.includes("03Task Type") && (
+                <td id="task type">{item.taskType}</td>
               )}
               {listOfColumnsToDisplay.includes("04Location") && (
                 <td id="location">{item.location}</td>
               )}
-              {listOfColumnsToDisplay.includes("05Created date") && (
-                <td id="createdDate">{item.createdDate}</td>
+              {listOfColumnsToDisplay.includes("05Status") && (
+                <td id="status">{item.taskStatus}</td>
               )}
-              {listOfColumnsToDisplay.includes("06Type") && (
-                <td id="type">{item.formType}</td>
+              {listOfColumnsToDisplay.includes("06Package") && (
+                <td id="package">{item.contractPackage}</td>
               )}
-              {listOfColumnsToDisplay.includes("07By User") && (
-                <td id="byUser"></td>
+              {listOfColumnsToDisplay.includes("07Target Date") && (
+                <td id="target date">{item.targetDate}</td>
               )}
               {listOfColumnsToDisplay.includes("08By Organisation") && (
-                <td id="byOrganisation"></td>
+                <td id="byOrganisation">{item.issuedToOrganisation}</td>
               )}
-              {listOfColumnsToDisplay.includes("09Status Changed") && (
-                <td id="statusChanged"></td>
+              {listOfColumnsToDisplay.includes("09By User") && (
+                <td id="byUser">{item.issuedByUser}</td>
               )}
-              {listOfColumnsToDisplay.includes("10Expiry Date") && (
-                <td id="expiryDate"></td>
+              {listOfColumnsToDisplay.includes("10Cause") && (
+                <td id="cause">{item.cause}</td>
               )}
-              {listOfColumnsToDisplay.includes("11Actions") && (
-                <td id="actions"></td>
+              {listOfColumnsToDisplay.includes("11Cause By") && (
+                <td id="cause by">{item.causedBy}</td>
               )}
             </tr>
           ))}
@@ -128,4 +114,4 @@ const FormItemList = (props) => {
   );
 };
 
-export default FormItemList;
+export default TasksItemList;

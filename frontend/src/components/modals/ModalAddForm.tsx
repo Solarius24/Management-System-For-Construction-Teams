@@ -98,7 +98,7 @@ const ModalAddForm = (props: ModalAddConfig) => {
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide} variant="secondary">
-          Close
+          Close Tab
         </Button>
         <Button onClick={createFormHandler} variant="primary">
           Create Form

@@ -28,17 +28,6 @@ const ModalAddTask = (props: ModalAddConfig) => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  // const [taskType, setTaskType] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [location, setLocation] = useState("");
-  // const [status, setStatus] = useState("");
-  // const [causedBy, setCausedBy] = useState("");
-  // const [statusChangeComments, setStatusChangeComments] = useState("");
-  // const [contractPackage, setConstractPackage] = useState("");
-  // const [cause, setCause] = useState("");
-  // const [targetDate, setTargetDate] = useState("");
-  // const [issuedToOrganisation, setIssuedToOrganisation] = useState("");
-  // const [issuedByUser, setIssuedByUser] = useState("");
   const dispatch = useAppDispatch();
   const id = String(Date.now());
 
@@ -50,11 +39,9 @@ const ModalAddTask = (props: ModalAddConfig) => {
   }
 
   return (
-    <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
+    <Modal {...props}>
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          ADD NEW TASK
-        </Modal.Title>
+        <Modal.Title>ADD TASK</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit(onSubmitTask)}>
@@ -112,9 +99,9 @@ const ModalAddTask = (props: ModalAddConfig) => {
               // onChange={(e) => setLocation(e.target.value)}
             >
               <option></option>
-              {createTask.location.map((item: any) => (
-                <option value={item}>{item}</option>
-              ))}
+              <option value="GROUND FLOOR LEVEL">GROUND FLOOR LEVEL</option>
+              <option value="INTERMEDIATE LEVEL">INTERMEDIATE LEVEL</option>
+              <option value="BASEMENT LEVEL">BASEMENT LEVEL</option>
             </Form.Select>
           </Form.Group>
 
@@ -269,20 +256,11 @@ const ModalAddTask = (props: ModalAddConfig) => {
               ))}
             </Form.Select>
           </Form.Group>
-
-          <InputGroup className="mb-3">
-            <InputGroup.Checkbox
-              aria-label="Checkbox for following text input"
-              {...register("saveAsLibraryTask", { required: false })}
-            />
-            <InputGroup.Text>Save As Library Task</InputGroup.Text>
-          </InputGroup>
-
           <Button onClick={props.onHide} variant="secondary">
-            Close
+            Close Tab
           </Button>
           <Button variant="primary" type="submit">
-            Save changes
+            Save Changes
           </Button>
         </Form>
       </Modal.Body>

@@ -27,7 +27,7 @@ interface filter {
   location?: string;
   status?: string;
 }
-const FormFillters = (props: fillters) => {
+const TaskFillters = (props: fillters) => {
   const [ref, setRef] = useState("");
   const [location, setLocation] = useState("");
   const [status, setStatus] = useState("");
@@ -162,4 +162,4 @@ const FormFillters = (props: fillters) => {
   );
 };
 
-export default FormFillters;
+export default TaskFillters;

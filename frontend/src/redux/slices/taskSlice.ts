@@ -20,6 +20,7 @@ interface TaskState {
   }[];
 }
 
+
 const initialState: TaskState = {
   data: [
     {
@@ -43,7 +44,6 @@ const initialState: TaskState = {
 
 export const fetchTasks = createAsyncThunk("fetchTask", async () => {
   const response = await axios("/api/tasks");
-  // const data = await response.json();
   return response.data;
 });
 
