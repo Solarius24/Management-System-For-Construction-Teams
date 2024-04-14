@@ -14,7 +14,6 @@ interface ColumnConfigList {
   handleClose: () => void;
   show: boolean;
   onHide: () => void;
-  columnConfigList: { id: string; name: string }[];
 }
 
 const ColumnConfig = (props: ColumnConfigList) => {

@@ -5,7 +5,6 @@ import {
   Container,
   Form,
   FormControl,
-  FormLabel,
   Col,
   Row,
   CardHeader,
@@ -16,7 +15,6 @@ import createTask from "../../configData/tasksConfig/createTask";
 import { useForm } from "react-hook-form";
 import { useAppDispatch } from "../../redux/reduxHooks";
 import { updateTask } from "../../redux/slices/taskSlice";
-import taskList from "../../configData/tasksConfig/tasksList";
 import { useNavigate } from "react-router-dom";
 import { usePDF } from "react-to-pdf";
 

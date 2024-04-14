@@ -65,24 +65,6 @@ const FormsTab = () => {
               </Nav.Link>
             </Nav.Item>
             <NavDropdown title="ACTIONS" id="basic-nav-dropdown">
-              <NavDropdown.Item>CHAGE STATUS</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#/action-2">
-                DISTRIBUTE FROM
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#/action-3">
-                FORMS REPORTS
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#/action-4">
-                EXPORT AS CSV
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#/action-5">
-                BULK EXPORT PDF
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
               <NavDropdown.Item onClick={handleFormDelate} href="#/action-6">
                 DELETE
               </NavDropdown.Item>

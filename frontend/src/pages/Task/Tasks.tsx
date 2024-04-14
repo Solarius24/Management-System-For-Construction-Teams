@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
 import TasksList from "../../components/task/TasksItemList";
-import columnConfigList from "../../configData/columnConfigList";
 import tasksList from "../../configData/tasksConfig/tasksList";
 import ModalAddTask from "../../components/modals/ModalAddTask";
 import { deleteTask, fetchTasks } from "../../redux/slices/taskSlice";
@@ -64,24 +63,6 @@ const Tasks = () => {
               </Nav.Link>
             </Nav.Item>
             <NavDropdown title="ACTIONS" id="basic-nav-dropdown">
-              <NavDropdown.Item>CHAGE STATUS</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#/action-2">
-                DISTRIBUTE FROM
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#/action-3">
-                FORMS REPORTS
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#/action-4">
-                EXPORT AS CSV
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#/action-5">
-                BULK EXPORT PDF
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
               <NavDropdown.Item onClick={handleTaskDelate} href="#/action-6">
                 DELETE
               </NavDropdown.Item>
@@ -107,7 +88,6 @@ const Tasks = () => {
               handleClose={handleCloseShowColumnConfig}
               show={showColumnConfig}
               onHide={() => setShowColumnConfig(false)}
-              columnConfigList={columnConfigList}
             />
           </Col>
         )}
