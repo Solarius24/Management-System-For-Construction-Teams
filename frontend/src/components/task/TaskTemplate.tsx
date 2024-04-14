@@ -11,7 +11,7 @@ import {
   CardText,
   CardFooter,
 } from "react-bootstrap";
-import createTask from "../../configData/tasksConfig/createTask";
+import createTask from "./tasksConfig/createTask";
 import { useForm } from "react-hook-form";
 import { useAppDispatch } from "../../redux/reduxHooks";
 import { updateTask } from "../../redux/slices/taskSlice";

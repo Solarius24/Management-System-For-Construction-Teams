@@ -7,7 +7,7 @@ import {
   InputGroup,
   Modal,
 } from "react-bootstrap";
-import createTask from "../../configData/tasksConfig/createTask";
+import createTask from "../task/tasksConfig/createTask";
 import { useForm } from "react-hook-form";
 import { useAppDispatch } from "../../redux/reduxHooks";
 import { updateTask, addTask } from "../../redux/slices/taskSlice";
@@ -113,6 +113,7 @@ const ModalAddTask = (props: ModalAddConfig) => {
               </p>
             )}
             <Form.Select
+              disabled
               aria-label="Default select example"
               {...register("taskStatus")}
               // disabled

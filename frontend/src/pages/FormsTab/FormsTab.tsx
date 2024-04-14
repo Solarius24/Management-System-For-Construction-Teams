@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
 import ModalAddForm from "../../components/modals/ModalAddForm";
-import formsList from "../../configData/formsConfig/formsList";
-import formsColumnConfigList from "../../configData/formsConfig/formsColumnConfigList";
+import formsList from "../../components/forms/formsConfig/formsList";
 import FormItemList from "../../components/forms/FormItemList";
 import { deleteForm, fetchForms } from "../../redux/slices/formSlice";
 import { useAppDispatch } from "../../redux/reduxHooks";
@@ -91,7 +90,6 @@ const FormsTab = () => {
               handleClose={handleCloseShowColumnConfig}
               show={showColumnConfig}
               onHide={() => setShowColumnConfig(false)}
-              columnConfigList={formsColumnConfigList}
             />
           </Col>
         )}

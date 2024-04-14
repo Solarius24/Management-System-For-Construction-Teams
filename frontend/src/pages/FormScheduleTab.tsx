@@ -1,6 +1,6 @@
 import { SetStateAction, useEffect, useState } from "react";
 import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
-import formsScheduleList from "../configData/formsConfig/formScheduleList";
+import formsScheduleList from "../components/forms/formsConfig/formScheduleList";
 import ModalAddFormSchedule from "../components/modals/ModalAddFormSchedule";
 import FormScheduleList from "../components/forms/FormScheduleList";
 import {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Col, Nav, NavDropdown, Row } from "react-bootstrap";
 import TasksList from "../../components/task/TasksItemList";
-import tasksList from "../../configData/tasksConfig/tasksList";
+import tasksList from "../../components/task/tasksConfig/tasksList";
 import ModalAddTask from "../../components/modals/ModalAddTask";
 import { deleteTask, fetchTasks } from "../../redux/slices/taskSlice";
 import { useAppDispatch } from "../../redux/reduxHooks";
