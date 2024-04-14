@@ -7,7 +7,6 @@ import {
   Col,
   Container,
   Form,
-  NavDropdown,
   Row,
 } from "react-bootstrap";
 import { useForm } from "react-hook-form";
@@ -39,44 +38,27 @@ const FormTemplate = (props: any) => {
     navigate("/forms");
   }
 
-  const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+  const { toPDF, targetRef } = usePDF({
+    filename: `Form Ref:${props.formData[0].documentRef}`,
+  });
   return (
     <Container style={{ marginTop: "60px" }}>
-      <Card>
-        <CardHeader>
-          <Row>
-            <Col>
-              <CardText>
-                Form Ref:{props.formData[0].documentRef}{" "}
-                {props.formData[0].title}
-              </CardText>
-            </Col>
-            <Col>
-              <Button onClick={() => toPDF()}>Download PDF</Button>
-              {/* <NavDropdown
-                className="d-flex justify-content-end"
-                title="ACTIONS"
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item>COPY FORM</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>DISTRIBUTE FORM</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>VIEW REQUIRED QUESTIONS</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>MARK ALL AS GOOD</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>PRINT TO PDF</NavDropdown.Item>
-                <NavDropdown.Divider />
-              </NavDropdown> */}
-            </Col>
-          </Row>
-        </CardHeader>
-      </Card>
-
+      <Col className="d-flex justify-content-end">
+        <Button onClick={() => toPDF()}>Download PDF</Button>
+      </Col>
       <Card>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group ref={targetRef}>
+            <CardHeader>
+              <Row>
+                <Col>
+                  <CardText>
+                    Form Ref:{props.formData[0].documentRef}{" "}
+                    {props.formData[0].title}
+                  </CardText>
+                </Col>
+              </Row>
+            </CardHeader>
             <Form.Group className="m-3" as={Row}>
               <Form.Label column>Form Type</Form.Label>
               <Col>
@@ -154,10 +136,8 @@ const FormTemplate = (props: any) => {
               </Col>
             </Form.Group>
           </Form.Group>
-          <CardFooter>
-            <Row>
-              <Button type="submit">SAVE</Button>
-            </Row>
+          <CardFooter className="d-flex justify-content-end">
+            <Button type="submit">SAVE</Button>
           </CardFooter>
         </Form>
       </Card>
