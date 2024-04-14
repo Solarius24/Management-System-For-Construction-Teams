@@ -137,7 +137,7 @@ const FormTemplate = (props: any) => {
             </Form.Group>
           </Form.Group>
           <CardFooter className="d-flex justify-content-end">
-            <Button type="submit">SAVE</Button>
+            <Button type="submit">SAVE CHANGES</Button>
           </CardFooter>
         </Form>
       </Card>
