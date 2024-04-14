@@ -35,3 +35,16 @@ test("Display Modal Tab Settings", () => {
   fireEvent.click(addNewTabButton);
   expect(screen.getByTitle("TAB SETTINGS")).toBeVisible();
 });
+
+test("Display Modal Tab New Title", () => {
+  render(
+    <Provider store={store}>
+      <Dashboard />
+    </Provider>
+  );
+  const addNewTabButton = screen.getByText(/tab settings/i);
+  fireEvent.click(addNewTabButton);
+  const editSelectedButton = screen.getByText(/edit selected/i);
+  fireEvent.click(editSelectedButton);
+  expect(screen.getByText("TAB NAME")).toBeVisible();
+});
