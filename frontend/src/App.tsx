@@ -11,6 +11,7 @@ import FormEdit from "./pages/FormEdit";
 import TaskEdit from "./pages/TaskEdit";
 import FormScheduleEdit from "./pages/FormScheduleEdit";
 import PrivacyNotice from "./pages/PrivacyNotice";
+import ConcreteWorksTracker from "./pages/ProcesseDashboard";
 
 function App() {
   return (
@@ -33,10 +34,13 @@ function App() {
           ></Route>
           <Route path="/tasks/edit/:taskRef" element={<TaskEdit />}></Route>
           <Route path="/privacy-notice" element={<PrivacyNotice />}></Route>
+          <Route
+            path="/processes/detail/:processRef"
+            element={<ConcreteWorksTracker />}
+          ></Route>
         </Routes>
       </div>
     </BrowserRouter>
-	
   );
 }
 

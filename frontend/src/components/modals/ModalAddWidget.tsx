@@ -16,14 +16,17 @@ const ModalAddWidget = (props: any) => {
     setWidgetName(e.target.innerText);
   }
 
-  function handleAddWidgetToWidgetList(e: any) {
-    dispatch(
-      addWidget({
-        widgetName: widgetName,
-        tabId: props.tabId,
-        widgetType: widgetType,
-      })
-    );
+  function handleAddWidgetToWidgetList() {
+    if (widgetName.length > 0) {
+      dispatch(
+        addWidget({
+          widgetName: widgetName,
+          tabId: props.tabId,
+          widgetType: widgetType,
+        })
+      );
+    }
+
     props.onHide();
   }
 

@@ -35,12 +35,15 @@ const {
   updateTaskListOfColumnToDisplay,
 } = require("../controllers/userController");
 
+const { getProcesses } = require("../controllers/processControler");
+
 const router = express.Router();
 
-// GET all tasks/forms
+// GET all tasks/forms/processes
 router.get("/forms", getForms);
 router.get("/forms-schedule", getFormsSchedule);
 router.get("/tasks", getTasks);
+router.get("/processes", getProcesses);
 
 // GET a single task/form
 router.get("/forms/:id", getForm);

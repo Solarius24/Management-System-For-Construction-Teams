@@ -13,7 +13,6 @@ const NavBar = () => {
   const [showModalMySettings, setModalMySettings] = useState(false);
   const [showModalProjectSetup, setModalProjectSetup] = useState(false);
   const [navbarItemSelected, setNavbarItemSelected] = useState("");
-  console.log(navbarItemSelected);
 
   const handleSelect = (eventKey: any) => {
     setNavbarItemSelected(eventKey);

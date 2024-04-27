@@ -1,6 +1,9 @@
 import { Container, Table } from "react-bootstrap";
+import { useAppSelector } from "../redux/reduxHooks";
+import { Link } from "react-router-dom";
 
 const Processes = () => {
+  const data = useAppSelector((state) => state.processes.data);
   return (
     <Container
       fluid
@@ -26,40 +29,16 @@ const Processes = () => {
         </thead>
 
         <tbody>
-          <tr>
-            <td>
-              <a href=" ">51848</a>
-            </td>
-            <td>CONCRETE WORKS TRACKER</td>
-            <td>eXPANDED</td>
-            <td>17/20/21</td>
-          </tr>
-          <tr>
-            <td>
-              <a href=" ">51841</a>
-            </td>
-            <td>Waterproof Ext Faces of HH & CB Tracker - HS2OOC</td>
-            <td>eXPANDED</td>
-            <td>17/20/21</td>
-          </tr>
-          <tr>
-            <td>
-              <a href=" ">51840</a>
-            </td>
-            <td>
-              Waterproofing UG Roof Slabs & SBS InstallationTracker - HS2OOC
-            </td>
-            <td>eXPANDED</td>
-            <td>17/20/21</td>
-          </tr>
-          <tr>
-            <td>
-              <a href=" ">51842</a>
-            </td>
-            <td>UTX Concrete Works Tracker with Waterproofing - HS200C</td>
-            <td>eXPANDED</td>
-            <td>17/20/21</td>
-          </tr>
+          {data.map((item: any) => {
+            return (
+              <tr>
+                <td>
+                  <Link to={`/processes/detail/${item._id}`}>{item._id}</Link>
+                </td>
+                <td>{item.title}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
     </Container>

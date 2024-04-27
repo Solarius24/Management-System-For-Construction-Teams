@@ -7,6 +7,7 @@ import LocationsWithMostTasks from "./graphs/tasks/LocationsWithMostTasks";
 import RecentTaskActivity from "./graphs/tasks/RecentTaskActivity";
 import FormsStatusByMonth from "./graphs/forms/FormsStatusByMonth";
 import OrganizationsWithMostTasks from "./graphs/tasks/OrganizationsWithMostTasks";
+import ProcessPercentageCompleted from "./graphs/processes/ProcessPercentageCompleted";
 
 const Widget = (props: any) => {
   const dispatch = useAppDispatch();
@@ -24,31 +25,7 @@ const Widget = (props: any) => {
               X
             </Button>
           </div>
-
           <OrganizationsWithMostTasks />
-        </Card>
-      );
-
-    case "Form Status":
-      return (
-        <Card>
-          <div className="d-flex justify-content-end">
-            <Button style={{ width: "50px" }} onClick={handleWidgetDelete}>
-              X
-            </Button>
-          </div>
-          <FormStatus />
-        </Card>
-      );
-    case "Forms Recent Activity":
-      return (
-        <Card>
-          <div className="d-flex justify-content-end">
-            <Button style={{ width: "50px" }} onClick={handleWidgetDelete}>
-              X
-            </Button>
-          </div>{" "}
-          <FormsRecentActivity />
         </Card>
       );
 
@@ -63,6 +40,7 @@ const Widget = (props: any) => {
           <LocationsWithMostTasks />
         </Card>
       );
+
     case "Recent Task Activity":
       return (
         <Card>
@@ -74,6 +52,30 @@ const Widget = (props: any) => {
           <RecentTaskActivity />
         </Card>
       );
+
+    case "Forms Recent Activity":
+      return (
+        <Card>
+          <div className="d-flex justify-content-end">
+            <Button style={{ width: "50px" }} onClick={handleWidgetDelete}>
+              X
+            </Button>
+          </div>{" "}
+          <FormsRecentActivity />
+        </Card>
+      );
+    case "Form Status":
+      return (
+        <Card>
+          <div className="d-flex justify-content-end">
+            <Button style={{ width: "50px" }} onClick={handleWidgetDelete}>
+              X
+            </Button>
+          </div>
+          <FormStatus />
+        </Card>
+      );
+
     case "Forms Status By Month":
       return (
         <Card>
@@ -84,6 +86,19 @@ const Widget = (props: any) => {
           </div>
 
           <FormsStatusByMonth />
+        </Card>
+      );
+
+    case "Process Percentage Complete":
+      return (
+        <Card>
+          <div className="d-flex justify-content-end">
+            <Button style={{ width: "50px" }} onClick={handleWidgetDelete}>
+              X
+            </Button>
+          </div>
+
+          <ProcessPercentageCompleted />
         </Card>
       );
     default:

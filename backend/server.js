@@ -21,11 +21,8 @@ app.use("/api", route);
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("connected");
     // listen to port
-    app.listen(process.env.PORT, () => {
-      console.log("watch PORT 4000");
-    });
+    app.listen(process.env.PORT, () => {});
   })
 
   .catch((err) => {

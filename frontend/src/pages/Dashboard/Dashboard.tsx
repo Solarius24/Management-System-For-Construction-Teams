@@ -10,10 +10,11 @@ import { fetchUserData } from "../../redux/slices/userSlice";
 import { fetchForms } from "../../redux/slices/formSlice";
 import { fetchTasks } from "../../redux/slices/taskSlice";
 import { fetchFormsSchedule } from "../../redux/slices/formScheduleSlice";
+import { fetchProcesses } from "../../redux/slices/processSlice";
 
 const Dashboard = () => {
   const [key, setKey] = useState("65c7c94f4217846243781a98");
-  const [modalGridShow, setModalGridShow] = useState(false);
+  const [modalAddWidgetShow, setModalAddWidgetShow] = useState(false);
   const [modalSettingsShow, setModalSettingsShow] = useState(false);
   const [modalAddTabShow, setModalAddTabShow] = useState(false);
   const data = useAppSelector((state) => state.userData.listOfTabs);
@@ -23,6 +24,7 @@ const Dashboard = () => {
     dispatch(fetchForms());
     dispatch(fetchTasks());
     dispatch(fetchFormsSchedule());
+    dispatch(fetchProcesses());
   }, []);
 
   function handleAddNewTab() {
@@ -30,7 +32,7 @@ const Dashboard = () => {
   }
 
   function handleAddWidget() {
-    setModalGridShow(true);
+    setModalAddWidgetShow(true);
   }
   return (
     <div>
@@ -67,8 +69,8 @@ const Dashboard = () => {
       </Container>
 
       <ModalAddWidget
-        show={modalGridShow}
-        onHide={() => setModalGridShow(false)}
+        show={modalAddWidgetShow}
+        onHide={() => setModalAddWidgetShow(false)}
         title="ADD WIDGET"
         listOfWidgets={widgetList}
         tabId={key}

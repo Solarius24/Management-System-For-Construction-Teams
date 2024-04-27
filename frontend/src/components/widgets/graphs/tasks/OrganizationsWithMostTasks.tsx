@@ -28,7 +28,7 @@ function OrganizationsWithMostTasks() {
 
   return (
     <Card>
-      <CardTitle className="p-4">Locations With Most Tasks</CardTitle>
+      <CardTitle className="p-4">Organization With Most Tasks</CardTitle>
       <CardBody>
         <ComposedChart
           layout="vertical"
