@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const ProcessSchema = new Schema(
-  {
-    title: { type: String, require: true },
-    columns: { type: Array },
+const ProcessSchema = new Schema({
+  columns: { type: Array },
+  title: { type: String },
+  location: {
+    locationName: { type: String },
+    locationStatus: { type: Object },
+    createdDate: { type: String },
   },
-  { timestamps: true }
-);
+});
 
 module.exports = mongoose.model("Process", ProcessSchema);

@@ -1,17 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useAppDispatch } from "../../redux/reduxHooks";
-import { addUserData, fetchUserData } from "../../redux/slices/userSlice";
+import { addLocation } from "../../redux/slices/processSlice";
 
 function ModalProcessesAddLocation(props: any) {
-  const [tabTitle, setTabTitle] = useState(" ");
+  const [locationName, setLocationName] = useState(" ");
   const dispatch = useAppDispatch();
 
   function handleAddNewLocation() {
-    // dispatch(addUserData({ tabName: tabTitle, listOfWidgets: [] }));
-    // dispatch(fetchUserData());
+    console.log(props.docId);
+    let data = {
+      id: `${props.docId}`,
+      locationName: `${locationName}`,
+      createdDate: `${new Date().toLocaleString()}`,
+      locationStatus: {
+        1: "NOT STARTED",
+        2: "NOT STARTED",
+        3: "NOT STARTED",
+        4: "NOT STARTED",
+        5: "NOT STARTED",
+        6: "NOT STARTED",
+        7: "NOT STARTED",
+      },
+    };
+    dispatch(addLocation(data));
+
     props.onHide();
-    setTabTitle("");
+    setLocationName("");
   }
 
   return (
@@ -27,8 +42,8 @@ function ModalProcessesAddLocation(props: any) {
             <Form.Group className="m-3">
               <Form.Control
                 placeholder="Enter Tab Name"
-                value={tabTitle}
-                onChange={(e) => setTabTitle(e.target.value)}
+                value={locationName}
+                onChange={(e) => setLocationName(e.target.value)}
               />
             </Form.Group>
           </Form>

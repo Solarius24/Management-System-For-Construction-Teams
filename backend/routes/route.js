@@ -35,7 +35,10 @@ const {
   updateTaskListOfColumnToDisplay,
 } = require("../controllers/userController");
 
-const { getProcesses } = require("../controllers/processControler");
+const {
+  getProcesses,
+  createLocation,
+} = require("../controllers/processControler");
 
 const router = express.Router();
 
@@ -54,13 +57,12 @@ router.get("/userData", getUserTabs);
 //FILTER FORMS
 // router.get("/forms/filter", filterForms);
 
-// POST a new task/form
+// POST a new task/form/location
 
 router.post("/forms", createForm);
 router.post("/forms-schedule", createFormSchedule);
 router.post("/tasks", createTask);
 router.post("/userData", createUserTabs);
-// router.post("/userData", updateWidgetList);
 
 // DELETE task/form/userdata
 router.delete("/forms", deleteForm);
@@ -85,5 +87,7 @@ router.patch("/userData/:id", updateWidgetList);
 router.patch("/updateFormListOfColumns", updateFormListOfColumnToDisplay);
 //ADD LIST OF COLUMNS TO DISPLAY ON TASK PAGE
 router.patch("/updateTaskListOfColumns", updateTaskListOfColumnToDisplay);
+//ADD NEW LOCATION TO LOCATION ARRAY IN DATANASE
+router.patch("/addLocation", createLocation);
 
 module.exports = router;
