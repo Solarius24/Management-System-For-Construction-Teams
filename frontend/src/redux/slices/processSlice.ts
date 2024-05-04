@@ -30,9 +30,14 @@ export const processSlice = createSlice({
       axios.patch("/api/addLocation/", action.payload, {
         params: { id: `${action.payload.id}` },
       });
-
-      // axios.patch(`/api/addLocation/${action.payload.id}`, action.payload);
       state.data.push(action.payload);
+    },
+    updateLocationStatus: (state, action) => {
+      console.log(action.payload);
+      axios.patch("/api/updateLocationStatus/", action.payload[0], {
+        params: { id: `${action.payload[1]}` },
+      });
+      // state.data = (action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -42,6 +47,6 @@ export const processSlice = createSlice({
   },
 });
 
-export const { addLocation } = processSlice.actions;
+export const { addLocation, updateLocationStatus } = processSlice.actions;
 
 export default processSlice.reducer;

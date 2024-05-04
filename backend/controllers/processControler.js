@@ -25,7 +25,27 @@ const createLocation = async (req, res) => {
   res.status(200).json(newLocation);
 };
 
+const updateLocationStatus = async (req, res) => {
+  const { id } = req.query;
+  console.log(req.body);
+  const newStatus = await Process.findOneAndUpdate(
+    { _id: id },
+    {
+      $set: {
+        location: req.body,
+      },
+    }
+  );
+
+  if (!newStatus) {
+    return res.status(400).json({ error: "No such form" });
+  }
+
+  res.status(200).json(newStatus);
+};
+
 module.exports = {
   getProcesses,
+  updateLocationStatus,
   createLocation,
 };

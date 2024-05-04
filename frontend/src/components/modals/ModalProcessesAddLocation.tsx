@@ -8,7 +8,6 @@ function ModalProcessesAddLocation(props: any) {
   const dispatch = useAppDispatch();
 
   function handleAddNewLocation() {
-    console.log(props.docId);
     let data = {
       id: `${props.docId}`,
       locationName: `${locationName}`,

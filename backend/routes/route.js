@@ -38,6 +38,7 @@ const {
 const {
   getProcesses,
   createLocation,
+  updateLocationStatus,
 } = require("../controllers/processControler");
 
 const router = express.Router();
@@ -76,6 +77,9 @@ router.patch("/forms/:id", updateForm);
 router.patch("/forms-schedule/:id", updateFormSchedule);
 router.patch("/tasks/:id", updateTask);
 router.patch("/userData", updateUserTabs);
+
+//UPDATE LOCACTION STATUS
+router.patch("/updateLocationStatus", updateLocationStatus);
 
 //update TAB NAME
 router.patch("/userDataTabName", updateUserTabName);

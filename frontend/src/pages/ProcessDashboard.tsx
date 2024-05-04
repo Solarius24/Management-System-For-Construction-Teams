@@ -1,13 +1,72 @@
-//@ts-nocheck
 import { Button, Container, Form, Table } from "react-bootstrap";
-import { useAppSelector } from "../redux/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
 import { useParams } from "react-router-dom";
 import ModalProcessesAddLocation from "../components/modals/ModalProcessesAddLocation";
 import { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { updateLocationStatus } from "../redux/slices/processSlice";
 
 function ProcessDashboard() {
   const [modalShow, setModalShow] = useState(false);
+  const dispatch = useAppDispatch();
   const data = useAppSelector((state) => state.processes.data);
+  //DEEP COPY OF DATA ARRAY
+  let location = JSON.parse(JSON.stringify(data[0].location));
+  // let location = data[0].location;
+  // let location = [
+  //   {
+  //     locationStatus: {
+  //       0: "NOT STARTED",
+  //       1: "NOT STARTED",
+  //       2: "NOT STARTED",
+  //       3: "NOT STARTED",
+  //       4: "NOT STARTED",
+  //       5: "NOT STARTED",
+  //       6: "NOT STARTED",
+  //     },
+  //   },
+  //   {
+  //     locationStatus: {
+  //       0: "NOT STARTED",
+  //       1: "NOT STARTED",
+  //       2: "NOT STARTED",
+  //       3: "NOT STARTED",
+  //       4: "NOT STARTED",
+  //       5: "NOT STARTED",
+  //       6: "NOT STARTED",
+  //     },
+  //   },
+  //   {
+  //     locationStatus: {
+  //       0: "NOT STARTED",
+  //       1: "NOT STARTED",
+  //       2: "NOT STARTED",
+  //       3: "NOT STARTED",
+  //       4: "NOT STARTED",
+  //       5: "NOT STARTED",
+  //       6: "NOT STARTED",
+  //     },
+  //   },
+  //   {
+  //     locationStatus: {
+  //       0: "NOT STARTED",
+  //       1: "NOT STARTED",
+  //       2: "NOT STARTED",
+  //       3: "NOT STARTED",
+  //       4: "NOT STARTED",
+  //       5: "NOT STARTED",
+  //       6: "NOT STARTED",
+  //     },
+  //   },
+  // ];
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data: any) => console.log("data", data);
 
   let { processRef } = useParams();
 
@@ -17,14 +76,22 @@ function ProcessDashboard() {
     setModalShow(true);
   }
 
+  function handleUpdateStatus() {
+    dispatch(updateLocationStatus([location, process[0]._id]));
+  }
+
+  function update(a: number, b: number, e: any) {
+    location[a].locationStatus[b] = e.target.value;
+  }
+
   return (
     <>
-      <Container fluid style={{ marginTop: "60px" }}>
+      <Form style={{ marginTop: "60px" }} onSubmit={handleSubmit(onSubmit)}>
         <div>{process[0].title}</div>
         <Button variant="primary" onClick={handleModalShow}>
           ADD LOCATION
         </Button>
-        <Button variant="primary" onClick={handleModalShow}>
+        <Button variant="primary" type="submit" onClick={handleUpdateStatus}>
           SAVE
         </Button>
         <Table striped bordered hover>
@@ -43,22 +110,21 @@ function ProcessDashboard() {
           </thead>
 
           <tbody>
-            {process[0].location.map((item: any) => {
+            {process[0].location.map((item: any, indexA) => {
               return (
                 <tr>
                   <td>{item.locationName}</td>
-                  {Object.values(item.locationStatus).map((x) => {
+                  {Object.values(item.locationStatus).map((x, index) => {
                     return (
                       <td>
                         <Form.Group>
                           <Form.Select
-                            defaultValue={x}
-                            // {...register("status", { required: true })}
-                            // onChange={(e) => setStatus(e.target.value)}
-                            // aria-label="Default select example"
+                            defaultValue={String(x)}
+                            // {...register(String(index), { required: true })}
+                            onChange={(e) => update(indexA, index, e)}
                           >
                             {/* <option>{x}</option> */}
-                            <option value="OPEN">NOT STARTED</option>
+                            <option value="NOT STARTED">NOT STARTED</option>
                             <option value="CHECK IN PROGRESS">
                               CHECK IN PROGRESS
                             </option>
@@ -77,7 +143,7 @@ function ProcessDashboard() {
             })}
           </tbody>
         </Table>
-      </Container>
+      </Form>
 
       <ModalProcessesAddLocation
         docId={process[0]._id}

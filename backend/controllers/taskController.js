@@ -88,6 +88,7 @@ const updateTask = async (req, res) => {
   const task = await Task.findOneAndUpdate(
     // { _id: id },
     { id: id },
+
     {
       ...req.body,
     }
