@@ -27,17 +27,26 @@ export const processSlice = createSlice({
   initialState,
   reducers: {
     addLocation: (state, action) => {
-      axios.patch("/api/addLocation/", action.payload, {
-        params: { id: `${action.payload.id}` },
+      axios.patch("/api/addLocation/", action.payload[0], {
+        params: { id: `${action.payload[1]}` },
       });
-      state.data.push(action.payload);
+      const index = state.data.findIndex(
+        (item) => item._id === action.payload[1]
+      );
+
+      state.data[index].location.push(action.payload[0]);
     },
     updateLocationStatus: (state, action) => {
       console.log(action.payload);
       axios.patch("/api/updateLocationStatus/", action.payload[0], {
         params: { id: `${action.payload[1]}` },
       });
-      // state.data = (action.payload);
+
+      const index = state.data.findIndex(
+        (item) => item._id === action.payload[1]
+      );
+
+      state.data[index].location = action.payload[0];
     },
   },
   extraReducers: (builder) => {

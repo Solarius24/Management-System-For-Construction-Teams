@@ -7,7 +7,7 @@ const getProcesses = async (req, res) => {
 };
 
 const createLocation = async (req, res) => {
-  const { locationStatus, locationName } = req.body;
+  console.log(req.body);
   const { id } = req.query;
 
   const newLocation = await Process.findOneAndUpdate(

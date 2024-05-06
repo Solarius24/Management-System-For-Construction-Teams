@@ -3,7 +3,6 @@ import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
 import { useParams } from "react-router-dom";
 import ModalProcessesAddLocation from "../components/modals/ModalProcessesAddLocation";
 import { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
 import { updateLocationStatus } from "../redux/slices/processSlice";
 
 function ProcessDashboard() {
@@ -13,63 +12,7 @@ function ProcessDashboard() {
   //DEEP COPY OF DATA ARRAY
   let location = JSON.parse(JSON.stringify(data[0].location));
   // let location = data[0].location;
-  // let location = [
-  //   {
-  //     locationStatus: {
-  //       0: "NOT STARTED",
-  //       1: "NOT STARTED",
-  //       2: "NOT STARTED",
-  //       3: "NOT STARTED",
-  //       4: "NOT STARTED",
-  //       5: "NOT STARTED",
-  //       6: "NOT STARTED",
-  //     },
-  //   },
-  //   {
-  //     locationStatus: {
-  //       0: "NOT STARTED",
-  //       1: "NOT STARTED",
-  //       2: "NOT STARTED",
-  //       3: "NOT STARTED",
-  //       4: "NOT STARTED",
-  //       5: "NOT STARTED",
-  //       6: "NOT STARTED",
-  //     },
-  //   },
-  //   {
-  //     locationStatus: {
-  //       0: "NOT STARTED",
-  //       1: "NOT STARTED",
-  //       2: "NOT STARTED",
-  //       3: "NOT STARTED",
-  //       4: "NOT STARTED",
-  //       5: "NOT STARTED",
-  //       6: "NOT STARTED",
-  //     },
-  //   },
-  //   {
-  //     locationStatus: {
-  //       0: "NOT STARTED",
-  //       1: "NOT STARTED",
-  //       2: "NOT STARTED",
-  //       3: "NOT STARTED",
-  //       4: "NOT STARTED",
-  //       5: "NOT STARTED",
-  //       6: "NOT STARTED",
-  //     },
-  //   },
-  // ];
-
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data: any) => console.log("data", data);
-
   let { processRef } = useParams();
-
   const process = data.filter((item) => item._id === processRef);
 
   function handleModalShow() {
@@ -80,78 +23,139 @@ function ProcessDashboard() {
     dispatch(updateLocationStatus([location, process[0]._id]));
   }
 
-  function update(a: number, b: number, e: any) {
+  function updateStatus(a: number, b: number, e: any) {
     location[a].locationStatus[b] = e.target.value;
+
+    switch (e.target.value) {
+      case "NOT STARTED":
+        return (e.target.style.background = "lightblue");
+      case "CHECK IN PROGRESS":
+        return (e.target.style.background = "yellow");
+      case "NCR OPEN":
+        return (e.target.style.background = "salmon");
+      case "COMPLETED":
+        return (e.target.style.background = "lightgreen");
+      default:
+        return (e.target.style.background = "lightgrey");
+    }
   }
 
   return (
-    <>
-      <Form style={{ marginTop: "60px" }} onSubmit={handleSubmit(onSubmit)}>
-        <div>{process[0].title}</div>
-        <Button variant="primary" onClick={handleModalShow}>
+    <div className="bg-light">
+      <Container fluid style={{ marginTop: "30px" }}>
+        <Button variant="primary" className="m-3" onClick={handleModalShow}>
           ADD LOCATION
         </Button>
-        <Button variant="primary" type="submit" onClick={handleUpdateStatus}>
+        <Button variant="primary" onClick={handleUpdateStatus}>
           SAVE
         </Button>
+        {process.length > 0 ? (
+          <div className="h1 text-center">{process[0].title}</div>
+        ) : (
+          <div>NO DATA FOUND</div>
+        )}
         <Table striped bordered hover>
           <thead>
-            <tr style={{ fontSize: "0.9rem" }}>
-              <th>Location</th>
+            <tr style={{ fontSize: "0.8rem" }}>
+              <th style={{ verticalAlign: "top" }}>LOCATION</th>
 
-              {process[0].columns.map((item, index) => {
-                return (
-                  <th key={index} id={item.slice(0, 3)}>
-                    {item}
-                  </th>
-                );
-              })}
+              {process.length > 0 &&
+                process[0].columns.map((item, index) => {
+                  return (
+                    <th
+                      style={{ width: "12%", verticalAlign: "top" }}
+                      key={index}
+                      id={item.slice(0, 3)}
+                    >
+                      {item}
+                    </th>
+                  );
+                })}
             </tr>
           </thead>
 
           <tbody>
-            {process[0].location.map((item: any, indexA) => {
-              return (
-                <tr>
-                  <td>{item.locationName}</td>
-                  {Object.values(item.locationStatus).map((x, index) => {
-                    return (
-                      <td>
-                        <Form.Group>
-                          <Form.Select
+            {process.length > 0 &&
+              process[0].location.map((item: any, indexA) => {
+                return (
+                  <tr>
+                    <td style={{ verticalAlign: "middle" }}>
+                      {item.locationName}
+                    </td>
+                    {Object.values(item.locationStatus).map((x, index) => {
+                      return (
+                        <td>
+                          <select
                             defaultValue={String(x)}
-                            // {...register(String(index), { required: true })}
-                            onChange={(e) => update(indexA, index, e)}
+                            onChange={(e) => updateStatus(indexA, index, e)}
+                            className="form-select "
+                            aria-label="Default select example"
+                            style={{
+                              background: `${
+                                x === "NOT STARTED"
+                                  ? "lightblue"
+                                  : x === "CHECK IN PROGRESS"
+                                  ? "yellow"
+                                  : "NCR OPEN"
+                                  ? "salmon"
+                                  : x === "COMPLETED"
+                                  ? "lightgreen"
+                                  : x === "NOT APPLICABLE"
+                                  ? "lightgrey"
+                                  : "white"
+                              }`,
+                              fontSize: "0.65rem",
+                              fontWeight: "bold",
+                            }}
                           >
-                            {/* <option>{x}</option> */}
-                            <option value="NOT STARTED">NOT STARTED</option>
-                            <option value="CHECK IN PROGRESS">
+                            <option
+                              style={{ background: "lightblue" }}
+                              value="NOT STARTED"
+                            >
+                              NOT STARTED
+                            </option>
+                            <option
+                              style={{ background: "yellow" }}
+                              value="CHECK IN PROGRESS"
+                            >
                               CHECK IN PROGRESS
                             </option>
-                            <option value="NCR OPEN">NCR OPEN</option>
-                            <option value="COMPLETED">COMPLETED</option>
-                            <option value="NOT APPLICABLE">
+                            <option
+                              style={{ background: "salmon" }}
+                              value="NCR OPEN"
+                            >
+                              NCR OPEN
+                            </option>
+                            <option
+                              style={{ background: "lightgreen" }}
+                              value="COMPLETED"
+                            >
+                              COMPLETED
+                            </option>
+                            <option
+                              style={{ background: "lightgrey" }}
+                              value="NOT APPLICABLE"
+                            >
                               NOT APPLICABLE
                             </option>
-                          </Form.Select>
-                        </Form.Group>
-                      </td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
+                          </select>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
           </tbody>
         </Table>
-      </Form>
+      </Container>
 
       <ModalProcessesAddLocation
-        docId={process[0]._id}
+        docId={process.length > 0 && process[0]._id}
         show={modalShow}
         onHide={() => setModalShow(false)}
         title={"ADD TAB"}
       />
-    </>
+    </div>
   );
 }
 

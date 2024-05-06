@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useAppDispatch } from "../../redux/reduxHooks";
 import { addLocation } from "../../redux/slices/processSlice";
@@ -9,21 +9,20 @@ function ModalProcessesAddLocation(props: any) {
 
   function handleAddNewLocation() {
     let data = {
-      id: `${props.docId}`,
+      id: `${props.docId}_${Date.now()}`,
       locationName: `${locationName}`,
       createdDate: `${new Date().toLocaleString()}`,
       locationStatus: {
+        0: "NOT STARTED",
         1: "NOT STARTED",
         2: "NOT STARTED",
         3: "NOT STARTED",
         4: "NOT STARTED",
         5: "NOT STARTED",
         6: "NOT STARTED",
-        7: "NOT STARTED",
       },
     };
-    dispatch(addLocation(data));
-
+    dispatch(addLocation([data, props.docId]));
     props.onHide();
     setLocationName("");
   }
