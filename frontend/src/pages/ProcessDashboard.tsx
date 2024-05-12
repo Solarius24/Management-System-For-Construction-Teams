@@ -1,4 +1,4 @@
-import { Button, Container, Form, Table } from "react-bootstrap";
+import { Button, Container, Table } from "react-bootstrap";
 import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
 import { useParams } from "react-router-dom";
 import ModalProcessesAddLocation from "../components/modals/ModalProcessesAddLocation";
@@ -11,7 +11,6 @@ function ProcessDashboard() {
   const data = useAppSelector((state) => state.processes.data);
   //DEEP COPY OF DATA ARRAY
   let location = JSON.parse(JSON.stringify(data[0].location));
-  // let location = data[0].location;
   let { processRef } = useParams();
   const process = data.filter((item) => item._id === processRef);
 

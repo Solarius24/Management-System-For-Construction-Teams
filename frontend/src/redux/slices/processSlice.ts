@@ -18,7 +18,7 @@ const initialState: Process = {
 };
 
 export const fetchProcesses = createAsyncThunk("fetchProcess", async () => {
-  const response = await axios("/api/processes");
+  const response = await axios("https://msfct-api.onrender.com/api/processes");
   return response.data;
 });
 

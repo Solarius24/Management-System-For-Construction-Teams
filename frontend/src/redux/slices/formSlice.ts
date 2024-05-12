@@ -40,7 +40,7 @@ const initialState: FormState = {
 };
 
 export const fetchForms = createAsyncThunk("fetchForm", async () => {
-  const response = await axios("/api/forms");
+  const response = await axios("https://msfct-api.onrender.com/api/forms");
   // const data = await response.json();
   return response.data;
 });

@@ -4,14 +4,18 @@ import formScheduleReducer from "../slices/formScheduleSlice";
 import taskReducer from "../slices/taskSlice";
 import userReducer from "../slices/userSlice";
 import processReducer from "../slices/processSlice";
+import { apiSlice } from "../slices/apiSlice";
 const store = configureStore({
   reducer: {
+    [apiSlice.reducerPath]:apiSlice.reducer,
     form: formReducer,
     formSchedule: formScheduleReducer,
     task: taskReducer,
     userData: userReducer,
     processes: processReducer,
   },
+  middleware:(getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
+  devTools:false
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

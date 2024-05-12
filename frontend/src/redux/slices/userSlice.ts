@@ -62,7 +62,7 @@ const initialState: UserState = {
 };
 
 export const fetchUserData = createAsyncThunk("fetchUserData", async () => {
-  const response = await axios("/api/userData", { params: { id: "001" } });
+  const response = await axios("https://msfct-api.onrender.com/api/userData", { params: { id: "001" } });
   return response.data;
 });
 
