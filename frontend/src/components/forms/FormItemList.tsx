@@ -1,9 +1,8 @@
 // @ts-nocheck
 import { useState } from "react";
-import { Container, Table } from "react-bootstrap";
+import { Container, Spinner, Table } from "react-bootstrap";
 import { useAppSelector } from "../../redux/reduxHooks";
 import { Link } from "react-router-dom";
-import BasicSpinner from "../BasicSpinner";
 
 const FormItemList = (props) => {
   const [selectedItem, setSelectedItem] = useState([]);
@@ -71,7 +70,7 @@ const FormItemList = (props) => {
             })}
           </tr>
         </thead>
-        {!data && <BasicSpinner />}
+        {!data && <Spinner />}
         <tbody>
           {data.map((item) => (
             <tr key={item.id} style={{ fontSize: "0.9rem" }}>

@@ -12,8 +12,23 @@ import TaskEdit from "./pages/TaskEdit";
 import FormScheduleEdit from "./pages/FormScheduleEdit";
 import PrivacyNotice from "./pages/PrivacyNotice";
 import ConcreteWorksTracker from "./pages/ProcessDashboard";
+import { useAppDispatch } from "./redux/reduxHooks";
+import { useEffect } from "react";
+import { fetchUserData } from "./redux/slices/userSlice";
+import { fetchForms } from "./redux/slices/formSlice";
+import { fetchProcesses } from "./redux/slices/processSlice";
+import { fetchTasks } from "./redux/slices/taskSlice";
+import { fetchFormsSchedule } from "./redux/slices/formScheduleSlice";
 
 function App() {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchUserData());
+    dispatch(fetchForms());
+    dispatch(fetchTasks());
+    dispatch(fetchFormsSchedule());
+    dispatch(fetchProcesses());
+  }, []);
   return (
     <BrowserRouter>
       <div>

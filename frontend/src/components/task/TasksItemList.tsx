@@ -1,10 +1,10 @@
 // @ts-nocheck
 import { useEffect, useState } from "react";
-import { Container, Table } from "react-bootstrap";
+import { Container, Spinner, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
 import { fetchTasks } from "../../redux/slices/taskSlice";
-import BasicSpiner from "../BasicSpinner";
+
 
 const TasksItemList = (props) => {
   const [selectedItem, setSelectedItem] = useState([]);
@@ -60,7 +60,7 @@ const TasksItemList = (props) => {
         </thead>
 
         <tbody>
-          {!data && <BasicSpiner />}
+          {!data && <Spinner />}
           {data.map((item) => (
             <tr key={item} style={{ fontSize: "0.9rem" }}>
               <td>
