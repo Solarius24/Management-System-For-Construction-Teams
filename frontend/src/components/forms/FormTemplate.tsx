@@ -42,7 +42,7 @@ const FormTemplate = (props: any) => {
     filename: `Form Ref:${props.formData[0].documentRef}`,
   });
   return (
-    <Container style={{ marginTop: "60px" }}>
+    <Container style={{ marginTop: "3rem", overflow:"auto" }}>
       <Col className="d-flex justify-content-end">
         <Button onClick={() => toPDF()}>Download PDF</Button>
       </Col>

@@ -43,7 +43,7 @@ const initialState: TaskState = {
 };
 
 export const fetchTasks = createAsyncThunk("fetchTask", async () => {
-  const response = await axios("https://msfct-api.onrender.com/api/tasks");
+  const response = await axios(`/api/tasks`);
   return response.data;
 });
 

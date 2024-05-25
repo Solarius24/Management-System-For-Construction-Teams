@@ -101,7 +101,7 @@ const FormScheduleList = (props) => {
                 <label>&nbsp;</label>
               </td>
               <td id="ref">
-                <Link to={`/forms_schedule/edit/${item.id}`}>{item.id}</Link>
+                <Link to={`/forms-schedule/edit/${item.id}`}>{item.id}</Link>
               </td>
               <td id="type">{item.type}</td>
               <td id="template">{item.template}</td>

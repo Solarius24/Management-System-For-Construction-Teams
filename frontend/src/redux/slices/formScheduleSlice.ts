@@ -38,8 +38,7 @@ const initialState: FormScheduleState = {
 export const fetchFormsSchedule = createAsyncThunk(
   "fetchFormSchedule",
   async () => {
-    const response = await axios("https://msfct-api.onrender.com/api/forms-schedule");
-    // const data = await response.json();
+    const response = await axios('/api/forms-schedule');
     return response.data;
   }
 );

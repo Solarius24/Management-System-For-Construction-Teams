@@ -1,5 +1,5 @@
 {
-  "proxy": "https://msfct-api.onrender.com/",
+  "proxy": "http://localhost:4000",
   "name": "field-view",
   "version": "0.1.0",
   "private": true,
