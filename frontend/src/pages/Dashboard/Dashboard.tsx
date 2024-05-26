@@ -25,8 +25,8 @@ const Dashboard = () => {
   const [modalAddWidgetShow, setModalAddWidgetShow] = useState(false);
   const [modalSettingsShow, setModalSettingsShow] = useState(false);
   const [modalAddTabShow, setModalAddTabShow] = useState(false);
-  // const data = useAppSelector((state) => state.userData.listOfTabs);
-  const data = null;
+  const data = useAppSelector((state) => state.userData.listOfTabs);
+
 
   function handleAddNewTab() {
     setModalAddTabShow(true);

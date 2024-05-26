@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+axios.defaults.baseURL = "https://msfct-api.onrender.com";
+
 interface FormScheduleState {
   loading: boolean;
   error: string | null;
@@ -38,7 +40,7 @@ const initialState: FormScheduleState = {
 export const fetchFormsSchedule = createAsyncThunk(
   "fetchFormSchedule",
   async () => {
-    const response = await axios('/api/forms-schedule');
+    const response = await axios("/api/forms-schedule");
     return response.data;
   }
 );

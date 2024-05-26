@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+axios.defaults.baseURL = "https://msfct-api.onrender.com";
 
 interface UserState {
   id: String;

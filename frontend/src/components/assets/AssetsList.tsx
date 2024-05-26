@@ -15,16 +15,14 @@ const AssetsList = () => {
               />
             </th>
             <th>
-              <a href=" ">LOCATION</a>
-            </th>
-            <th>
               <a href=" ">DESCRIPTION</a>
             </th>
             <th>
-              <a href=" ">CREATED</a>
+              <a href=" ">LOCATION</a>
             </th>
+
             <th>
-              <a href=" ">TARGET</a>
+              <a href=" ">CREATED BY</a>
             </th>
           </tr>
         </thead>
@@ -35,17 +33,15 @@ const AssetsList = () => {
               <input type="checkbox" id="task-grid-row-0-input" />
               <label htmlFor="task-grid-row-0-input">&nbsp;</label>
             </td>
+            <td id="Description">
+              <span></span>
+            </td>
 
             <td id="Location">
               <span></span>
             </td>
-            <td id="Description">
-              <span></span>
-            </td>
+
             <td id="Created">
-              <span></span>
-            </td>
-            <td id="Target">
               <span></span>
             </td>
           </tr>
