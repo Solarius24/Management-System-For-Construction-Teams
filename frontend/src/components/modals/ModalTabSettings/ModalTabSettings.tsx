@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { Button, Container, ListGroup, Modal } from "react-bootstrap";
+import {
+  Button,
+  ButtonGroup,
+  Container,
+  ListGroup,
+  Modal,
+} from "react-bootstrap";
 import ModalTabNewTitle from "../ModalTabNewtitle/ModalTabNewTitle";
 import { useAppDispatch, useAppSelector } from "../../../redux/reduxHooks";
 import { deleteUserTab } from "../../../redux/slices/userSlice";
@@ -55,10 +61,13 @@ const ModalTabSettings = (props: any) => {
         </Modal.Header>
         <Modal.Body className="grid-example">
           <Container fluid>
-            <Button onClick={handleEditTab} name="edit selected">
-              EDIT SELECTED
-            </Button>
-            <Button onClick={handleDeleteTab}>DELETE SELECTED</Button>
+            <div className="d-flex flex-row justify-content-between ">
+              <Button onClick={handleEditTab} name="edit selected">
+                EDIT SELECTED
+              </Button>
+              <Button onClick={handleDeleteTab}>DELETE SELECTED</Button>
+            </div>
+
             <p className="text-danger">{error}</p>
             <ListGroup>
               {data.map((item) => (

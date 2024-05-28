@@ -1,9 +1,10 @@
 import React from "react";
-import { Card, CardBody, CardTitle, Tooltip } from "react-bootstrap";
+import { Card, CardBody, CardTitle } from "react-bootstrap";
 import {
   Bar,
+  BarChart,
   CartesianGrid,
-  ComposedChart,
+  Tooltip,
   Legend,
   XAxis,
   YAxis,
@@ -30,25 +31,25 @@ function OrganizationsWithMostTasks() {
     <Card>
       <CardTitle className="p-4">Organization With Most Tasks</CardTitle>
       <CardBody>
-        <ComposedChart
+        <BarChart
           layout="vertical"
-          width={500}
+          width={400}
           height={400}
           data={inputData}
           margin={{
             top: 20,
             right: 20,
             bottom: 20,
-            left: 20,
+            left: 30,
           }}
         >
           <CartesianGrid stroke="#f5f5f5" />
           <XAxis type="number" />
-          <YAxis dataKey="name" type="category" fontSize={8} />
+          <YAxis dataKey="name" type="category" fontSize={12} />
           <Tooltip />
           <Legend />
           <Bar dataKey="tasks" barSize={20} fill="#413ea0" />
-        </ComposedChart>
+        </BarChart>
       </CardBody>
     </Card>
   );

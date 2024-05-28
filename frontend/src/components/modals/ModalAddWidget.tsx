@@ -3,10 +3,11 @@ import Container from "react-bootstrap/Container";
 import Modal from "react-bootstrap/Modal";
 import { Image, ListGroup, ListGroupItem, Tab, Tabs } from "react-bootstrap";
 import { useState } from "react";
-import { addWidget } from "../../redux/slices/userSlice";
+import { addWidget, fetchUserData } from "../../redux/slices/userSlice";
 import { useAppDispatch } from "../../redux/reduxHooks";
 
 const ModalAddWidget = (props: any) => {
+  console.log("MODAL ADD WIDGET", props.tabId);
   const [widgetName, setWidgetName] = useState("");
   const [widgetType, setWidgetType] = useState("");
   const dispatch = useAppDispatch();
@@ -25,6 +26,7 @@ const ModalAddWidget = (props: any) => {
           widgetType: widgetType,
         })
       );
+      dispatch(fetchUserData());
     }
 
     props.onHide();

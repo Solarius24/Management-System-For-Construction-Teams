@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  BarChart,
 } from "recharts";
 import { useAppSelector } from "../../../../redux/reduxHooks";
 
@@ -28,7 +29,7 @@ function LocationsWithMostTasks() {
     <Card>
       <CardTitle className="p-4">Locations With Most Tasks</CardTitle>
       <CardBody>
-        <ComposedChart
+        <BarChart
           layout="vertical"
           width={400}
           height={400}
@@ -46,7 +47,7 @@ function LocationsWithMostTasks() {
           <Tooltip />
           <Legend />
           <Bar dataKey="tasks" barSize={20} fill="#413ea0" />
-        </ComposedChart>
+        </BarChart>
       </CardBody>
     </Card>
   );

@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-axios.defaults.baseURL = "https://msfct-api.onrender.com";
+import { checkDomainOfScale } from "recharts/types/util/ChartUtils";
+// axios.defaults.baseURL = "https://msfct-api.onrender.com";
 
 interface UserState {
   id: String;
@@ -96,11 +97,14 @@ export const userSlice = createSlice({
       const index = state.listOfTabs.findIndex(
         (item) => item._id === action.payload.tabId
       );
+      console.log("add widget index", index);
+
       state.listOfTabs[index].listOfWidgets.push({
         widgetType: action.payload.widgetType,
         widgetName: action.payload.widgetName,
         _id: "",
       });
+      console.log(state.listOfTabs[0].listOfWidgets);
     },
 
     deleteWidget: (state, action) => {
