@@ -29,7 +29,7 @@ function ProcessPercentageCompleted() {
   //ARRAY WITH TOTAL NUMBER OF STATUS WINDOWS IN EVERY PROCESS
   let totalNumberOfStatusWindowsInOneProcess =
     totalNumberOfStatusWindowsInEveryLocation.map((item) =>
-      item.reduce((acc, curr) => acc + curr)
+      item.reduce((acc, curr) => acc + curr, 0)
     );
 
   let complitionPercentageforEachProcess = [];

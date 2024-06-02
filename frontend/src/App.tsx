@@ -19,6 +19,8 @@ import { fetchForms } from "./redux/slices/formSlice";
 import { fetchProcesses } from "./redux/slices/processSlice";
 import { fetchTasks } from "./redux/slices/taskSlice";
 import { fetchFormsSchedule } from "./redux/slices/formScheduleSlice";
+import AssetsDashboard from "./pages/AssetsDashboard";
+import { fetchAssets } from "./redux/slices/assetsSlice";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -28,6 +30,7 @@ function App() {
     dispatch(fetchTasks());
     dispatch(fetchFormsSchedule());
     dispatch(fetchProcesses());
+    dispatch(fetchAssets());
   }, []);
   return (
     <BrowserRouter>
@@ -41,6 +44,10 @@ function App() {
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/processes" element={<Processes />} />
           <Route path="/assets" element={<Assets />} />
+          <Route
+            path="/assets/detail/:assetRef"
+            element={<AssetsDashboard />}
+          />
           <Route path="/forms" element={<Forms />}></Route>
           <Route path="/forms/edit/:formRef" element={<FormEdit />}></Route>
           <Route

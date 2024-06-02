@@ -4,6 +4,7 @@ import formScheduleReducer from "../slices/formScheduleSlice";
 import taskReducer from "../slices/taskSlice";
 import userReducer from "../slices/userSlice";
 import processReducer from "../slices/processSlice";
+import assetsReducer from "../slices/assetsSlice";
 const store = configureStore({
   reducer: {
     form: formReducer,
@@ -11,6 +12,7 @@ const store = configureStore({
     task: taskReducer,
     userData: userReducer,
     processes: processReducer,
+    assets: assetsReducer,
   },
 });
 
