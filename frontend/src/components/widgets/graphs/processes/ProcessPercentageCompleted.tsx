@@ -25,7 +25,6 @@ function ProcessPercentageCompleted() {
   let totalNumberOfStatusWindowsInEveryLocation = data.map((item) =>
     item.location.map((item) => Object.values(item.locationStatus).length)
   );
-  console.log(totalNumberOfStatusWindowsInEveryLocation);
   //ARRAY WITH TOTAL NUMBER OF STATUS WINDOWS IN EVERY PROCESS
   let totalNumberOfStatusWindowsInOneProcess =
     totalNumberOfStatusWindowsInEveryLocation.map((item) =>

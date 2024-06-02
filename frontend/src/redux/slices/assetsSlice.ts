@@ -9,6 +9,7 @@ interface AssetState {
     organizationName: string;
     listOfItems: {
       itemName: string;
+      itemQuantity: string;
       itemDescription: string;
       itemLocation: string;
       itemId: string;
@@ -25,6 +26,7 @@ const initialState: AssetState = {
       listOfItems: [
         {
           itemName: "demo",
+          itemQuantity: "20",
           itemDescription: "demo",
           itemLocation: "demo",
           itemId: "1000010000",

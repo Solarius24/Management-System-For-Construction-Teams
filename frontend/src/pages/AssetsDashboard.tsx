@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
-import { useAppDispatch } from "../redux/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
+import { useParams } from "react-router-dom";
 
 function AssetsDashboard() {
   const [modalShow, setModalShow] = useState(false);
   const dispatch = useAppDispatch();
+  const data = useAppSelector((state) => state.assets.data);
+
+  let { assetRef } = useParams();
+  console.log(assetRef);
+  const assets = data.filter((item) => item._id === assetRef);
+  console.log(assets);
 
   function handleModalShow() {
     setModalShow(true);
@@ -23,6 +30,9 @@ function AssetsDashboard() {
         <Table striped bordered hover>
           <thead>
             <th className="text-center">
+              <a href=" ">ASSET ID</a>
+            </th>
+            <th className="text-center">
               <a href=" ">ASSET NAME</a>
             </th>
             <th className="text-center">
@@ -36,7 +46,20 @@ function AssetsDashboard() {
             </th>
           </thead>
 
-          <tbody></tbody>
+          <tbody>
+            {assets.length > 0 &&
+              assets[0].listOfItems.map((item) => {
+                return (
+                  <tr>
+                    <td>{item.itemId}</td>
+                    <td>{item.itemName}</td>
+                    <td>{item.itemDescription}</td>
+                    <td>{item.itemQuantity}</td>
+                    <td>{item.itemLocation}</td>
+                  </tr>
+                );
+              })}
+          </tbody>
         </Table>
       </Container>
 

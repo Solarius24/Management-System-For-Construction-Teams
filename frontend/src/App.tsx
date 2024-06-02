@@ -44,10 +44,7 @@ function App() {
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/processes" element={<Processes />} />
           <Route path="/assets" element={<Assets />} />
-          <Route
-            path="/assets/detail/:assetRef"
-            element={<AssetsDashboard />}
-          />
+
           <Route path="/forms" element={<Forms />}></Route>
           <Route path="/forms/edit/:formRef" element={<FormEdit />}></Route>
           <Route
@@ -60,6 +57,10 @@ function App() {
             path="/processes/detail/:processRef"
             element={<ConcreteWorksTracker />}
           ></Route>
+          <Route
+            path="/assets/detail/:assetRef"
+            element={<AssetsDashboard />}
+          />
         </Routes>
       </div>
     </BrowserRouter>
