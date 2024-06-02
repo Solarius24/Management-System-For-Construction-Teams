@@ -41,13 +41,20 @@ const {
   updateLocationStatus,
 } = require("../controllers/processControler");
 
+const {
+  getAssets,
+  updateAsset,
+  createNewAsset,
+} = require("../controllers/assetController");
+
 const router = express.Router();
 
-// GET all tasks/forms/processes
+// GET all tasks/forms/processes/assets
 router.get("/forms", getForms);
 router.get("/forms-schedule", getFormsSchedule);
 router.get("/tasks", getTasks);
 router.get("/processes", getProcesses);
+router.get("/assets", getAssets);
 
 // GET a single task/form
 router.get("/forms/:id", getForm);
@@ -64,6 +71,7 @@ router.post("/forms", createForm);
 router.post("/forms-schedule", createFormSchedule);
 router.post("/tasks", createTask);
 router.post("/userData", createUserTabs);
+router.post("/addAsset", createNewAsset);
 
 // DELETE task/form/userdata
 router.delete("/forms", deleteForm);
@@ -80,6 +88,9 @@ router.patch("/userData", updateUserTabs);
 
 //UPDATE LOCACTION STATUS
 router.patch("/updateLocationStatus", updateLocationStatus);
+
+//UPDATE ASSET
+router.patch("/updateAsset", updateAsset);
 
 //update TAB NAME
 router.patch("/userDataTabName", updateUserTabName);
