@@ -16,8 +16,9 @@ function ProcessPercentageCompleted() {
     )
   );
   //ARRAY WITH TOTAL NUMBER OF STATUS:COMPLETED WINDOWS IN EVERY PROCESS
+
   let totalSum = statusData.map((item) =>
-    item.reduce((acc, curr) => acc + curr)
+    item.reduce((acc, curr) => acc + curr, 0)
   );
 
   //ARRAY WITH TOTAL NUMBER OF STATUS WINDOWS IN EVERY LOCATION FOR EVERY PROCESS

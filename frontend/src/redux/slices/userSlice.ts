@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { checkDomainOfScale } from "recharts/types/util/ChartUtils";
+
 // axios.defaults.baseURL = "https://msfct-api.onrender.com";
 
 interface UserState {
