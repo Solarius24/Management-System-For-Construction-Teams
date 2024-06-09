@@ -64,14 +64,12 @@ router.get("/userData", getUserTabs);
 
 //FILTER FORMS
 // router.get("/forms/filter", filterForms);
-
 // POST a new task/form/location
 
 router.post("/forms", createForm);
 router.post("/forms-schedule", createFormSchedule);
 router.post("/tasks", createTask);
 router.post("/userData", createUserTabs);
-router.post("/addAsset", createNewAsset);
 
 // DELETE task/form/userdata
 router.delete("/forms", deleteForm);
@@ -104,5 +102,7 @@ router.patch("/updateFormListOfColumns", updateFormListOfColumnToDisplay);
 router.patch("/updateTaskListOfColumns", updateTaskListOfColumnToDisplay);
 //ADD NEW LOCATION TO LOCATION ARRAY IN DATANASE
 router.patch("/addLocation", createLocation);
+//ADD NEW ASSET TO LIST OF ASSSETS
+router.patch("/addAsset", createNewAsset);
 
 module.exports = router;

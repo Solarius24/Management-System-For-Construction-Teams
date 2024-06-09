@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
-import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
+import { useAppSelector } from "../redux/reduxHooks";
 import { useParams } from "react-router-dom";
+import ModalAddAsset from "../components/modals/ModalAddAsset";
 
 function AssetsDashboard() {
   const [modalShow, setModalShow] = useState(false);
-  const dispatch = useAppDispatch();
   const data = useAppSelector((state) => state.assets.data);
 
   let { assetRef } = useParams();
-  console.log(assetRef);
   const assets = data.filter((item) => item._id === assetRef);
-  console.log(assets);
 
   function handleModalShow() {
     setModalShow(true);
@@ -63,12 +61,11 @@ function AssetsDashboard() {
         </Table>
       </Container>
 
-      {/* <ModalProcessesAddLocation
-        docId={process.length > 0 && process[0]._id}
+      <ModalAddAsset
+        id={assetRef}
         show={modalShow}
         onHide={() => setModalShow(false)}
-        title={"ADD TAB"}
-      /> */}
+      />
     </div>
   );
 }

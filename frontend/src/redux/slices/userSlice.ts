@@ -97,7 +97,6 @@ export const userSlice = createSlice({
       const index = state.listOfTabs.findIndex(
         (item) => item._id === action.payload.tabId
       );
-      console.log("add widget index", index);
 
       state.listOfTabs[index].listOfWidgets.push({
         widgetType: action.payload.widgetType,
@@ -118,8 +117,6 @@ export const userSlice = createSlice({
         index
       ].listOfWidgets.filter((item) => item._id !== action.payload.widgetId);
     },
-
-    updateUserData: (state, action) => {},
     updateUserTabName: (state, action) => {
       axios.patch("/api/userDataTabName", action.payload, {
         params: { id: "001" },
@@ -151,7 +148,6 @@ export const {
   addFormColumnToListOfColumnToDisplay,
   addTaskColumnToListOfColumnToDisplay,
   addUserData,
-  updateUserData,
   deleteUserTab,
   updateUserTabName,
   addWidget,

@@ -46,13 +46,13 @@ export const assetSlice = createSlice({
   initialState,
   reducers: {
     addAsset: (state, action) => {
-      //   axios.patch("/api/addAsset/", action.payload[0], {
-      //     params: { id: `${action.payload[1]}` },
-      //   });
-      //   const index = state.data.findIndex(
-      //     (item) => item._id === action.payload[1]
-      //   );
-      //   state.data[index].location.push(action.payload[0]);
+      axios.patch("/api/addAsset/", action.payload[0], {
+        params: { id: `${action.payload[1]}` },
+      });
+      const index = state.data.findIndex(
+        (item) => item._id === action.payload[1]
+      );
+      state.data[index].listOfItems.push(action.payload[0]);
     },
     updateAsset: (state, action) => {
       //   console.log(action.payload);

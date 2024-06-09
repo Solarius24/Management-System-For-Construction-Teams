@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { Col, Container, Nav, NavDropdown, Row, Table } from "react-bootstrap";
-import AssetsList from "../components/assets/AssetsList";
-import AssetsFillters from "../components/assets/AssetsFilters";
+import { Container, Table } from "react-bootstrap";
 import { useAppSelector } from "../redux/reduxHooks";
 import { Link } from "react-router-dom";
 

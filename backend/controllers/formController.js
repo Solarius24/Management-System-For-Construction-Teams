@@ -84,7 +84,6 @@ const updateForm = async (req, res) => {
   // }
 
   const form = await Form.findOneAndUpdate(
-    // { _id: id },
     { id: id },
     {
       ...req.body,

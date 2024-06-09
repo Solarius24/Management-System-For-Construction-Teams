@@ -8,20 +8,18 @@ const getAssets = async (req, res) => {
 
 const createNewAsset = async (req, res) => {
   const { id } = req.query;
+  req.body.itemId = new mongoose.Types.ObjectId();
+  req.body.createdDate = new Date();
 
   const newAsset = await Asset.findOneAndUpdate(
     { _id: id },
-    {
-      $addToSet: {
-        location: req.body,
-      },
-    }
+    { $addToSet: { listOfItems: req.body } }
   );
-  if (!newLocation) {
-    return res.status(404).json({ error: "No such form" });
+  if (!newAsset) {
+    return res.status(404).json({ error: "No such asset" });
   }
 
-  res.status(200).json(newLocation);
+  res.status(200).json(newAsset);
 };
 
 const updateAsset = async (req, res) => {
@@ -30,7 +28,7 @@ const updateAsset = async (req, res) => {
     { _id: id },
     {
       $set: {
-        location: req.body,
+        listOfItems: req.body,
       },
     }
   );
