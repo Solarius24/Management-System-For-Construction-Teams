@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   Accordion,
   AccordionHeader,
@@ -19,7 +18,7 @@ interface fillters {
   handleClose: () => void;
   show: boolean;
   onHide: () => void;
-  setFilterData?: React.Dispatch<React.SetStateAction<Object>>;
+  setFilterData: React.Dispatch<React.SetStateAction<Object>>;
 }
 
 interface filter {
@@ -43,7 +42,7 @@ const FormScheduleFillters = (props: fillters) => {
     filter.location = location;
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: any) {
     e.preventDefault();
     props.setFilterData(filter);
   }
@@ -84,7 +83,7 @@ const FormScheduleFillters = (props: fillters) => {
                       onClick={(e) =>
                         location === "GROUND FLOOR LEVEL"
                           ? setLocation("")
-                          : setLocation(e.target.id)
+                          : setLocation((e.target as HTMLInputElement).id)
                       }
                     />
                     <FormCheck
@@ -95,7 +94,7 @@ const FormScheduleFillters = (props: fillters) => {
                       onClick={(e) =>
                         location === "INTERMEDIAL LEVEL"
                           ? setLocation("")
-                          : setLocation(e.target.id)
+                          : setLocation((e.target as HTMLInputElement).id)
                       }
                     />
                     <FormCheck
@@ -106,7 +105,7 @@ const FormScheduleFillters = (props: fillters) => {
                       onClick={(e) =>
                         location === "INTERMEDIAL LEVEL"
                           ? setLocation("")
-                          : setLocation(e.target.id)
+                          : setLocation((e.target as HTMLInputElement).id)
                       }
                     />
                   </FormGroup>
@@ -124,7 +123,7 @@ const FormScheduleFillters = (props: fillters) => {
                       onClick={(e) =>
                         status === "OPEN"
                           ? setStatus("")
-                          : setStatus(e.target.id)
+                          : setStatus((e.target as HTMLInputElement).id)
                       }
                     />
 
@@ -136,7 +135,7 @@ const FormScheduleFillters = (props: fillters) => {
                       onClick={(e) =>
                         status === "IN PROGRESS"
                           ? setStatus("")
-                          : setStatus(e.target.id)
+                          : setStatus((e.target as HTMLInputElement).id)
                       }
                     />
                     <FormCheck
@@ -147,7 +146,7 @@ const FormScheduleFillters = (props: fillters) => {
                       onClick={(e) =>
                         status === "CLOSED"
                           ? setStatus("")
-                          : setStatus(e.target.id)
+                          : setStatus((e.target as HTMLInputElement).id)
                       }
                     />
                   </FormGroup>
