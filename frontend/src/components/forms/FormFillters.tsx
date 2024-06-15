@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   Accordion,
   AccordionHeader,
@@ -19,7 +18,7 @@ interface fillters {
   handleClose: () => void;
   show: boolean;
   onHide: () => void;
-  setFilterData?: React.Dispatch<React.SetStateAction<Object>>;
+  setFilterData: React.Dispatch<React.SetStateAction<Object>>;
 }
 
 interface filter {
@@ -43,16 +42,13 @@ const FormFillters = (props: fillters) => {
     filter.location = location;
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: any) {
     e.preventDefault();
     props.setFilterData(filter);
   }
 
   return (
-    <Card
-      className="d-flex flex-column flex-shrink-0  text-white bg-dark"
-      // style={{ height: "80vh" }}
-    >
+    <Card className="d-flex flex-column flex-shrink-0  text-white bg-dark">
       <CardHeader className="d-flex justify-content-between">
         <CardTitle className="fs-5">FILLTERS</CardTitle>
         <Button onClick={props.onHide}>CLOSE</Button>
@@ -84,7 +80,7 @@ const FormFillters = (props: fillters) => {
                       onClick={(e) =>
                         location === "GROUND FLOOR LEVEL"
                           ? setLocation("")
-                          : setLocation(e.target.id)
+                          : setLocation((e.target as HTMLInputElement).id)
                       }
                     />
                     <FormCheck
@@ -95,7 +91,7 @@ const FormFillters = (props: fillters) => {
                       onClick={(e) =>
                         location === "INTERMEDIAL LEVEL"
                           ? setLocation("")
-                          : setLocation(e.target.id)
+                          : setLocation((e.target as HTMLInputElement).id)
                       }
                     />
                     <FormCheck
@@ -106,7 +102,7 @@ const FormFillters = (props: fillters) => {
                       onClick={(e) =>
                         location === "INTERMEDIAL LEVEL"
                           ? setLocation("")
-                          : setLocation(e.target.id)
+                          : setLocation((e.target as HTMLInputElement).id)
                       }
                     />
                   </FormGroup>
@@ -124,7 +120,7 @@ const FormFillters = (props: fillters) => {
                       onClick={(e) =>
                         status === "OPEN"
                           ? setStatus("")
-                          : setStatus(e.target.id)
+                          : setStatus((e.target as HTMLInputElement).id)
                       }
                     />
 
@@ -136,7 +132,7 @@ const FormFillters = (props: fillters) => {
                       onClick={(e) =>
                         status === "IN PROGRESS"
                           ? setStatus("")
-                          : setStatus(e.target.id)
+                          : setStatus((e.target as HTMLInputElement).id)
                       }
                     />
                     <FormCheck
@@ -147,7 +143,7 @@ const FormFillters = (props: fillters) => {
                       onClick={(e) =>
                         status === "CLOSED"
                           ? setStatus("")
-                          : setStatus(e.target.id)
+                          : setStatus((e.target as HTMLInputElement).id)
                       }
                     />
                   </FormGroup>
