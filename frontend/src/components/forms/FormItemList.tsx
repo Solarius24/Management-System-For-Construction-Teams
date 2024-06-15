@@ -56,15 +56,18 @@ const FormItemList = (props) => {
       <Table striped bordered hover>
         <thead>
           <tr style={{ fontSize: "0.9rem" }}>
-            <th>
+            <th className="align-content-center">
               <input type="checkbox" />
-              <label>&nbsp;</label>
             </th>
 
             {listOfColumnsToDisplay.map((item) => {
               return (
-                <th key={item} id="item">
-                  <a href=" ">{item.substring(2)}</a>
+                <th
+                  key={item}
+                  id="item"
+                  className="text-center align-content-center"
+                >
+                  {item.substring(2)}
                 </th>
               );
             })}

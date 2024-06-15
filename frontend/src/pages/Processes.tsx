@@ -13,18 +13,10 @@ const Processes = () => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th className="text-center">
-              <a href=" ">REF</a>
-            </th>
-            <th className="text-center">
-              <a href=" ">PROCESS NAME</a>
-            </th>
-            <th className="text-center">
-              <a href=" ">ORGANIZATION</a>
-            </th>
-            <th className="text-center">
-              <a href=" ">LAST MODIFIED</a>
-            </th>
+            <th className="text-center">REF</th>
+            <th className="text-center">PROCESS NAME</th>
+            <th className="text-center">ORGANIZATION</th>
+            <th className="text-center">LAST MODIFIED</th>
           </tr>
         </thead>
 

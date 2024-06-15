@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import { useAppSelector } from "../redux/reduxHooks";
 import { useParams } from "react-router-dom";
@@ -15,33 +15,22 @@ function AssetsDashboard() {
     setModalShow(true);
   }
 
-  function handleSaveAssetsList() {}
   return (
     <div className="bg-light">
       <Container fluid style={{ marginTop: "30px" }}>
         <Button variant="primary" className="m-3" onClick={handleModalShow}>
           ADD ASSET
         </Button>
-        <Button variant="primary" onClick={handleSaveAssetsList}>
-          SAVE
-        </Button>
+
         <Table striped bordered hover>
           <thead>
-            <th className="text-center">
-              <a href=" ">ASSET ID</a>
-            </th>
-            <th className="text-center">
-              <a href=" ">ASSET NAME</a>
-            </th>
-            <th className="text-center">
-              <a href=" ">ASSET DESCRIPTION</a>
-            </th>
-            <th className="text-center">
-              <a href=" ">NUMBER OF ITEMS</a>
-            </th>
-            <th className="text-center">
-              <a href=" ">ASSET LOCATION</a>
-            </th>
+            <tr>
+              <th className="text-center">ASSET ID</th>
+              <th className="text-center">ASSET NAME</th>
+              <th className="text-center">ASSET DESCRIPTION</th>
+              <th className="text-center">NIMBER OF ITEMS</th>
+              <th className="text-center">ASSET LOCATION</th>
+            </tr>
           </thead>
 
           <tbody>

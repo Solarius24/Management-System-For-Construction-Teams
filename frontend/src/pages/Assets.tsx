@@ -24,15 +24,9 @@ const Assets = () => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th className="text-center">
-              <a href=" ">REF</a>
-            </th>
-            <th className="text-center">
-              <a href=" ">ASSETS LIST NAME</a>
-            </th>
-            <th className="text-center">
-              <a href=" ">ORGANIZATION</a>
-            </th>
+            <th className="text-center">REF</th>
+            <th className="text-center">ASSETS LIST NAME</th>
+            <th className="text-center">ORGANIZATION</th>
           </tr>
         </thead>
 
