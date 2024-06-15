@@ -95,9 +95,11 @@ const ModalAddAsset = (props: ModalAddConfig) => {
               aria-invalid={errors.description ? "true" : "false"}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
-            SAVE
-          </Button>
+          <div className="d-flex justify-content-end">
+            <Button variant="primary" type="submit">
+              SAVE
+            </Button>
+          </div>
         </Form>
       </Modal.Body>
     </Modal>

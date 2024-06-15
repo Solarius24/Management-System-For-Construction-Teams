@@ -49,7 +49,7 @@ export default function FormStatus() {
   );
 
   return (
-    <Card>
+    <Card className="border-0">
       <CardTitle className="p-4">Form Status</CardTitle>
       <CardBody>
         <BarChart

@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Container, Navbar, Spinner, Tab, Tabs } from "react-bootstrap";
 import ModalTabSettings from "../../components/modals/ModalTabSettings/ModalTabSettings";
 import ModalAddTab from "../../components/modals/ModalAddTab";
 import widgetList from "../../components/widgets/widgetList";
 import ModalAddWidget from "../../components/modals/ModalAddWidget";
 import ListOfWidgets from "../../components/widgets/ListOfWidgets";
-import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
-import { fetchUserData } from "../../redux/slices/userSlice";
+import { useAppSelector } from "../../redux/reduxHooks";
 
 const Dashboard = () => {
   const [key, setKey] = useState("65c7c94f4217846243781a98");
@@ -25,7 +24,7 @@ const Dashboard = () => {
   }
   return (
     <div>
-      <Navbar bg="white" className="mt-5">
+      <Navbar bg="white" className="mt-5 gap-3 ms-3">
         <Button variant="primary" onClick={handleAddNewTab}>
           ADD NEW TAB
         </Button>

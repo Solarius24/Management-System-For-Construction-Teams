@@ -1,4 +1,4 @@
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, CardGroup } from "react-bootstrap";
 import { useAppDispatch } from "../../redux/reduxHooks";
 import { deleteWidget } from "../../redux/slices/userSlice";
 import FormStatus from "./graphs/forms/FormStatus";
@@ -19,66 +19,66 @@ const Widget = (props: any) => {
   switch (props.widgetName) {
     case "Organizations With Most Tasks":
       return (
-        <Card>
+        <CardGroup className="mt-2 p-2 d-flex flex-column border border-info rounded-4">
           <div className="d-flex justify-content-end">
             <Button style={{ width: "50px" }} onClick={handleWidgetDelete}>
               X
             </Button>
           </div>
           <OrganizationsWithMostTasks />
-        </Card>
+        </CardGroup>
       );
 
     case "Location With Most Tasks":
       return (
-        <Card>
+        <CardGroup className="mt-2 p-2 d-flex flex-column border border-info rounded-4">
           <div className="d-flex justify-content-end">
             <Button style={{ width: "50px" }} onClick={handleWidgetDelete}>
               X
             </Button>
           </div>
           <LocationsWithMostTasks />
-        </Card>
+        </CardGroup>
       );
 
     case "Recent Task Activity":
       return (
-        <Card>
+        <CardGroup className="mt-2 p-2 d-flex flex-column border border-info rounded-4">
           <div className="d-flex justify-content-end">
             <Button style={{ width: "50px" }} onClick={handleWidgetDelete}>
               X
             </Button>
           </div>
           <RecentTaskActivity />
-        </Card>
+        </CardGroup>
       );
 
     case "Forms Recent Activity":
       return (
-        <Card>
+        <CardGroup className="mt-2 p-2 d-flex flex-column border border-info rounded-4">
           <div className="d-flex justify-content-end">
             <Button style={{ width: "50px" }} onClick={handleWidgetDelete}>
               X
             </Button>
           </div>{" "}
           <FormsRecentActivity />
-        </Card>
+        </CardGroup>
       );
     case "Form Status":
       return (
-        <Card>
+        <CardGroup className="mt-2 p-2 d-flex flex-column border border-info rounded-4">
           <div className="d-flex justify-content-end">
             <Button style={{ width: "50px" }} onClick={handleWidgetDelete}>
               X
             </Button>
           </div>
           <FormStatus />
-        </Card>
+        </CardGroup>
       );
 
     case "Forms Status By Month":
       return (
-        <Card>
+        <CardGroup className="mt-2 p-2 d-flex flex-column border border-info rounded-4">
           <div className="d-flex justify-content-end">
             <Button style={{ width: "50px" }} onClick={handleWidgetDelete}>
               X
@@ -86,12 +86,12 @@ const Widget = (props: any) => {
           </div>
 
           <FormsStatusByMonth />
-        </Card>
+        </CardGroup>
       );
 
     case "Process Percentage Complete":
       return (
-        <Card>
+        <CardGroup className="mt-2 p-2 d-flex flex-column border border-info rounded-4">
           <div className="d-flex justify-content-end">
             <Button style={{ width: "50px" }} onClick={handleWidgetDelete}>
               X
@@ -99,7 +99,7 @@ const Widget = (props: any) => {
           </div>
 
           <ProcessPercentageCompleted />
-        </Card>
+        </CardGroup>
       );
     default:
       return <div>WIDGET NOT FOUND</div>;

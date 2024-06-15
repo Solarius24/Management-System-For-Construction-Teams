@@ -56,11 +56,11 @@ function FormsRecentActivity() {
 
   return (
     <>
-      <Card>
+      <Card className="border-0">
         <CardTitle>FORMS RECENT ACTIVITY</CardTitle>
       </Card>
       <CardGroup>
-        <Card>
+        <Card className="border-0">
           <CardTitle style={{ fontSize: "0.8rem", margin: "12px" }}>
             AVERAGE RAISED WEEKLY
           </CardTitle>
@@ -86,7 +86,7 @@ function FormsRecentActivity() {
             <CardText>WEEKS</CardText>
           </CardBody>
         </Card>
-        <Card>
+        <Card className="border-0">
           <CardTitle style={{ fontSize: "0.8rem", margin: "5px" }}>
             AVERAGE COMPLETED WEEKLY
           </CardTitle>
@@ -112,7 +112,7 @@ function FormsRecentActivity() {
             <CardText>FORMS</CardText>
           </CardBody>
         </Card>
-        <Card>
+        <Card className="border-0">
           <CardTitle style={{ fontSize: "0.8rem", margin: "5px" }}>
             FORM COMPLITION ESTIMATE
           </CardTitle>

@@ -47,8 +47,7 @@ function ModalProcessesAddLocation(props: any) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleAddNewLocation}> OK </Button>
-          <Button onClick={props.onHide}>CANCEL</Button>
+          <Button onClick={handleAddNewLocation}>SAVE </Button>
         </Modal.Footer>
       </Modal>
     </>

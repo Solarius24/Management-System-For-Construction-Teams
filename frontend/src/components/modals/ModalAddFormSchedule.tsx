@@ -28,7 +28,6 @@ const ModalAddFormSchedule = (props: ModalAddConfig) => {
   const id = Date.now();
   const {
     register,
-    handleSubmit,
     formState: { errors },
   } = useForm();
 
@@ -170,11 +169,8 @@ const ModalAddFormSchedule = (props: ModalAddConfig) => {
         )}
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide} variant="secondary">
-          CANCEL
-        </Button>
         <Button onClick={createFormScheduleHandler} variant="primary">
-          CREATE
+          CREATE FORM
         </Button>
       </Modal.Footer>
     </Modal>

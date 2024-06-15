@@ -57,11 +57,11 @@ function RecentTaskActivity() {
 
   return (
     <>
-      <Card>
+      <Card className="border-0">
         <CardTitle>TASK RECENT ACTIVITY</CardTitle>
       </Card>
       <CardGroup>
-        <Card>
+        <Card className="border-0">
           <CardTitle style={{ fontSize: "0.8rem", margin: "12px" }}>
             AVERAGE RAISED WEEKLY
           </CardTitle>
@@ -87,7 +87,7 @@ function RecentTaskActivity() {
             <CardText>WEEKS</CardText>
           </CardBody>
         </Card>
-        <Card>
+        <Card className="border-0">
           <CardTitle style={{ fontSize: "0.8rem", margin: "5px" }}>
             AVERAGE COMPLETED WEEKLY
           </CardTitle>
@@ -113,7 +113,7 @@ function RecentTaskActivity() {
             <CardText>TASKS</CardText>
           </CardBody>
         </Card>
-        <Card>
+        <Card className="border-0">
           <CardTitle style={{ fontSize: "0.8rem", margin: "5px" }}>
             TASK COMPLITION ESTIMATE
           </CardTitle>

@@ -75,7 +75,7 @@ export default function FormStatusByMonth() {
   }
 
   return (
-    <Card>
+    <Card className="border-0">
       <CardTitle className="p-4">Form Status By Month</CardTitle>
       <CardBody>
         <BarChart

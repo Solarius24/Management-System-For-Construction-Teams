@@ -26,7 +26,7 @@ function LocationsWithMostTasks() {
   ];
 
   return (
-    <Card>
+    <Card className="border-0">
       <CardTitle className="p-4">Locations With Most Tasks</CardTitle>
       <CardBody>
         <BarChart

@@ -53,7 +53,7 @@ function ProcessPercentageCompleted() {
   }
 
   return (
-    <Card>
+    <Card className="border-0">
       <CardTitle className="p-4">Process Percentage Completed</CardTitle>
       <CardBody>
         <BarChart width={500} height={300} data={inputData}>

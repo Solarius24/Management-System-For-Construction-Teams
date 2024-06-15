@@ -97,11 +97,8 @@ const ModalAddForm = (props: ModalAddConfig) => {
         {selectFormType && handleSelect()}
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide} variant="secondary">
-          Close Tab
-        </Button>
         <Button onClick={createFormHandler} variant="primary">
-          Create Form
+          CREATE FORM
         </Button>
       </Modal.Footer>
     </Modal>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {
   Button,
+  ButtonGroup,
   Form,
   FormControl,
   FormLabel,
@@ -55,9 +56,7 @@ const ModalAddTask = (props: ModalAddConfig) => {
             )}
             <Form.Select
               aria-label="Default select example"
-              // value={taskType}
               {...register("taskType", { required: true })}
-              // onChange={(e) => setTaskType(e.target.value)}
             >
               <option></option>
               {props.list.map((item) => (
@@ -80,8 +79,6 @@ const ModalAddTask = (props: ModalAddConfig) => {
               as="textarea"
               type="text"
               aria-invalid={errors.description ? "true" : "false"}
-              // value={description}
-              // onChange={(e) => setDescription(e.target.value)}
             />
           </Form.Group>
 
@@ -95,8 +92,6 @@ const ModalAddTask = (props: ModalAddConfig) => {
             <Form.Select
               {...register("location", { required: true })}
               aria-label="Default select example"
-              // value={location}
-              // onChange={(e) => setLocation(e.target.value)}
             >
               <option></option>
               <option value="GROUND FLOOR LEVEL">GROUND FLOOR LEVEL</option>
@@ -116,14 +111,8 @@ const ModalAddTask = (props: ModalAddConfig) => {
               disabled
               aria-label="Default select example"
               {...register("taskStatus")}
-              // disabled
-              // value={status}
-              // onChange={(e) => setStatus(e.target.value)}
             >
               <option value="OPEN">OPEN</option>
-              {/* {createTask.status.map((item: any) => (
-                <option value={item}>{item}</option>
-              ))} */}
             </Form.Select>
           </Form.Group>
 
@@ -138,8 +127,6 @@ const ModalAddTask = (props: ModalAddConfig) => {
               as="textarea"
               type="text"
               {...register("statusChangeComments", { required: true })}
-              // value={statusChangeComments}
-              // onChange={(e) => setStatusChangeComments(e.target.value)}
             />
           </Form.Group>
 
@@ -153,8 +140,6 @@ const ModalAddTask = (props: ModalAddConfig) => {
             <Form.Select
               aria-label="Default select example"
               {...register("contractPackage", { required: true })}
-              // value={contractPackage}
-              // onChange={(e) => setConstractPackage(e.target.value)}
             >
               <option></option>
               {createTask.contractPackage.map((item: any) => (
@@ -173,8 +158,6 @@ const ModalAddTask = (props: ModalAddConfig) => {
             <FormControl
               type="date"
               {...register("targetDate", { required: true })}
-              // value={targetDate}
-              // onChange={(e) => setTargetDate(e.target.value)}
             ></FormControl>
           </Form.Group>
 
@@ -188,8 +171,6 @@ const ModalAddTask = (props: ModalAddConfig) => {
             <Form.Select
               aria-label="Default select example"
               {...register("issuedToOrganisation", { required: true })}
-              // value={issuedToOrganisation}
-              // onChange={(e) => setIssuedToOrganisation(e.target.value)}
             >
               <option></option>
               {createTask.issuedToOrganisation.map((item: any) => (
@@ -208,8 +189,6 @@ const ModalAddTask = (props: ModalAddConfig) => {
             <Form.Select
               aria-label="Default select example"
               {...register("issuedByUser", { required: true })}
-              // value={issuedByUser}
-              // onChange={(e) => setIssuedByUser(e.target.value)}
             >
               <option></option>
               {createTask.issuedByUser.map((item: any) => (
@@ -228,8 +207,6 @@ const ModalAddTask = (props: ModalAddConfig) => {
             <Form.Select
               aria-label="Default select example"
               {...register("cause", { required: true })}
-              // value={cause}
-              // onChange={(e) => setCause(e.target.value)}
             >
               <option></option>
               {createTask.cause.map((item: string) => (
@@ -248,8 +225,6 @@ const ModalAddTask = (props: ModalAddConfig) => {
             <Form.Select
               aria-label="Default select example"
               {...register("causedBy", { required: true })}
-              // value={causedBy}
-              // onChange={(e) => setCausedBy(e.target.value)}
             >
               <option></option>
               {createTask.causedBy.map((item: string) => (
@@ -257,12 +232,14 @@ const ModalAddTask = (props: ModalAddConfig) => {
               ))}
             </Form.Select>
           </Form.Group>
-          <Button onClick={props.onHide} variant="secondary">
-            Close Tab
-          </Button>
-          <Button variant="primary" type="submit">
-            Save Changes
-          </Button>
+          <div className=" d-flex justify-content-end gap-3">
+            <Button onClick={props.onHide} variant="secondary">
+              CLOSE
+            </Button>
+            <Button variant="primary" type="submit">
+              SAVE
+            </Button>
+          </div>
         </Form>
       </Modal.Body>
     </Modal>

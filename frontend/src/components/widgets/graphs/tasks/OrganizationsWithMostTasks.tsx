@@ -28,7 +28,7 @@ function OrganizationsWithMostTasks() {
   ];
 
   return (
-    <Card>
+    <Card className="border-0">
       <CardTitle className="p-4">Organization With Most Tasks</CardTitle>
       <CardBody>
         <BarChart
