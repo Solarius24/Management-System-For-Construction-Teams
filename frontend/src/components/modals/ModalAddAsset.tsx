@@ -35,7 +35,7 @@ const ModalAddAsset = (props: ModalAddConfig) => {
   return (
     <Modal {...props}>
       <Modal.Header closeButton>
-        <Modal.Title>ADD ASSET</Modal.Title>
+        <Modal.Title>ADD NEW ASSET</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={handleSubmit(onSubmitAsset)}>

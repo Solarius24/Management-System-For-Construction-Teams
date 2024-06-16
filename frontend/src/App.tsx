@@ -19,7 +19,7 @@ import { fetchForms } from "./redux/slices/formSlice";
 import { fetchProcesses } from "./redux/slices/processSlice";
 import { fetchTasks } from "./redux/slices/taskSlice";
 import { fetchFormsSchedule } from "./redux/slices/formScheduleSlice";
-import AssetsDashboard from "./pages/AssetsDashboard";
+import AssetsDashboard from "./pages/AssetDashboard/AssetsDashboard";
 import { fetchAssets } from "./redux/slices/assetsSlice";
 
 function App() {

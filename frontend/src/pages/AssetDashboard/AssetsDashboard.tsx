@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
-import { useAppSelector } from "../redux/reduxHooks";
+import { useAppSelector } from "../../redux/reduxHooks";
 import { useParams } from "react-router-dom";
-import ModalAddAsset from "../components/modals/ModalAddAsset";
+import ModalAddAsset from "../../components/modals/ModalAddAsset";
 
 function AssetsDashboard() {
   const [modalShow, setModalShow] = useState(false);
