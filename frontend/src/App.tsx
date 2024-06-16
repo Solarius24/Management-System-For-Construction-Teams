@@ -11,7 +11,7 @@ import FormEdit from "./pages/FormEdit";
 import TaskEdit from "./pages/TaskEdit";
 import FormScheduleEdit from "./pages/FormScheduleEdit";
 import PrivacyNotice from "./pages/PrivacyNotice";
-import ConcreteWorksTracker from "./pages/ProcessDashboard";
+import ConcreteWorksTracker from "./pages/ProcessDashboard/ProcessDashboard";
 import { useAppDispatch } from "./redux/reduxHooks";
 import { useEffect } from "react";
 import { fetchUserData } from "./redux/slices/userSlice";

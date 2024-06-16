@@ -2,8 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 // axios.defaults.baseURL = "https://msfct-api.onrender.com";
 
-
-
 interface Process {
   data: {
     _id: string;
@@ -40,7 +38,6 @@ export const processSlice = createSlice({
       state.data[index].location.push(action.payload[0]);
     },
     updateLocationStatus: (state, action) => {
-      console.log(action.payload);
       axios.patch("/api/updateLocationStatus/", action.payload[0], {
         params: { id: `${action.payload[1]}` },
       });

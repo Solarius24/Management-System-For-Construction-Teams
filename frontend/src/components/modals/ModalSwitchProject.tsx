@@ -1,9 +1,7 @@
 import { Button, ListGroup, ListGroupItem, Modal } from "react-bootstrap";
 
 const ModalSwitchProject = (props: any) => {
-  function handleSelect() {
-    console.log("selected");
-  }
+  function handleSelect() {}
   return (
     <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
       <Modal.Header closeButton>

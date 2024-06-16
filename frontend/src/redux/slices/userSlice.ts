@@ -22,7 +22,7 @@ const initialState: UserState = {
   listOfTabs: [
     {
       _id: "def01",
-      tabName: "Default",
+      tabName: "Default Tab",
       listOfWidgets: [
         {
           _id: "def21",
@@ -103,7 +103,6 @@ export const userSlice = createSlice({
         widgetName: action.payload.widgetName,
         _id: "",
       });
-      console.log(state.listOfTabs[0].listOfWidgets);
     },
 
     deleteWidget: (state, action) => {

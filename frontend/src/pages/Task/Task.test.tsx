@@ -16,7 +16,7 @@ test("Display add new task modal", () => {
   const addNewFormTab = screen.getByRole("button", { name: /add new task/i });
   fireEvent.click(addNewFormTab);
   expect(screen.getByText("ADD TASK")).toBeVisible();
-  const closeBtn = screen.getByRole("button", { name: /close tab/i });
+  const closeBtn = screen.getByRole("button", { name: /CLOSE/ });
   fireEvent.click(closeBtn);
   expect(addNewFormTab).toBeTruthy();
 });

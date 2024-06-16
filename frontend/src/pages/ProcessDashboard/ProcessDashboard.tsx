@@ -1,9 +1,9 @@
 import { Button, Container, Table } from "react-bootstrap";
-import { useAppDispatch, useAppSelector } from "../redux/reduxHooks";
+import { useAppDispatch, useAppSelector } from "../../redux/reduxHooks";
 import { useParams } from "react-router-dom";
-import ModalProcessesAddLocation from "../components/modals/ModalProcessesAddLocation";
+import ModalProcessesAddLocation from "../../components/modals/ModalProcessesAddLocation";
 import { useState } from "react";
-import { updateLocationStatus } from "../redux/slices/processSlice";
+import { updateLocationStatus } from "../../redux/slices/processSlice";
 
 function ProcessDashboard() {
   const [modalShow, setModalShow] = useState(false);

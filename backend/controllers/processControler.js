@@ -26,7 +26,6 @@ const createLocation = async (req, res) => {
 
 const updateLocationStatus = async (req, res) => {
   const { id } = req.query;
-  console.log(req.body);
   const newStatus = await Process.findOneAndUpdate(
     { _id: id },
     {
