@@ -19,6 +19,7 @@ function ProcessDashboard() {
   }
 
   function handleUpdateStatus() {
+    console.log(location);
     dispatch(updateLocationStatus([location, process[0]._id]));
   }
 
@@ -81,25 +82,25 @@ function ProcessDashboard() {
                     <td style={{ verticalAlign: "middle" }}>
                       {item.locationName}
                     </td>
-                    {Object.values(item.locationStatus).map((x, index) => {
+                    {Object.values(item.locationStatus).map((status, index) => {
                       return (
                         <td>
                           <select
-                            defaultValue={String(x)}
+                            defaultValue={String(status)}
                             onChange={(e) => updateStatus(indexA, index, e)}
                             className="form-select "
                             aria-label="Default select example"
                             style={{
                               background: `${
-                                x === "NOT STARTED"
+                                status === "NOT STARTED"
                                   ? "lightblue"
-                                  : x === "CHECK IN PROGRESS"
+                                  : status === "CHECK IN PROGRESS"
                                   ? "yellow"
-                                  : "NCR OPEN"
+                                  : status === "NCR OPEN"
                                   ? "salmon"
-                                  : x === "COMPLETED"
+                                  : status === "COMPLETED"
                                   ? "lightgreen"
-                                  : x === "NOT APPLICABLE"
+                                  : status === "NOT APPLICABLE"
                                   ? "lightgrey"
                                   : "white"
                               }`,

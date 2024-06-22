@@ -41,7 +41,6 @@ test("user should be able to type in input", async () => {
       <Dashboard />
     </Provider>
   );
-
   const addNewTabButton = screen.getByText(/add new tab/i);
   fireEvent.click(addNewTabButton);
   const inputElement = screen.getByLabelText("tab-name");
