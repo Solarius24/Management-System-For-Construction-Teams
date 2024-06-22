@@ -21,15 +21,15 @@ const initialState: AssetState = {
   data: [
     {
       _id: "000000001",
-      title: "demo",
+      title: "SALAVAGE - PRINTOWORKS",
       organizationName: "Sub-contractor",
       listOfItems: [
         {
-          itemName: "demo",
+          itemName: "Newspaper conveyors",
           itemQuantity: "20",
-          itemDescription: "demo",
-          itemLocation: "demo",
-          itemId: "1000010000",
+          itemDescription: "conveyors, varius length",
+          itemLocation: "Press Hall",
+          itemId: "022",
         },
       ],
     },

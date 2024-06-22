@@ -13,8 +13,8 @@ interface Process {
 
 const initialState: Process = {
   data: [
-    { _id: "sfsdf", title: "sdfsdf", columns: [], location: [] },
-    { _id: "sfsdf", title: "sdfsdf", columns: [], location: [] },
+    { _id: "100100", title: "waterproofing", columns: [], location: [] },
+    { _id: "100101", title: "concrete", columns: [], location: [] },
   ],
 };
 

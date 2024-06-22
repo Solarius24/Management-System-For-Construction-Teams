@@ -35,3 +35,16 @@ test("Display Modal Tab Settings", () => {
   fireEvent.click(addNewTabButton);
   expect(screen.getByTitle("TAB SETTINGS")).toBeVisible();
 });
+test("user should be able to type in input", async () => {
+  render(
+    <Provider store={store}>
+      <Dashboard />
+    </Provider>
+  );
+
+  const addNewTabButton = screen.getByText(/add new tab/i);
+  fireEvent.click(addNewTabButton);
+  const inputElement = screen.getByLabelText("tab-name");
+  fireEvent.change(inputElement, { target: { value: "tab001" } });
+  expect(inputElement.value).toBe("tab001");
+});

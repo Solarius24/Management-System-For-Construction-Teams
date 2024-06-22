@@ -24,6 +24,7 @@ const ModalAddTab = (props: any) => {
           <Form>
             <Form.Group className="m-3">
               <Form.Control
+                aria-label="tab-name"
                 placeholder="Enter Tab Name"
                 value={tabTitle}
                 onChange={(e) => setTabTitle(e.target.value)}

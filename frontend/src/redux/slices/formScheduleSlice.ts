@@ -24,15 +24,15 @@ const initialState: FormScheduleState = {
   error: null,
   data: [
     {
-      id: `temp01`,
+      id: `00001`,
       type: "templated",
       template: " ",
       description: `${Date.now()}`,
       location: "OPEN",
-      issuedByOrganisation: "",
-      startDate: " ",
-      repeat: "",
-      issuedBy: "",
+      issuedByOrganisation: "main-contractor",
+      startDate: " 12/12/2024",
+      repeat: "no",
+      issuedBy: "Mick Jackson",
     },
   ],
 };

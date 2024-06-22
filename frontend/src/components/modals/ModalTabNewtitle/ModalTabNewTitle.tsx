@@ -18,6 +18,7 @@ const ModalTabNewTitle = (props: any) => {
       </Modal.Header>
       <Modal.Body>
         <Form.Control
+          aria-label="tab-new-name"
           as="input"
           placeholder={props.tabName}
           onChange={(e) => setNewTabName(e.target.value)}

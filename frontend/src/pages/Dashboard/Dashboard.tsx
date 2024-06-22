@@ -13,7 +13,6 @@ const Dashboard = () => {
   const [modalSettingsShow, setModalSettingsShow] = useState(false);
   const [modalAddTabShow, setModalAddTabShow] = useState(false);
   const data = useAppSelector((state) => state.userData.listOfTabs);
-  
 
   function handleAddNewTab() {
     setModalAddTabShow(true);
@@ -33,7 +32,7 @@ const Dashboard = () => {
         </Button>
       </Navbar>
 
-      {data ? (
+      {data.length > 0 ? (
         <Container>
           <Tabs
             className="mb-3"

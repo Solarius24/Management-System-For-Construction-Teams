@@ -39,3 +39,14 @@ test("close modal window with SAVE CHANGES button", () => {
   fireEvent.click(inputElement);
   expect(handleClose).toHaveBeenCalledTimes(1);
 });
+test("user should be able to type in input", async () => {
+  const handleClose = jest.fn();
+  render(
+    <Provider store={store}>
+      <ModalTabNewTitle show={true} onHide={handleClose} tabId="" />
+    </Provider>
+  );
+  const inputElement = screen.getByLabelText("tab-new-name");
+  fireEvent.change(inputElement, { target: { value: "tab001" } });
+  expect(inputElement.value).toBe("tab001");
+});

@@ -21,12 +21,12 @@ const initialState: UserState = {
   id: "def",
   listOfTabs: [
     {
-      _id: "def01",
+      _id: "65c7c94f4217846243781a98",
       tabName: "Default Tab",
       listOfWidgets: [
         {
           _id: "def21",
-          widgetName: "Form Detail Status",
+          widgetName: "Recent Task Activity",
           widgetType: "Pie Chart With Custom Labels",
         },
       ],

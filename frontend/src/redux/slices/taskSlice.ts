@@ -24,18 +24,18 @@ interface TaskState {
 const initialState: TaskState = {
   data: [
     {
-      id: "temp01",
+      id: "00001",
       taskRef: "temp01",
       cause: "",
       causedBy: "",
       description: "",
-      issuedByUser: "",
-      issuedToOrganisation: "",
-      location: "",
+      issuedByUser: "Mick Jackson",
+      issuedToOrganisation: "sub-contractor",
+      location: "ground floor",
       contractPackage: "",
       taskStatus: "OPEN",
       statusChangeComments: "",
-      targetDate: "",
+      targetDate: "12/12/2024",
       taskType: "",
       createdAt: "",
     },

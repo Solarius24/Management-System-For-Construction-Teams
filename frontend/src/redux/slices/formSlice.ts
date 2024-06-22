@@ -25,15 +25,15 @@ const initialState: FormState = {
   error: null,
   data: [
     {
-      id: `temp01`,
+      id: `00001`,
       formTitle: "templated",
       documentRef: " ",
       createdDate: "12/01/1900",
       status: "OPEN",
       formType: "",
       details: " ",
-      location: "   ",
-      expiryDate: " ",
+      location: "ground floor",
+      expiryDate: " 12/12/2024",
       signatureDate: "",
       signature: "",
     },
