@@ -28,6 +28,7 @@ const Processes = () => {
                   <Link to={`/processes/detail/${item._id}`}>{item._id}</Link>
                 </td>
                 <td>{item.title}</td>
+                <td className="text-center">{item.organizationName}</td>
               </tr>
             );
           })}
