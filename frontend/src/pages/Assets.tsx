@@ -34,7 +34,7 @@ const Assets = () => {
           {data.map((item: any) => {
             return (
               <tr>
-                <td>
+                <td width="20%">
                   <Link to={`/assets/detail/${item._id}`}>{item._id}</Link>
                 </td>
                 <td>{item.title}</td>

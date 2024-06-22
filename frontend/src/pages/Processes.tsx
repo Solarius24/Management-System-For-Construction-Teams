@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const Processes = () => {
   const data = useAppSelector((state) => state.processes.data);
+  console.log(data);
   return (
     <Container
       fluid
@@ -24,11 +25,12 @@ const Processes = () => {
           {data.map((item: any) => {
             return (
               <tr>
-                <td>
+                <td width="20%">
                   <Link to={`/processes/detail/${item._id}`}>{item._id}</Link>
                 </td>
                 <td>{item.title}</td>
                 <td className="text-center">{item.organizationName}</td>
+                <td className="text-center">{item.updatedAt}</td>
               </tr>
             );
           })}

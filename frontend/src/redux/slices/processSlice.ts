@@ -7,14 +7,27 @@ interface Process {
     _id: string;
     title: string;
     columns: string[];
+    updatedAt: String;
     location: { locationName: string; locationStatus: object; id: string }[];
   }[];
 }
 
 const initialState: Process = {
   data: [
-    { _id: "100100", title: "waterproofing", columns: [], location: [] },
-    { _id: "100101", title: "concrete", columns: [], location: [] },
+    {
+      _id: "100100",
+      title: "waterproofing",
+      columns: [],
+      updatedAt: "2022-02-26T17:08:14",
+      location: [],
+    },
+    {
+      _id: "100101",
+      title: "concrete",
+      columns: [],
+      updatedAt: "2022-02-26T17:08:14",
+      location: [],
+    },
   ],
 };
 
