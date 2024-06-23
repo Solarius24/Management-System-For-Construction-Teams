@@ -19,7 +19,6 @@ function ProcessDashboard() {
   }
 
   function handleUpdateStatus() {
-    console.log(location);
     dispatch(updateLocationStatus([location, process[0]._id]));
   }
 

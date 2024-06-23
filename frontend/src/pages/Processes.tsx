@@ -30,7 +30,9 @@ const Processes = () => {
                 </td>
                 <td>{item.title}</td>
                 <td className="text-center">{item.organizationName}</td>
-                <td className="text-center">{item.updatedAt}</td>
+                <td className="text-center">
+                  {item.updatedAt.slice(0, 16).replace("T", " ")}
+                </td>
               </tr>
             );
           })}

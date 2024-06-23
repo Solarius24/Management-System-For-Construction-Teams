@@ -31,7 +31,7 @@ function App() {
     dispatch(fetchFormsSchedule());
     dispatch(fetchProcesses());
     dispatch(fetchAssets());
-  }, []);
+  }, [dispatch]);
   return (
     <BrowserRouter>
       <div>
