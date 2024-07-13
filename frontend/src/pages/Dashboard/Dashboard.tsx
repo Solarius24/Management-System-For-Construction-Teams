@@ -32,7 +32,7 @@ const Dashboard = () => {
         </Button>
       </Navbar>
 
-      {data.length > 0 ? (
+      {data[0].tabName === "default" ? (
         <Container>
           <Tabs
             className="mb-3"
@@ -67,6 +67,7 @@ const Dashboard = () => {
         >
           <Spinner style={{ width: "15rem", height: "15rem" }}></Spinner>
           <h5>...LOADING</h5>
+          <h5>please wait approx 1 min</h5>
         </div>
       )}
 
